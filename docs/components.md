@@ -60,7 +60,7 @@ Transaction-page-component
 - Qr scanner component
 - Button to confirm
 
-SignupComponent
+RegistrationComponent
 - Signupform
 - Button
 
