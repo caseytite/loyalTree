@@ -1,0 +1,12 @@
+INSERT INTO TABLE loyalty_cards (user_id, store_id, created_at, edited_at)
+VALUES
+(1,4)
+(2,7)
+(3,9)
+(4,1)
+(5,5)
+(6,3)
+(7,2)
+(8,8)
+(9,6)
+(10,10)
