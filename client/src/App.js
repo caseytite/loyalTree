@@ -26,9 +26,6 @@ function App() {
     
   },[])
 
-   
-  console.log(students);
-
   const test = students.map(student => {
     return (  
     <div key={student.id}>
@@ -37,7 +34,6 @@ function App() {
     )
   })
  
-
   return (
     <div className="App">
       <h1>Test</h1>
