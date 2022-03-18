@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from './Button'
 
-function StoreRegistration() {
+function StoreRegistration(props) {
   return (
     <div>
       <form action="">

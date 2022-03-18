@@ -1,6 +1,7 @@
 import React from 'react'
+import Button from './Button'
 
-function RegistrationForm() {
+function RegistrationForm(props) {
   return (
     <div>
       <h2>SignUpForm</h2>
@@ -10,6 +11,7 @@ function RegistrationForm() {
           Email: <input type="text" />
           Password: <input type="text" />
           City: <input type="text" />
+          <Button />
         </form>
     </div>
   )
