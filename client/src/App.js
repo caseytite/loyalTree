@@ -12,29 +12,28 @@ function App() {
         console.log('data is here');
         setStudents(res.data.data)
       })
+   
     
   },[])
 
-  // useEffect(() => {
+  useEffect(() => {
     
-  //    axios.get('/users')
-  //     .then(res => {
-  //       console.log('data is here');
-  //       console.log(res.data);
-  //     })
+     axios.post('/users')
+      .then(res => {
+        console.log('data is here');
+        console.log(res.data);
+      })
     
-  // },[])
+  },[])
 
    
   console.log(students);
 
   const test = students.map(student => {
-    return (
-      
-    <div>
-      <div key={student.first_name}> {student.first_name}</div>
-    </div>
-      
+    return (  
+    <div key={student.id}>
+      <div> {student.first_name}</div>
+    </div>      
     )
   })
  
