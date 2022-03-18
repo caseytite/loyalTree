@@ -40,8 +40,8 @@ CREATE TABLE gift_cards (
 CREATE TABLE loyalty_cards (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  point_balance INTEGER,
-  redeem_at INTEGER,
+  point_balance INTEGER DEFAULT 0,
+  redeem_at INTEGER DEFAULT 100,
   store_id INTEGER REFERENCES stores(id),
   created_at TIMESTAMP DEFAULT NOW(),
   edited_at TIMESTAMP DEFAULT NOW()
