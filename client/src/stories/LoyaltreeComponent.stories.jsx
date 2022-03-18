@@ -3,7 +3,7 @@ import React from "react";
 import LoyaltreeComponent from './LoyaltreeComponent'
 
 export default {
-  title: 'LoyaltreeComponent',
+  title: 'Loyaltree/LoyaltreeComponent',
   component: LoyaltreeComponent,
 };
 
