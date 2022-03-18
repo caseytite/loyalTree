@@ -1,6 +1,8 @@
+require("dotenv").config();
+
+
 const PORT = 3009 // Client will be 3000
 const express = require('express')
-require("dotenv").config();
 
 // middleware
 const morgan = require('morgan')
@@ -13,7 +15,6 @@ const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
 const db = new Pool(dbParams);
 db.connect();
-
 
 const app = express()
 
