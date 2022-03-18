@@ -1,6 +1,6 @@
-const PORT = 3001 // Client will be 3000
+const PORT = 3009 // Client will be 3000
 const express = require('express')
-
+require("dotenv").config();
 
 // middleware
 const morgan = require('morgan')
@@ -28,6 +28,14 @@ const data = [
 
 app.get('/test', (req,res) => {
   res.json({test: data})
+})
+
+
+console.log('hello');
+app.get('/users', (req,res) => {
+ return db.query('SELECT * FROM users')
+    .then((data) => res.json({data:data.rows}))
+    .catch((err) => console.log('error', err.message))
 })
 
 // to run use npx nodemon

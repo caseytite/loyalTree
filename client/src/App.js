@@ -7,13 +7,23 @@ function App() {
 
   useEffect(() => {
     
-     axios.get('/test')
+     axios.get('/users')
       .then(res => {
         console.log('data is here');
-        setStudents(res.data.test)
+        setStudents(res.data.data)
       })
     
   },[])
+
+  // useEffect(() => {
+    
+  //    axios.get('/users')
+  //     .then(res => {
+  //       console.log('data is here');
+  //       console.log(res.data);
+  //     })
+    
+  // },[])
 
    
   console.log(students);
