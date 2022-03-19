@@ -32,11 +32,14 @@ const {
   ADD_USER,
   GIFT_CARDS,
   STORE_TYPE,
+  TRANSACTIONS,
   USERS_STORES, 
   USERS_GIFT_CARDS,
+  STORE_TRANSACTIONS,
   GIFT_CARDS_BY_STORE,
   USERS_LOYALTY_CARDS,
-} = require('./querys')
+} = require('./querys');
+const { query } = require("express");
 
 const data = [
   {first_name: 'Casey', last_name: 'T', email: 'casey@123.com', },
@@ -118,7 +121,21 @@ app.get('/stores/giftcards', (req,res) => {
     .catch((err) => res.json({error:err.message}))
 })
 
+//------------TRANSACTIONS
 
+
+app.get('/transactions', (req,res) => {
+ db.query(TRANSACTIONS)
+    .then((data) => res.json({data:data.rows}))
+    .catch((err) => res.json({error:err.message}))
+})
+
+app.get('/store/transactions', (req,res) => {
+  const [query,params] = STORE_TRANSACTIONS()
+  db.query(query)
+    .then((data) => res.json({data:data.rows}))
+    .catch((err) => res.json({error:err.message}))
+})
 
 
 // to run use npx nodemon
