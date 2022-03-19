@@ -1,0 +1,29 @@
+.GiftCardListItem-card {
+  width: 80vw;
+  background-color: aquamarine;
+  border-radius: 15px;
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.GiftCardListItem-card ul {
+  list-style: none;
+}
+
+.giftCard-description {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  list-style: none;
+  justify-content: space-between;
+}
+
+.giftCard-description .gc-balance {
+  /* color: pink; */
+  align-self: flex-end;
+}
+
+.giftcard-img {
+  max-width: 150px;
+}
