@@ -1,17 +1,23 @@
 import React from 'react'
 import Button from './Button'
+import './StoreRegistration.css'
 
 function RegistrationForm(props) {
   return (
-    <div>
-      <h2>SignUpForm</h2>
+    <div className='reg-container'>
+      <h2>Register!</h2>
         <form action="">
-          First Name: <input type="text" />
-          Last Name: <input type="text" />
-          Email: <input type="text" />
-          Password: <input type="text" />
-          City: <input type="text" />
-          <Button />
+        <label>First Name</label>
+        <input type="text" />
+        <label>Last Name</label>
+        <input type="text" />
+        <label>Email</label>
+        <input type="text" />
+        <label>City</label>
+        <input type="text" />
+        <label>Password</label>
+        <input type="password" />
+        <Button type="submit">Register</Button>
         </form>
     </div>
   )

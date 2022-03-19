@@ -27,13 +27,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 const {
-  USERS, 
+  USERS,
   STORES,
   ADD_USER,
   GIFT_CARDS,
   STORE_TYPE,
   TRANSACTIONS,
-  USERS_STORES, 
+  USERS_STORES,
   USERS_GIFT_CARDS,
   STORE_TRANSACTIONS,
   GIFT_CARDS_BY_STORE,

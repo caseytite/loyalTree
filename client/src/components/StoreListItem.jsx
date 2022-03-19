@@ -33,10 +33,10 @@ function StoreListItem(props) {
       </div>
         </div>
       <footer className="store-list-foot">
-        <Button className='store-list-btn' onClick={onAdd}>$10</Button>
-        <Button className='store-list-btn' onClick={onAdd}>$20</Button>
-        <Button className='store-list-btn' onClick={onAdd}>$30</Button>
-        <Button className='store-list-btn' onClick={onAdd}>$40</Button>
+        <Button className='store-list-btn' onClick={onAdd}>10</Button>
+        <Button className='store-list-btn' onClick={onAdd}>20</Button>
+        <Button className='store-list-btn' onClick={onAdd}>30</Button>
+        <Button className='store-list-btn' onClick={onAdd}>40</Button>
       </footer>
     </article>
   )

@@ -2,7 +2,7 @@
 background-color: blue;
 height: 3em;
 width: 100vw;
-position: absolute;
+position: sticky;
 right: 0;top:0;left:0;
 display: flex;
 flex-direction: row;
