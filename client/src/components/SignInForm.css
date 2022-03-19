@@ -1,7 +1,14 @@
-.sign-in{
-  border-radius: 3px;
-  margin-right: 0.5em;
-  width: 200px;
-  padding: 1%;
-  border: 1px;
+.form-container {
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container input {
+  width: 100;
+  margin: 5px;
+}
+
+Button {
+  margin-top: 5px;
 }
