@@ -1,3 +1,7 @@
 .sign-in{
-  background-color: blue;
+  border-radius: 3px;
+  margin-right: 0.5em;
+  width: 200px;
+  padding: 1%;
+  border: 1px;
 }

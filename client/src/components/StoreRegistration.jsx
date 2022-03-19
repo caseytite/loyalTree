@@ -1,14 +1,27 @@
 import React from 'react'
 import Button from './Button'
+import './StoreRegistration.css'
 
 function StoreRegistration(props) {
+  const onFormSubmission = (e) => {
+    console.log(e.target.value)
+  }
+
   return (
-    <div>
-      <form action="">
-        Store Name<input type="text" />
-        email <input type="text" />
+    <div className="reg-container">
+      <form action="" onSubmit={onFormSubmission}>
+        <label>Store Name</label>
+        <input type="text" />
+        <label>Category</label>
+        <input type="text" />
+        <label>Photo Url</label>
+        <input type="text" />
+        <label>Address</label>
+        <input type="text" />
+        <label>Description</label>
+        <textarea className='reg-text-area' type="text" />
+        <Button type="submit">Register</Button>
       </form>
-      <Button>Submit</Button>
     </div>
   )
 }

@@ -1,11 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './SearchBar.css'
+import Button from './Button'
 
 const SearchBar = (props) => {
+
+  const [search,setSearch] = useState('')
+
+  const onSearch = (e) => {
+    setSearch()
+  }
+
   return (
-    <div className='search'>
-      <input>input here</input>
-      <div>dropdown thing</div>  
+    <div >
+      <input className='search' placeholder='search for a store'/>
+      <Button className="submit-search" onClick={onSearch}>Search</Button>
     </div>
   )
 }

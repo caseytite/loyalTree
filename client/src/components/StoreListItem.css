@@ -1,0 +1,39 @@
+.store-list-item{
+  background-color: rgb(217, 221, 221);
+  width: 80vw;
+  border-radius: 1em;
+}
+
+.store-list-top{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1em;
+}
+.store-list-cont{
+  display: flex;
+  flex-direction: row;
+}
+
+.store-list-img{
+  width: 50%;
+  padding: 1em;
+  border-radius: 2em;
+}
+
+.store-description{
+  
+  padding: 1em;
+}
+
+.store-list-foot{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1em;
+}
+
+.store-list-btn{
+  background-color: blue;
+  color: red;
+}

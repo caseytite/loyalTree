@@ -1,3 +1,22 @@
+
+
 .search{
-  background-color: blue;
+  border-radius: 3px;
+  margin-right: 0.5em;
+  width: 20%;
+  padding: 1%;
+  border: 1px;
+}
+
+.search:focus{
+  outline: none;
+}
+
+.submit-search{
+  border-radius: 3px;
+  margin-right: 0.5em;
+  width: 20%;
+  padding: 1%;
+  border: 1px;
+ color: greenyellow;
 }

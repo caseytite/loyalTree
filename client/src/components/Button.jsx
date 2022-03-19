@@ -1,8 +1,11 @@
 import React from 'react'
 
 function Button(props) {
+
+ const {children} = props
+
   return (
-    <button>{props.children}</button>
+    <button >{children}</button>
   )
 }
 

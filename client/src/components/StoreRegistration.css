@@ -1,0 +1,15 @@
+.reg-container {
+  width: 20%;
+  clear: both;
+}
+
+.reg-container input {
+  width: 100%;
+  clear: both;
+}
+
+.reg-text-area{
+  resize: none;
+  height: 5em;
+  width: 100%;
+}
