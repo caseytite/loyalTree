@@ -1,21 +1,30 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Button from './Button'
 import './SignInForm.css'
 
 const SignInForm = props => {
-  const onFormSubmission = (e) => {
-    console.log(e.target.value)
-  }
 
+  const {setLogin} =props
+
+ const [email,setEmail] = useState('')
+ const [password,setPassword] = useState('')
+
+
+
+  const onFormSubmission = (e) => {
+    e.preventDefault()
+    setLogin({email,password})
+
+  }
 
   return (
     <form action="" onSubmit={onFormSubmission}>
       <div className='form-container'>
       <label htmlFor="email">email</label>
-      <input type="text" />
+      <input value={email} type="text" onChange={(e) => setEmail(e.target.value)} />
       <label htmlFor="password">password</label>
-      <input type="text"/>
-      <Button type="submit">Sign in</Button>
+      <input value={password} onChange={(e) => setPassword(e.target.value)} type="password"/>
+      <Button onClick={(e) => onFormSubmission(e)}>Sign in</Button>
     </div>
     </form>
   )

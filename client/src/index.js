@@ -12,6 +12,8 @@ import {
 import Stores from './routes/stores';
 import Transactions from './routes/transactions';
 import Scan from './routes/scan';
+import Signin from './routes/signin';
+import Register from './routes/register';
 
 
 const rootElement = document.getElementById('root')
@@ -22,6 +24,8 @@ render(
         <Route path="stores" element={<Stores/>} />
         <Route path="transactions" element={<Transactions/>} />
         <Route path="scan" element={<Scan/>} />
+        <Route path="signin" element={<Signin/>}/>
+        <Route path="register" element={<Register/>}/>
       </Route>
     </Routes>
   </BrowserRouter>

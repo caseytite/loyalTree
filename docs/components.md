@@ -8,7 +8,7 @@ Navbar
 Home page componenet
 - Image
 - Paragraph
--  Search by category ? maybe dropdown? 
+-  Search by category ? maybe dropdown?
 
 Footer
 - Logo
@@ -16,7 +16,7 @@ Footer
 
 Search Compentent
 - Drop down component
-- List items 
+- List items
 - searchButton
 
 Button component
@@ -82,7 +82,7 @@ Cart Component
 - checkout/pay button
 
 
-Homepage
+Homepage is App
 
 ```jsx
 <>

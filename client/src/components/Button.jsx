@@ -6,7 +6,7 @@ function Button(props) {
  const {children} = props
 
   return (
-    <button className="button-confirm">{children}</button>
+    <button onClick={props.onClick} className="button-confirm">{children}</button>
   )
 }
 
