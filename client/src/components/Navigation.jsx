@@ -1,15 +1,15 @@
 import React from 'react'
 import './Navigation.css'
-import Button from './Button'
-import RegisterForm from './RegisterForm'
 
 
 const Navigation = (props) => {
   return (
     <nav className='nav'>
-      <img/>
-      <Button />
-      <RegisterForm />
+      <h2 className='header-logo'>LoyalTree</h2>
+      <div className='header-logins'>
+        <button>Login</button>
+        <button>Register</button>
+      </div>
     </nav>
   )
 }
