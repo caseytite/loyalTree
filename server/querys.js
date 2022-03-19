@@ -50,6 +50,17 @@ const GIFT_CARDS_BY_STORE = (params) => {
  WHERE stores.category LIKE 'Retail';`,[]]
 }
 
+//---------TRANSACTIONS---------------------------------
+
+const TRANSACTIONS = `SELECT * FROM transactions;`
+
+const STORE_TRANSACTIONS = (params) => {
+  return [`SELECT * FROM transactions
+  JOIN stores ON transactions.store_id = stores.id
+  WHERE stores.id = 1;
+  `, []]
+}
+
 
 module.exports = {
   USERS, 
@@ -59,6 +70,8 @@ module.exports = {
   STORES,
   STORE_TYPE,
   GIFT_CARDS,
-  USERS_LOYALTY_CARDS
-  ,GIFT_CARDS_BY_STORE
+  USERS_LOYALTY_CARDS,
+  GIFT_CARDS_BY_STORE,
+  TRANSACTIONS,
+  STORE_TRANSACTIONS
 }

@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS gift_cards CASCADE;
 DROP TABLE IF EXISTS stores CASCADE;
 DROP TABLE IF EXISTS loyalty_cards; 
+DROP TABLE IF EXISTS transactions; 
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -47,3 +48,12 @@ CREATE TABLE loyalty_cards (
   created_at TIMESTAMP DEFAULT NOW(),
   edited_at TIMESTAMP DEFAULT NOW()
 );
+
+
+  CREATE TABLE transactions (
+  id SERIAL PRIMARY KEY NOT NULL,
+  giftcard_id INTEGER REFERENCES gift_cards(id),
+  store_id INTEGER REFERENCES stores(id),
+  amount INTEGER,
+  created_at TIMESTAMP DEFAULT NOW()
+  );
