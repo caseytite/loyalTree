@@ -40,12 +40,13 @@ const USERS_LOYALTY_CARDS = (params) => {
 //----------SEARCH BY STORES-----------------------
 const STORES = 'SELECT * FROM stores'
 
-const STORE_TYPE = (params) => {
+const STORE_DETAIL = (params) => {
   // [`%${params.category.toLowerCase().slice(1)}%`]
+  console.log('params in query', params)
   return [
     `SELECT * FROM stores
-  WHERE category LIKE 'Restaurant'`,
-    [],
+  WHERE name LIKE $1`,
+    [`${params.name}%`],
   ]
 }
 
@@ -104,7 +105,7 @@ module.exports = {
   USERS_STORES,
   USERS_GIFT_CARDS,
   STORES,
-  STORE_TYPE,
+  STORE_DETAIL,
   GIFT_CARDS,
   USERS_LOYALTY_CARDS,
   GIFT_CARDS_BY_STORE,
