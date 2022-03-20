@@ -16,7 +16,7 @@ const db = new Pool(dbParams)
 db.connect()
 
 const app = express()
-const router = express.Router()
+// const router = express.Router()
 
 app.use(morgan('dev'))
 app.use(cors())
@@ -36,15 +36,15 @@ const {
   STORES,
   ADD_USER,
   GIFT_CARDS,
-  STORE_TYPE,
+  STORE_DETAIL,
   TRANSACTIONS,
-  USERS_STORES,
+  USERS_STORES, // most likely not needed
   USERS_GIFT_CARDS,
   STORE_TRANSACTIONS,
-  GIFT_CARDS_BY_STORE,
-  USERS_LOYALTY_CARDS,
+  GIFT_CARDS_BY_STORE, // most likely not needed
+  USERS_LOYALTY_CARDS, // not needed
 } = require('./querys')
-const { query } = require('express')
+// const { query } = require('express')
 
 // ---------------------USERS ----------------------
 app.get('/users', (req, res) => {
@@ -75,7 +75,7 @@ app.post('/users', (req, res) => {
 })
 
 //----------------------LOYALTY CARDS
-app.get('/loyaltycardsloyaltycards', (req, res) => {
+app.get('/loyaltycards', (req, res) => {
   const [query, params] = USERS_LOYALTY_CARDS()
   db.query(query)
     .then((data) => res.json({ data: data.rows }))
@@ -89,9 +89,10 @@ app.get('/stores', (req, res) => {
     .catch((err) => res.json({ error: err.message }))
 })
 
-app.get('/stores/type', (req, res) => {
-  const [query, params] = STORE_TYPE()
-  db.query(query)
+app.get('/store/detail', (req, res) => {
+  console.log('in app.get', req.query)
+  const [query, params] = STORE_DETAIL(req.query)
+  db.query(query, params)
     .then((data) => res.json({ data: data.rows }))
     .catch((err) => res.json({ error: err.message }))
 })

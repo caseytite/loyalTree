@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from './Button'
+import axios from 'axios'
 import './StoreListItem.css'
 
 function StoreListItem(props) {
@@ -10,14 +11,34 @@ function StoreListItem(props) {
     category,
     photo,
     setAmount,
+    showDetail,
+    detail,
   } = props
   const onAdd = (e) => {
     const amount = e.target.innerHTML
     setAmount(amount)
   }
 
+  const getStoreDetails = (name) => {
+    showDetail(name)
+
+    // we may not need this axios request it looks possible to do it just with state
+    // just keeping this here incase it becomes needed
+
+    // axios
+    //   .get('/store/detail', { params: { name } })
+    //   .then((res) => {
+    //     console.log(res.data.data)
+    //     // how do we do a redirect here to go to another page??
+    //   })
+    //   .catch((err) => console.log(err.message))
+  }
+
   return (
-    <article className="store-list-item">
+    <article
+      className="store-list-item"
+      onClick={(e) => getStoreDetails(storeName)}
+    >
       <div className="store-list-top">
         <h1>{storeName}</h1>
         <h3>{address}</h3>
@@ -35,7 +56,14 @@ function StoreListItem(props) {
           </div>
         </div>
       </div>
-      <footer className="store-list-foot">
+      {detail && (
+        <div>
+          <h3>Enter an amount</h3>
+          <input></input>
+          <Button>Purchase</Button>
+        </div>
+      )}
+      {/* <footer className="store-list-foot">
         <Button className="store-list-btn" onClick={onAdd}>
           10
         </Button>
@@ -48,7 +76,7 @@ function StoreListItem(props) {
         <Button className="store-list-btn" onClick={onAdd}>
           40
         </Button>
-      </footer>
+      </footer> */}
     </article>
   )
 }
