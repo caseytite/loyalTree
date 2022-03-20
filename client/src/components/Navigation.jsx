@@ -17,7 +17,6 @@ const Navigation = (props) => {
         >
           Log in
         </Link>
-
         <Link
           className="nav-text"
           to={{ pathname: '/register' }}

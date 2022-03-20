@@ -54,16 +54,11 @@ app.get('/users', (req, res) => {
 })
 
 app.get('/login', (req, res) => {
-  console.log('req query', req.query)
   const [query, params] = USER(req.query)
   db.query(query, params)
     .then((data) => {
       const user = data.rows
       req.session.id = user[0].id
-      console.log(
-        'session cookie set with id:',
-        req.session.id
-      )
       res.json({
         data: data.rows,
         sessionId: req.session.id,

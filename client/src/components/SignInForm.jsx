@@ -4,6 +4,8 @@ import axios from 'axios'
 import './SignInForm.css'
 import Cookies from 'universal-cookie'
 
+//react cookies wont work when the fucntion is declared everything crashses
+
 const SignInForm = (props) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -15,6 +17,7 @@ const SignInForm = (props) => {
       .get('/login', { params: { email, password } })
       .then((res) => {
         cookies.set('id', res.data.sessionId, { path: '/' })
+        // how do we do a redirect here to go to another page??
       })
       .catch((err) => console.log(err.message))
   }
