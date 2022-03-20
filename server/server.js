@@ -21,7 +21,7 @@ const app = express()
 app.use(morgan('dev'))
 app.use(cors())
 app.use(express.urlencoded({ extended: true }))
-// app.use(express.json({ extended: true }));
+app.use(express.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }))
 // app.use(
 //   cookieSession({
@@ -41,8 +41,7 @@ const {
   USERS_STORES, // most likely not needed
   USERS_GIFT_CARDS,
   STORE_TRANSACTIONS,
-  GIFT_CARDS_BY_STORE, // most likely not needed
-  USERS_LOYALTY_CARDS, // not needed
+  GIFT_CARDS_BY_STORE,
 } = require('./querys')
 // const { query } = require('express')
 
@@ -76,56 +75,83 @@ app.post('/users', (req, res) => {
     .catch((err) => console.log('error', err.message))
 })
 
-//----------------------LOYALTY CARDS
-app.get('/loyaltycards', (req, res) => {
-  const [query, params] = USERS_LOYALTY_CARDS()
-  db.query(query)
-    .then((data) => res.json({ data: data.rows }))
-    .catch((err) => res.json({ error: err.message }))
-})
+/////logout Get///
 
-// ------------------------STORES
+///////////////
+// -STORES   //
+///////////////
 app.get('/stores', (req, res) => {
   db.query(STORES)
     .then((data) => res.json({ data: data.rows }))
     .catch((err) => res.json({ error: err.message }))
 })
 
-app.get('/store/detail', (req, res) => {
-  console.log('in app.get', req.query)
-  const [query, params] = STORE_DETAIL(req.query)
-  db.query(query, params)
+app.get('/stores/:id', (req, res) => {
+  db.query(`SELECT * FROM stores
+  JOIN users ON owner_id = users.id
+   WHERE stores.owner_id = $1;`, [req.params.id])
+
     .then((data) => res.json({ data: data.rows }))
     .catch((err) => res.json({ error: err.message }))
 })
 
-app.get('/user/stores', (req, res) => {
-  const [query, params] = USERS_STORES()
-  db.query(query)
-    .then((data) => res.json({ data: data.rows }))
-    .catch((err) => res.json({ error: err.message }))
-})
-
-//--------------------GIFT CARDS-----------------
-
-app.get('/giftcards', (req, res) => {
+///////////////
+//--CARDS----//
+//////////////
+// -----all cards
+app.get('/cards', (req, res) => {
   db.query(GIFT_CARDS)
     .then((data) => res.json({ data: data.rows }))
     .catch((err) => res.json({ error: err.message }))
 })
 
-app.get('/user/giftcards', (req, res) => {
-  const [query, params] = USERS_GIFT_CARDS()
-  db.query(query)
+//------cards by user id
+app.get('/cards/:id', (req, res) => {
+  console.log(req.params)
+  db.query(`SELECT * FROM users
+JOIN gift_cards ON user_id = users.id
+WHERE gift_cards.user_id = $1`, [req.params.id])
     .then((data) => res.json({ data: data.rows }))
     .catch((err) => res.json({ error: err.message }))
 })
 
-app.get('/stores/giftcards', (req, res) => {
-  const [query, params] = GIFT_CARDS_BY_STORE()
-  db.query(query)
-    .then((data) => res.json({ data: data.rows }))
-    .catch((err) => res.json({ error: err.message }))
+//----cards post by id
+app.post('/cards/:id', (req, res) => {
+  // if buying for self
+  let user = req.body
+  console.log(user)
+  if (user.email === "undefined") {
+    console.log("here");
+    db.query(`INSERT INTO gift_cards(user_id, balance, store_id) 
+    VALUES($1, $2, $3 ) RETURNING *;`,
+      [req.body.user_id, req.body.balance, req.body.store_id])
+      .then((data) => res.json({ data: data.rows }))
+      .catch((err) => console.log('error', err.message))
+  } else if (user.email) {
+    // console.log(user.email);
+    db.query(`SELECT id FROM users
+  WHERE email LIKE $1`, [`${user.email}%`])
+      .then((data) => {
+        // console.log(data.rows)
+        return data.rows[0]
+      })
+      .then((data) => {
+        db.query(`INSERT INTO gift_cards(user_id, balance, store_id) 
+        VALUES($1, $2, $3 ) RETURNING *;`,
+          [data.id, req.body.balance, req.body.store_id])
+          .then((data) => res.json({ data: data.rows }))
+          .catch((err) => console.log('error', err.message))
+      })
+  }
+  // buy for some else by email
+  // step 1 check if req.body contains an email///
+  // step 2 write query to find other user by email
+  // step 3 write query to insert gift card into user by finding thier email and id
+})
+
+app.get('/checkout', (req, res) => {
+  db.query(``)
+
 })
 
 //------------TRANSACTIONS
