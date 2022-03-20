@@ -23,12 +23,12 @@ app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 // app.use(express.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(
-  cookieSession({
-    name: 'session',
-    keys: ['id'],
-  })
-)
+// app.use(
+//   cookieSession({
+//     name: 'session',
+//     keys: ['id'],
+//   })
+// )
 
 const {
   USER,
@@ -58,10 +58,12 @@ app.get('/login', (req, res) => {
   db.query(query, params)
     .then((data) => {
       const user = data.rows
-      req.session.id = user[0].id
+      // if we want session cookies uncomment below lines
+      // req.session.id = user[0].id
+      // sessionId: req.session.id,
       res.json({
         data: data.rows,
-        sessionId: req.session.id,
+        user: user[0],
       })
     })
     .catch((err) => res.json({ error: err.message }))
