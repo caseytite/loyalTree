@@ -74,13 +74,10 @@ app.post('/users', (req, res) => {
 })
 
 /////logout Get///
-app.get('/', (req, res) => {
 
-
-})
-
-// ------------------------STORES
-
+///////////////
+// -STORES   //
+///////////////
 app.get('/stores', (req, res) => {
   db.query(STORES)
     .then((data) => res.json({ data: data.rows }))
@@ -96,20 +93,35 @@ app.get('/stores/:id', (req, res) => {
     .catch((err) => res.json({ error: err.message }))
 })
 
-
-//--------------------CARDS-----------------
-
+///////////////
+//--CARDS----//
+//////////////
+// -----all cards
 app.get('/cards', (req, res) => {
   db.query(GIFT_CARDS)
     .then((data) => res.json({ data: data.rows }))
     .catch((err) => res.json({ error: err.message }))
 })
 
-app.get('/user/giftcards', (req, res) => {
-  const [query, params] = USERS_GIFT_CARDS()
-  db.query(query)
+//------cards by user id
+app.get('/cards/:id', (req, res) => {
+  console.log(req.params)
+  db.query(`SELECT * FROM users
+JOIN gift_cards ON user_id = users.id
+WHERE gift_cards.user_id = $1`, [req.params.id])
     .then((data) => res.json({ data: data.rows }))
     .catch((err) => res.json({ error: err.message }))
+})
+
+//----cards post by id
+app.post('/cards/:id', (req, res) => {
+
+  db.query(`INSERT INTO gift_cards(user_id, balance, store_id) 
+VALUES($1, $2, $3 ) RETURNING *;`,
+    [req.body.user_id, req.body.balance, req.body.store_id])
+    .then((data) => res.json({ data: data.rows }))
+    .catch((err) => console.log('error', err.message))
+
 })
 
 app.get('/stores/giftcards', (req, res) => {
