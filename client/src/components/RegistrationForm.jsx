@@ -4,7 +4,7 @@ import './StoreRegistration.css'
 
 function RegistrationForm(props) {
 
-  const {register} = props
+  const {setRegister} = props
   const [firstName,setFirstName] = useState('')
   const [lastName,setLastName] = useState('')
   const [city,setCity] = useState('')
@@ -13,7 +13,7 @@ function RegistrationForm(props) {
 
   const onFormSubmission = (e) => {
     e.preventDefault()
-    register({firstName,lastName,city, email,password})
+    setRegister({firstName,lastName,city, email,password})
 
   }
 
