@@ -115,20 +115,41 @@ WHERE gift_cards.user_id = $1`, [req.params.id])
 
 //----cards post by id
 app.post('/cards/:id', (req, res) => {
-
-  db.query(`INSERT INTO gift_cards(user_id, balance, store_id) 
-VALUES($1, $2, $3 ) RETURNING *;`,
-    [req.body.user_id, req.body.balance, req.body.store_id])
-    .then((data) => res.json({ data: data.rows }))
-    .catch((err) => console.log('error', err.message))
-
+  // if buying for self
+  let user = req.body
+  console.log(user)
+  if (user.email === "undefined") {
+    console.log("here");
+    db.query(`INSERT INTO gift_cards(user_id, balance, store_id) 
+    VALUES($1, $2, $3 ) RETURNING *;`,
+      [req.body.user_id, req.body.balance, req.body.store_id])
+      .then((data) => res.json({ data: data.rows }))
+      .catch((err) => console.log('error', err.message))
+  } else if (user.email) {
+    // console.log(user.email);
+    db.query(`SELECT id FROM users
+  WHERE email LIKE $1`, [`${user.email}%`])
+      .then((data) => {
+        // console.log(data.rows)
+        return data.rows[0]
+      })
+      .then((data) => {
+        db.query(`INSERT INTO gift_cards(user_id, balance, store_id) 
+        VALUES($1, $2, $3 ) RETURNING *;`,
+          [data.id, req.body.balance, req.body.store_id])
+          .then((data) => res.json({ data: data.rows }))
+          .catch((err) => console.log('error', err.message))
+      })
+  }
+  // buy for some else by email
+  // step 1 check if req.body contains an email///
+  // step 2 write query to find other user by email
+  // step 3 write query to insert gift card into user by finding thier email and id
 })
 
-app.get('/stores/giftcards', (req, res) => {
-  const [query, params] = GIFT_CARDS_BY_STORE()
-  db.query(query)
-    .then((data) => res.json({ data: data.rows }))
-    .catch((err) => res.json({ error: err.message }))
+app.get('/checkout', (req, res) => {
+  db.query(``)
+
 })
 
 //------------TRANSACTIONS

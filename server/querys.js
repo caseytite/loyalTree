@@ -39,6 +39,17 @@ const STORE_TYPE = (params) => {
   ]
 }
 
+
+const STORE_DETAIL = (params) => {
+  // [`%${params.category.toLowerCase().slice(1)}%`]
+  console.log('params in query', params)
+  return [
+    `SELECT * FROM stores
+  WHERE name LIKE $1`,
+    [`${params.name}%`],
+  ]
+}
+
 const USERS_STORES = (params) => {
   // users stores is gonna have to be req.sessions.users.id
   // params.owner_id
