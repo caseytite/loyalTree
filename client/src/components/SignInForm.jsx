@@ -27,7 +27,7 @@ const SignInForm = (props) => {
           context.user = res.data.user
         })
         .then(() => {
-          navigate('/')
+          navigate('/stores')
         })
         .catch((err) => console.log(err.message))
     }

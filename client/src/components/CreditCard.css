@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,500,700');
+
+.card-row {
+  display: flex;
+  flex-direction: row;
+}
+/* .col input {
+  width: 30%;
+} */
+.card-params {
+  display: flex;
+  flex-direction: row;
+}
+
+.no-gutters {
+  padding-left: 0;
+}
+
+.heading-3 {
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: 700;
+  padding-bottom: 20px;
+}
+
+.app-container {
+  margin: 5% auto;
+  width: 635px;
+  height: 430px;
+  background: white;
+  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
+}
+
+.item-container .item-image img {
+  height: 430px;
+  width: 50%;
+}
+
+.item-image {
+  position: absolute;
+  z-index: 1;
+}
+
+.item-details {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 15px;
+  margin-left: 20px;
+}
+
+.item-name {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.item-price {
+  font-size: 25px;
+  font-weight: 700;
+  color: #0b8a6d;
+}
+
+.checkout {
+  height: 430px;
+  background: #2f2c33;
+  color: white;
+  width: 50%;
+  border-radius: 1em;
+  align-items: center;
+  margin: auto;
+}
+
+.checkout-container {
+  padding: 35px 25px;
+  margin: auto;
+}
+
+.input {
+  padding: 5px 0;
+}
+.card-row {
+  width: 50%;
+}
+
+.input label {
+  font-size: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #78757c;
+}
+
+.input input {
+  /* width: 100%; */
+  padding: 5px 10px;
+  color: white;
+  letter-spacing: 0px;
+  font-size: 14px;
+  background: 0;
+  border: 0;
+}
+
+.input input:focus {
+  outline: 0;
+}
+
+.input-field {
+  border: 1px solid #78757c;
+  border-radius: 5px;
+  position: relative;
+}
+
+.input-field img {
+  width: 25px;
+  height: auto;
+  position: absolute;
+  right: 0;
+  top: 5px;
+  margin-right: 5px;
+}
+
+/* Removes form Controls  */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+input[type='month']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  display: none;
+}
+
+input[type='month']::-webkit-calendar-picker-indicator {
+  -webkit-appearance: none;
+  display: none;
+}
+
+.checkout-btn {
+  background: linear-gradient(0deg, #019875, #029875);
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+  border: 0;
+  border-radius: 5px;
+  width: 100%;
+  height: 40px;
+  margin-top: 50px;
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-shadow: 0px 2px rgba(0, 0, 0, 0.2);
+  letter-spacing: 1.5px;
+  cursor: pointer;
+}

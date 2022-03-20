@@ -23,7 +23,7 @@ const Navigation = (props) => {
     cookies.remove('id', { path: '/' })
     context.isLoggedIn = false
     context.user = {}
-    return navigate('/stores')
+    return navigate('/')
   }
 
   return (
