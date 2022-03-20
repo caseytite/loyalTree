@@ -4,16 +4,13 @@ import StoreListItem from "../components/StoreListItem"
 
 const Stores = (props) => {
   const [stores, setStores] = useState([])
+  const [amount,setAmount] = useState(0)
 
     useEffect(() => {
-
      axios.get('/stores')
       .then(res => {
         setStores(res.data.data)
-
       })
-
-
   },[])
 
 
@@ -26,6 +23,7 @@ const Stores = (props) => {
         photo={store.photo_url}
         description={store.description}
         category={store.category}
+        setAmount={setAmount}
       />
     )
   })

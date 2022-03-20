@@ -2,14 +2,23 @@
 // -----------USERS--------------------
 const USERS = 'SELECT * FROM users'
 
-const ADD_USER = (params) => { 
+const USER = (params) => {
+  console.log( 'params',params);
+  return[`SELECT * FROM users
+  WHERE email LIKE $1
+  AND password LIKE $2;`,[`${params.email}%`,`${params.password}%`]]
+}
+
+
+
+const ADD_USER = (params) => {
   return [`INSERT INTO users (first_name,last_name,password,email,isStoreOwner,city)
   VALUES ($1,$2,$3,$4,$5,$6) RETURNING *;`,[params.first_name,params.last_name,params.password,params.email,params.isStoreOwner,params.city]]
 }
 
 // -----------------LOYALTY CARDS----------------------
 const USERS_LOYALTY_CARDS = (params) => {
-  return [`SELECT * FROM loyalty_cards 
+  return [`SELECT * FROM loyalty_cards
   JOIN users ON user_id = users.id
   JOIN stores ON store_id = stores.id
   WHERE loyalty_cards.user_id = 3;
@@ -21,7 +30,7 @@ const STORES = 'SELECT * FROM stores'
 
 const STORE_TYPE = (params) => {
   // [`%${params.category.toLowerCase().slice(1)}%`]
-  return [`SELECT * FROM stores 
+  return [`SELECT * FROM stores
   WHERE category LIKE 'Restaurant'`, []]
 }
 
@@ -38,14 +47,14 @@ const GIFT_CARDS = `SELECT * FROM gift_cards;`
 
 const USERS_GIFT_CARDS = (params) => {
   // params.id
-  return [`SELECT * FROM gift_cards 
+  return [`SELECT * FROM gift_cards
   JOIN users ON user_id = users.id
   JOIN stores ON gift_cards.id = stores.id
   WHERE gift_cards.user_id = 1;`,[]]
 }
 
 const GIFT_CARDS_BY_STORE = (params) => {
-  return [`SELECT * FROM gift_cards 
+  return [`SELECT * FROM gift_cards
   JOIN stores ON gift_cards.store_id = stores.id
  WHERE stores.category LIKE 'Retail';`,[]]
 }
@@ -63,9 +72,10 @@ const STORE_TRANSACTIONS = (params) => {
 
 
 module.exports = {
-  USERS, 
+  USER,
+  USERS,
   ADD_USER,
-  USERS_STORES, 
+  USERS_STORES,
   USERS_GIFT_CARDS,
   STORES,
   STORE_TYPE,

@@ -1,29 +1,22 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
+
+import "./Navigation.css";
+
 import Logo from './Logo'
-import './Navigation.css'
-
-
 
 const Navigation = (props) => {
-
-  const handleLoginClick = (e) => {
-    console.log('login click');
-  }
-  const handleRegClick = (e) => {
-    console.log('reg click');
-  }
-
-
   return (
-    <nav className='nav'>
-      <Logo />
-      <h2 className='header-logo'>LoyalTree</h2>
-      <div className='header-logins'>
-        <a href='./signin'>Login</a>
-        <a href='./register'>Register</a>
+    <nav className="nav">
+        <Link to={{ pathname: "/" }}>
+          <Logo />
+        </Link>
+      <div className="header-logins">
+        <Link className="nav-text" to={{ pathname: "/signin" }}>Log in</Link>
+        <Link className="nav-text" to={{ pathname: "/register" }}>Register</Link>
       </div>
     </nav>
-  )
-}
+  );
+};
 
 export default Navigation;
