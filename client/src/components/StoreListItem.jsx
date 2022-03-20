@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Button from './Button'
 import axios from 'axios'
 import './StoreListItem.css'
 import CreditCard from './CreditCard'
 
 function StoreListItem(props) {
+  let navigate = useNavigate()
+
   const {
+    storeID,
     storeName,
     description,
     address,
@@ -41,7 +45,7 @@ function StoreListItem(props) {
     <>
       <article
         className="store-list-item"
-        onClick={(e) => getStoreDetails(storeName)}
+        onClick={() => navigate(`/stores/${storeID}`)}
       >
         <div className="store-list-top">
           <h1>{storeName}</h1>
@@ -59,14 +63,14 @@ function StoreListItem(props) {
               <h3>{description}</h3>
             </div>
           </div>
-        </div>
 
-        <div>
-          {detail && (
-            <Button onClick={() => setCard(!card)}>
-              Purchase
-            </Button>
-          )}
+          <div>
+            {detail && (
+              <Button onClick={() => setCard(!card)}>
+                Purchase
+              </Button>
+            )}
+          </div>
         </div>
       </article>
       {card && <CreditCard />}

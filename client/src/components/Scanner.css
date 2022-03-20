@@ -1,0 +1,16 @@
+.scanner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.scanner > * {
+  margin: 0;
+  padding: 0;
+}
+
+.scanner video {
+  width: 100%;
+}
+

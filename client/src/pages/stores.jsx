@@ -19,6 +19,7 @@ const Stores = (props) => {
       return (
         <StoreListItem
           key={store.id}
+          storeID={store.id}
           storeName={store.name}
           address={store.address}
           photo={store.photo_url}
@@ -36,6 +37,7 @@ const Stores = (props) => {
     return (
       <StoreListItem
         key={store.id}
+        storeID={store.id}
         storeName={store.name}
         address={store.address}
         photo={store.photo_url}
