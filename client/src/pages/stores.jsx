@@ -6,7 +6,6 @@ const Stores = (props) => {
   const [stores, setStores] = useState([])
   const [amount, setAmount] = useState(0)
   const [detail, showDetail] = useState('')
-  console.log(detail)
 
   useEffect(() => {
     axios.get('/stores').then((res) => {
