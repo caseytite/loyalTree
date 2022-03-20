@@ -32,25 +32,15 @@ CREATE TABLE gift_cards (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   balance INTEGER NOT NULL,
+  point_balance INTEGER DEFAULT 0,
+  redeem_at INTEGER DEFAULT 100,
   store_id INTEGER REFERENCES stores(id) ON DELETE CASCADE,
   created_at TIMESTAMP DEFAULT NOW(),
   edited_at TIMESTAMP DEFAULT NOW()
 );
 
 
-CREATE TABLE loyalty_cards (
-  id SERIAL PRIMARY KEY NOT NULL,
-  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  point_balance INTEGER DEFAULT 0,
-  redeem_at INTEGER DEFAULT 100,
-  description VARCHAR(255),
-  store_id INTEGER REFERENCES stores(id),
-  created_at TIMESTAMP DEFAULT NOW(),
-  edited_at TIMESTAMP DEFAULT NOW()
-);
-
-
-  CREATE TABLE transactions (
+   CREATE TABLE transactions (
   id SERIAL PRIMARY KEY NOT NULL,
   giftcard_id INTEGER REFERENCES gift_cards(id),
   store_id INTEGER REFERENCES stores(id),
