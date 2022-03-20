@@ -1,4 +1,5 @@
 import React from 'react'
+import Logo from './Logo'
 import './Navigation.css'
 
 
@@ -15,6 +16,7 @@ const Navigation = (props) => {
 
   return (
     <nav className='nav'>
+      <Logo />
       <h2 className='header-logo'>LoyalTree</h2>
       <div className='header-logins'>
         <a href='./signin'>Login</a>
