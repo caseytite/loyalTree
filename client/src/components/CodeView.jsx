@@ -4,7 +4,7 @@ import QRCode from 'qrcode'
 import './CodeView.css'
 
 const CodeView = props => {
-  const codeEl = useRef()
+  const codeEl = useRef(null)
 
   useEffect(() => {
     QRCode.toCanvas(codeEl.current, props.cardID, { width: 400 })
