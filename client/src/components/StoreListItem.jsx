@@ -1,10 +1,14 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import Button from './Button'
 import axios from 'axios'
 import './StoreListItem.css'
 
 function StoreListItem(props) {
+  let navigate = useNavigate()
+
   const {
+    storeID,
     storeName,
     description,
     address,
@@ -14,6 +18,7 @@ function StoreListItem(props) {
     showDetail,
     detail,
   } = props
+
   const onAdd = (e) => {
     const amount = e.target.innerHTML
     setAmount(amount)
@@ -37,7 +42,7 @@ function StoreListItem(props) {
   return (
     <article
       className="store-list-item"
-      onClick={(e) => getStoreDetails(storeName)}
+      onClick={() => navigate(`/stores/${storeID}`)}
     >
       <div className="store-list-top">
         <h1>{storeName}</h1>

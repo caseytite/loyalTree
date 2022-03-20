@@ -10,6 +10,7 @@ import {
   Route,
 } from 'react-router-dom'
 import Stores from './pages/stores'
+import StoreDetails from './pages/storeDetails'
 import Transactions from './pages/transactions'
 import Scan from './pages/scan'
 import Signin from './pages/signin'
@@ -21,6 +22,7 @@ render(
     <Routes>
       <Route path="/" element={<App />}>
         <Route path="stores" element={<Stores />} />
+        <Route path='stores/:id' element={<StoreDetails />} />
         <Route
           path="transactions"
           element={<Transactions />}
