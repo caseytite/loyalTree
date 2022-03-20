@@ -21,7 +21,7 @@ const router = express.Router()
 app.use(morgan('dev'))
 app.use(cors())
 app.use(express.urlencoded({ extended: true }))
-// app.use(express.json({ extended: true }));
+app.use(express.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(
   cookieSession({
@@ -42,7 +42,6 @@ const {
   USERS_GIFT_CARDS,
   STORE_TRANSACTIONS,
   GIFT_CARDS_BY_STORE,
-  USERS_LOYALTY_CARDS,
 } = require('./querys')
 const { query } = require('express')
 
@@ -74,38 +73,33 @@ app.post('/users', (req, res) => {
     .catch((err) => console.log('error', err.message))
 })
 
-//----------------------LOYALTY CARDS
-app.get('/loyaltycardsloyaltycards', (req, res) => {
-  const [query, params] = USERS_LOYALTY_CARDS()
-  db.query(query)
-    .then((data) => res.json({ data: data.rows }))
-    .catch((err) => res.json({ error: err.message }))
+/////logout Get///
+app.get('/', (req, res) => {
+
+
 })
 
 // ------------------------STORES
+
 app.get('/stores', (req, res) => {
   db.query(STORES)
     .then((data) => res.json({ data: data.rows }))
     .catch((err) => res.json({ error: err.message }))
 })
 
-app.get('/stores/type', (req, res) => {
-  const [query, params] = STORE_TYPE()
-  db.query(query)
+app.get('/stores/:id', (req, res) => {
+  db.query(`SELECT * FROM stores
+  JOIN users ON owner_id = users.id
+   WHERE stores.owner_id = $1;`, [req.params.id])
+
     .then((data) => res.json({ data: data.rows }))
     .catch((err) => res.json({ error: err.message }))
 })
 
-app.get('/user/stores', (req, res) => {
-  const [query, params] = USERS_STORES()
-  db.query(query)
-    .then((data) => res.json({ data: data.rows }))
-    .catch((err) => res.json({ error: err.message }))
-})
 
-//--------------------GIFT CARDS-----------------
+//--------------------CARDS-----------------
 
-app.get('/giftcards', (req, res) => {
+app.get('/cards', (req, res) => {
   db.query(GIFT_CARDS)
     .then((data) => res.json({ data: data.rows }))
     .catch((err) => res.json({ error: err.message }))

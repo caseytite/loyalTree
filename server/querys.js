@@ -25,17 +25,7 @@ const ADD_USER = (params) => {
   ]
 }
 
-// -----------------LOYALTY CARDS----------------------
-const USERS_LOYALTY_CARDS = (params) => {
-  return [
-    `SELECT * FROM loyalty_cards
-  JOIN users ON user_id = users.id
-  JOIN stores ON store_id = stores.id
-  WHERE loyalty_cards.user_id = 3;
-  `,
-    [],
-  ]
-}
+
 
 //----------SEARCH BY STORES-----------------------
 const STORES = 'SELECT * FROM stores'
@@ -106,7 +96,6 @@ module.exports = {
   STORES,
   STORE_TYPE,
   GIFT_CARDS,
-  USERS_LOYALTY_CARDS,
   GIFT_CARDS_BY_STORE,
   TRANSACTIONS,
   STORE_TRANSACTIONS,
