@@ -30,14 +30,6 @@ const ADD_USER = (params) => {
 //----------SEARCH BY STORES-----------------------
 const STORES = 'SELECT * FROM stores'
 
-const STORE_TYPE = (params) => {
-  // [`%${params.category.toLowerCase().slice(1)}%`]
-  return [
-    `SELECT * FROM stores
-  WHERE category LIKE 'Restaurant'`,
-    [],
-  ]
-}
 
 
 const STORE_DETAIL = (params) => {
@@ -105,7 +97,7 @@ module.exports = {
   USERS_STORES,
   USERS_GIFT_CARDS,
   STORES,
-  STORE_TYPE,
+  STORE_DETAIL,
   GIFT_CARDS,
   GIFT_CARDS_BY_STORE,
   TRANSACTIONS,

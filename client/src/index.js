@@ -9,11 +9,12 @@ import {
   Routes,
   Route,
 } from 'react-router-dom'
-import Stores from './routes/stores'
-import Transactions from './routes/transactions'
-import Scan from './routes/scan'
-import Signin from './routes/signin'
-import Register from './routes/register'
+import Stores from './pages/stores'
+import StoreDetails from './pages/storeDetails'
+import Transactions from './pages/transactions'
+import Scan from './pages/scan'
+import Signin from './pages/signin'
+import Register from './pages/register'
 
 const rootElement = document.getElementById('root')
 render(
@@ -21,7 +22,11 @@ render(
     <Routes>
       <Route path="/" element={<App />}>
         <Route path="stores" element={<Stores />} />
-        <Route path="transactions"element={<Transactions />}/>
+        <Route path='stores/:id' element={<StoreDetails />} />
+        <Route
+          path="transactions"
+          element={<Transactions />}
+        />
         <Route path="scan" element={<Scan />} />
         <Route path="signin" element={<Signin />} />
         <Route path="register" element={<Register />} />

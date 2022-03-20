@@ -16,19 +16,19 @@ const db = new Pool(dbParams)
 db.connect()
 
 const app = express()
-const router = express.Router()
+// const router = express.Router()
 
 app.use(morgan('dev'))
 app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(
-  cookieSession({
-    name: 'session',
-    keys: ['id'],
-  })
-)
+// app.use(
+//   cookieSession({
+//     name: 'session',
+//     keys: ['id'],
+//   })
+// )
 
 const {
   USER,
@@ -36,14 +36,14 @@ const {
   STORES,
   ADD_USER,
   GIFT_CARDS,
-  STORE_TYPE,
+  STORE_DETAIL,
   TRANSACTIONS,
-  USERS_STORES,
+  USERS_STORES, // most likely not needed
   USERS_GIFT_CARDS,
   STORE_TRANSACTIONS,
   GIFT_CARDS_BY_STORE,
 } = require('./querys')
-const { query } = require('express')
+// const { query } = require('express')
 
 // ---------------------USERS ----------------------
 app.get('/users', (req, res) => {
@@ -57,10 +57,12 @@ app.get('/login', (req, res) => {
   db.query(query, params)
     .then((data) => {
       const user = data.rows
-      req.session.id = user[0].id
+      // if we want session cookies uncomment below lines
+      // req.session.id = user[0].id
+      // sessionId: req.session.id,
       res.json({
         data: data.rows,
-        sessionId: req.session.id,
+        user: user[0],
       })
     })
     .catch((err) => res.json({ error: err.message }))

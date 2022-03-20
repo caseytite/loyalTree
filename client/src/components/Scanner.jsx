@@ -1,31 +1,41 @@
-import React from "react";
+import React, { useRef } from 'react'
 
-import QrScanner from "qr-scanner";
+import QrScanner from 'qr-scanner'
+import Button from './Button'
+import './Scanner.css'
 
-const Scanner = (props) => {
+const Scanner = props => {
+  const previewEl = useRef(null)
 
-  function scanCode(e) {
-    e.preventDefault();
-    const scanPreviewElement = document.querySelector("#qr-preview");
-    const qrScanner = new QrScanner(scanPreviewElement, (result) => {
-      if (result) {
-        console.log("decoded qr code:", result)
-        // qrScanner.stop()
-        qrScanner.destroy()
-        // make select query
+  let qrScanner = null;
+
+  function scanCode(e) { //event listener function
+    e.preventDefault()
+    qrScanner = new QrScanner(
+      previewEl.current,
+      result => {
+        if (result) {
+          console.log('decoded qr code:', result)
+          // qrScanner.stop()
+          qrScanner.destroy()
+          // make select query
+        }
       }
-    }
-    );
-    qrScanner.start();
+    )
+    qrScanner.start()
   }
+  
 
   return (
-    <div id="qr-test">
+    <div className="scanner">
       <h2>Scan QR Code Below</h2>
-      <button onClick={scanCode}>Click to scan</button>
-      <video id="qr-preview"></video>
+      <Button
+        onClick={e => scanCode(e)}
+        children={'Click to scan'}
+      />
+      <video ref={previewEl}></video>
     </div>
-  );
-};
+  )
+}
 
-export default Scanner;
+export default Scanner
