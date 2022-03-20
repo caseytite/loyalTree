@@ -8,7 +8,6 @@ display: flex;
 flex-direction: row;
 justify-content: space-between;
 align-items: center;
-color: whitesmoke;
 }
 
 .header-logo{
@@ -17,4 +16,8 @@ color: whitesmoke;
 
 .header-logins{
   padding-right: 1em;
+}
+
+.nav-text{
+  color: whitesmoke;
 }

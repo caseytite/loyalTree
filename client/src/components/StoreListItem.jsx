@@ -9,9 +9,14 @@ function StoreListItem(props) {
     address,
     category,
     photo,
+    setAmount
   } = props
 
-  const onAdd = (e) => {}
+  const onAdd = (e) => {
+
+    const amount = e.target.innerHTML
+    setAmount(amount)
+  }
 
   return (
     <article className="store-list-item">
