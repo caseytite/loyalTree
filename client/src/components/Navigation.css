@@ -1,13 +1,18 @@
+
+
 .nav{
-background-color: blue;
-height: 3em;
-width: 100vw;
-position: sticky;
-right: 0;top:0;left:0;
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-align-items: center;
+  background-color: darkslategray;
+  /* height: 3em; */
+  width: 100vw;
+  position: sticky;
+  right: 0;top:0;left:0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+nav * {
+  text-decoration: none;
 }
 
 .header-logo{
