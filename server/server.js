@@ -153,6 +153,8 @@ app.get('/checkout', (req, res) => {
 ////////////////
 // Dashboard //
 ///////////////
+////add return store_id
+// ---transactions specific to a store
 app.get('/transactions/:store/:user', (req, res) => {
   // console.log(req)
   console.log(req.params)

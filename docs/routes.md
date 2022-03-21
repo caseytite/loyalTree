@@ -10,7 +10,7 @@
  - [ ]/card/:id/ PUT
 <!-- /cart GET -->
  /checkout GET?
-
+<!-- transactions -->
  - [ ]/dashboard/:id (store owner landing page when logged in) GET
 display logo, 
 	short list of transactions

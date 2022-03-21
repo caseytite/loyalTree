@@ -4,6 +4,7 @@ const USERS = 'SELECT * FROM users'
 const USER = (params) => {
   return [
     `SELECT * FROM users
+    
   WHERE email LIKE $1
   AND password LIKE $2;`,
     [`${params.email}%`, `${params.password}%`],
