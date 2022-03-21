@@ -100,7 +100,8 @@ app.get('/stores/:id', (req, res) => {
 //////////////
 // -----all cards
 app.get('/cards', (req, res) => {
-  db.query(GIFT_CARDS)
+  const [query, params] = USERS_GIFT_CARDS(req.session.id)
+  db.query(query, params)
     .then(data => res.json({ data: data.rows }))
     .catch(err => res.json({ error: err.message }));
 });
