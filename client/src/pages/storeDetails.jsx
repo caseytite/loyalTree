@@ -4,15 +4,15 @@ import axios from "axios";
 import StoreListItem from "../components/StoreListItem";
 
 const StoreDetails = (props) => {
-  const [store, setStore] = useState({})
-  const params = useParams()
+  const [store, setStore] = useState({});
+  const params = useParams();
 
   // not working, backend not ready
   useEffect(() => {
     axios.get(`/stores/${params.id}`).then((res) => {
-      setStore(res.data.data[0])
-    })
-  }, [params.id])
+      setStore(res.data.data[0]);
+    });
+  }, [params.id]);
 
   return (
     <StoreListItem

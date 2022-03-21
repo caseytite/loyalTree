@@ -1,16 +1,16 @@
-import React, { useState, useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
-import Button from './Button'
-import axios from 'axios'
-import './StoreListItem.css'
-import CreditCard from './CreditCard'
-import LoggedInUser from '../context/AuthContext'
-import { useParams } from 'react-router-dom'
+import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import Button from "./Button";
+import axios from "axios";
+import "./StoreListItem.css";
+import CreditCard from "./CreditCard";
+import LoggedInUser from "../context/AuthContext";
+import { useParams } from "react-router-dom";
 
 function StoreListItem(props) {
-  let navigate = useNavigate()
-  const context = useContext(LoggedInUser)
-  const params = useParams()
+  let navigate = useNavigate();
+  const context = useContext(LoggedInUser);
+  const params = useParams();
 
   const {
     storeID,
@@ -27,14 +27,10 @@ function StoreListItem(props) {
   const [card, setCard] = useState(false);
 
   const handletrans = () => {
-    axios
-      .get(`/transactions/${params.id}/${context.user.id}`)
-      .then((res) => {
-        navigate(
-          `/transactions/${params.id}/${context.user.id}`
-        )
-      })
-  }
+    axios.get(`/transactions/${params.id}/${context.user.id}`).then((res) => {
+      navigate(`/transactions/${params.id}/${context.user.id}`);
+    });
+  };
 
   return (
     <>
@@ -60,9 +56,7 @@ function StoreListItem(props) {
           </div>
         </div>
         {context.user.store_id === storeID && detail && (
-          <Button onClick={() => handletrans()}>
-            check transactions
-          </Button>
+          <Button onClick={() => handletrans()}>check transactions</Button>
         )}
       </article>
       {card && <CreditCard />}
