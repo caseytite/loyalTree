@@ -3,13 +3,13 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import StoreListItem from '../components/StoreListItem'
 
-const StoreDetails = props => {
+const StoreDetails = (props) => {
   const [store, setStore] = useState({})
   const params = useParams()
 
   // not working, backend not ready
   useEffect(() => {
-    axios.get(`/stores/${params.id}`).then(res => {
+    axios.get(`/stores/${params.id}`).then((res) => {
       setStore(res.data.data[0])
     })
   }, [params.id])
@@ -25,7 +25,7 @@ const StoreDetails = props => {
       category={store.category}
       // setAmount={setAmount}
       // showDetail={showDetail}
-      // detail={detail}
+      detail={true}
     />
   )
 }
