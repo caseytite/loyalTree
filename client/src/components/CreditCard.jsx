@@ -17,11 +17,11 @@ const Checkout = (props) => {
   const [amount, setAmount] = useState('100');
   const [exp, setExp] = useState('');
   const [cvv, setCvv] = useState('123');
+  const [text, setText] = useState('Place Order');
   const params = useParams();
 
   const handlePayment = () => {
     const id = context.user.id;
-
     axios
       .post(`/cards/${id}`, {
         email,
@@ -30,19 +30,21 @@ const Checkout = (props) => {
         store_id: params.id,
       })
       .then((res) => {
-        console.log(res.data);
-        setAmount('');
-        setName('');
-        setCard('');
-        setEmail('');
-        setCvv('');
-        setExp('');
-      })
-      .then(() => {
+        setText('Processing');
         setTimeout(() => {
-          navigate('/stores');
+          setAmount('');
+          setName('');
+          setCard('');
+          setEmail('');
+          setCvv('');
+          setExp('');
+          setText('Thank you for your purchase!');
+          setTimeout(() => {
+            navigate('/stores');
+          }, 1000);
         }, 1000);
       })
+
       .catch((err) => console.log(err.message));
   };
 
@@ -101,7 +103,7 @@ const Checkout = (props) => {
             name="cvv"
           />
         </div>
-        <Button onClick={handlePayment} text="Place order" />
+        <Button className="checkout-btn" onClick={handlePayment} text={text} />
       </div>
     </div>
   );
