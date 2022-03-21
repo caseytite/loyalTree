@@ -17,6 +17,7 @@ function App() {
         <Navigation />
         <div>
           <Link to="/stores">All Stores</Link> |{" "}
+          <Link to="/cards">My Cards</Link> |{" "}
           <Link to="/transactions">All Transactions</Link> |{" "}
           <Link to="/scan">Scanner</Link>
           <Outlet />

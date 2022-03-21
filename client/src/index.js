@@ -7,6 +7,7 @@ import { render } from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Stores from "./pages/stores";
 import StoreDetails from "./pages/storeDetails";
+import Cards from "./pages/cards";
 import Transactions from "./pages/transactions";
 import Scan from "./pages/scan";
 import Signin from "./pages/signin";
@@ -19,6 +20,8 @@ render(
       <Route path="/" element={<App />}>
         <Route path="stores" element={<Stores />} />
         <Route path="stores/:id" element={<StoreDetails />} />
+        <Route path="cards" element={<Cards />} />
+        {/* <Route path="cards/:id" element={<CardDetails />} /> */}
         <Route path="transactions" element={<Transactions />} />
         <Route path="scan" element={<Scan />} />
         <Route path="signin" element={<Signin />} />
