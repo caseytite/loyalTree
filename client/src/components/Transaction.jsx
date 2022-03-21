@@ -1,14 +1,13 @@
-import React from 'react'
-import Button from './Button'
+import React from "react";
+import Button from "./Button";
 
 function Transaction(props) {
   return (
     <div>
       {/* <QRScanner placeholder */}
-      <Button /> 
-
+      <Button />
     </div>
-  )
+  );
 }
 
-export default Transaction
+export default Transaction;

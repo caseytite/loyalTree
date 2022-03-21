@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
 
 const LoggedInUser = React.createContext({
   user: {},
   isLoggedIn: false,
-})
+});
 
-export default LoggedInUser
+export default LoggedInUser;

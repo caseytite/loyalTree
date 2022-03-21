@@ -1,7 +1,7 @@
-import SignInForm from '../components/SignInForm'
+import SignInForm from "../components/SignInForm";
 
 const Signin = () => {
-  const user = document.cookie
+  const user = document.cookie;
 
   return (
     <>
@@ -13,7 +13,7 @@ const Signin = () => {
       )}
       {user && <h1>logged out!</h1>}
     </>
-  )
-}
+  );
+};
 
-export default Signin
+export default Signin;

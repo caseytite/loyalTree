@@ -1,13 +1,10 @@
 import GiftCardList from "../components/GiftCardListItem";
 
 export default {
-  title: 'Loyaltree/GiftCardListItem',
+  title: "Loyaltree/GiftCardListItem",
   component: GiftCardList,
 };
 
 export const primary = (props) => {
-  return(
-    <GiftCardList/>
-  )
-}
-
+  return <GiftCardList />;
+};

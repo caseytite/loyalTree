@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import StoreListItem from '../components/StoreListItem'
+import { useEffect, useState } from "react";
+import axios from "axios";
+import StoreListItem from "../components/StoreListItem";
 
 const Stores = (props) => {
-  const [stores, setStores] = useState([])
-  const [amount, setAmount] = useState(0)
-  const [detail, showDetail] = useState('')
+  const [stores, setStores] = useState([]);
+  const [amount, setAmount] = useState(0);
+  const [detail, showDetail] = useState("");
 
   useEffect(() => {
-    axios.get('/stores').then((res) => {
-      setStores(res.data.data)
-    })
-  }, [])
+    axios.get("/stores").then((res) => {
+      setStores(res.data.data);
+    });
+  }, []);
 
   // shows a single store if showDetail truthy
   const storeDetails = stores.map((store) => {
@@ -29,9 +29,9 @@ const Stores = (props) => {
           showDetail={showDetail}
           detail={detail}
         />
-      )
+      );
     }
-  })
+  });
   // shows all the stores if showDetail is falsey
   const storesArr = stores.map((store) => {
     return (
@@ -47,10 +47,10 @@ const Stores = (props) => {
         showDetail={showDetail}
         detail={detail}
       />
-    )
-  })
+    );
+  });
 
-  return <>{!detail ? storesArr : storeDetails}</>
-}
+  return <>{!detail ? storesArr : storeDetails}</>;
+};
 
-export default Stores
+export default Stores;

@@ -1,10 +1,10 @@
-import { useState } from 'react'
-import RegistrationForm from '../components/RegistrationForm'
+import { useState } from "react";
+import RegistrationForm from "../components/RegistrationForm";
 
 const Register = () => {
-  const [register, setRegister] = useState({})
+  const [register, setRegister] = useState({});
 
-  return <RegistrationForm setRegister={setRegister} />
-}
+  return <RegistrationForm setRegister={setRegister} />;
+};
 
-export default Register
+export default Register;

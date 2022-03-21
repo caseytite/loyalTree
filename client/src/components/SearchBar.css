@@ -1,6 +1,4 @@
-
-
-.search{
+.search {
   border-radius: 3px;
   margin-right: 0.5em;
   width: 20%;
@@ -8,15 +6,15 @@
   border: 1px;
 }
 
-.search:focus{
+.search:focus {
   outline: none;
 }
 
-.submit-search{
+.submit-search {
   border-radius: 3px;
   margin-right: 0.5em;
   width: 20%;
   padding: 1%;
   border: 1px;
- color: greenyellow;
+  color: greenyellow;
 }

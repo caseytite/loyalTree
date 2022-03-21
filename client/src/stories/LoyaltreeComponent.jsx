@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const LoyaltreeComponent = (props) => {
   return (
@@ -7,7 +7,7 @@ const LoyaltreeComponent = (props) => {
       <p>{props.text}</p>
       <button>Click here or else!</button>
     </div>
-  )
-}
+  );
+};
 
-export default LoyaltreeComponent
+export default LoyaltreeComponent;

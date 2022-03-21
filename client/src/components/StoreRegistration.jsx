@@ -1,11 +1,11 @@
-import React from 'react'
-import Button from './Button'
-import './StoreRegistration.css'
+import React from "react";
+import Button from "./Button";
+import "./StoreRegistration.css";
 
 function StoreRegistration(props) {
   const onFormSubmission = (e) => {
-    console.log(e.target.value)
-  }
+    console.log(e.target.value);
+  };
 
   return (
     <div className="reg-container">
@@ -19,11 +19,11 @@ function StoreRegistration(props) {
         <label>Address</label>
         <input type="text" />
         <label>Description</label>
-        <textarea className='reg-text-area' type="text" />
+        <textarea className="reg-text-area" type="text" />
         <Button type="submit">Register</Button>
       </form>
     </div>
-  )
+  );
 }
 
-export default StoreRegistration
+export default StoreRegistration;

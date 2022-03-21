@@ -1,14 +1,6 @@
 // -----------USERS--------------------
-const USERS = 'SELECT * FROM users'
+const USERS = 'SELECT * FROM users';
 
-// const USER = (params) => {
-//   return [
-//     `SELECT * FROM users
-//   WHERE email LIKE $1
-//   AND password LIKE $2;`,
-//     [`${params.email}%`, `${params.password}%`],
-//   ]
-// }
 const USER = (params) => {
   return [
     `SELECT users.email, users.id, stores.id as store_id  FROM users                                       
@@ -16,10 +8,10 @@ const USER = (params) => {
     WHERE email LIKE $1
    AND password LIKE $2;`,
     [`${params.email}%`, `${params.password}%`],
-  ]
-}
+  ];
+};
 
-const ADD_USER = (params) => {
+const ADD_USER = params => {
   return [
     `INSERT INTO users (first_name,last_name,password,email,isStoreOwner,city)
   VALUES ($1,$2,$3,$4,$5,$6) RETURNING *;`,
@@ -39,15 +31,15 @@ const STORES = 'SELECT * FROM stores'
 
 const STORE_DETAIL = (params) => {
   // [`%${params.category.toLowerCase().slice(1)}%`]
-  console.log('params in query', params)
+  console.log('params in query', params);
   return [
     `SELECT * FROM stores
   WHERE name LIKE $1`,
     [`${params.name}%`],
-  ]
-}
+  ];
+};
 
-const USERS_STORES = (params) => {
+const USERS_STORES = params => {
   // users stores is gonna have to be req.sessions.users.id
   // params.owner_id
   return [
@@ -55,13 +47,13 @@ const USERS_STORES = (params) => {
   JOIN users ON owner_id = users.id
    WHERE stores.owner_id = 1;`,
     [],
-  ]
-}
+  ];
+};
 
 //---------------GIFT CARDS --------------------------
-const GIFT_CARDS = `SELECT * FROM gift_cards;`
+const GIFT_CARDS = `SELECT * FROM gift_cards;`;
 
-const USERS_GIFT_CARDS = (params) => {
+const USERS_GIFT_CARDS = params => {
   // params.id
   return [
     `SELECT * FROM gift_cards
@@ -69,31 +61,31 @@ const USERS_GIFT_CARDS = (params) => {
   JOIN stores ON gift_cards.id = stores.id
   WHERE gift_cards.user_id = 1;`,
     [],
-  ]
-}
+  ];
+};
 
-const GIFT_CARDS_BY_STORE = (params) => {
+const GIFT_CARDS_BY_STORE = params => {
   return [
     `SELECT * FROM gift_cards
   JOIN stores ON gift_cards.store_id = stores.id
  WHERE stores.category LIKE 'Retail';`,
     [],
-  ]
-}
+  ];
+};
 
 //---------TRANSACTIONS---------------------------------
 
-const TRANSACTIONS = `SELECT * FROM transactions;`
+const TRANSACTIONS = `SELECT * FROM transactions;`;
 
-const STORE_TRANSACTIONS = (params) => {
+const STORE_TRANSACTIONS = params => {
   return [
     `SELECT * FROM transactions
   JOIN stores ON transactions.store_id = stores.id
   WHERE stores.id = 1;
   `,
     [],
-  ]
-}
+  ];
+};
 
 module.exports = {
   USER,
@@ -107,4 +99,4 @@ module.exports = {
   GIFT_CARDS_BY_STORE,
   TRANSACTIONS,
   STORE_TRANSACTIONS,
-}
+};
