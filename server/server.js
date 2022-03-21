@@ -21,7 +21,7 @@ const app = express()
 app.use(morgan('dev'))
 app.use(cors())
 app.use(express.urlencoded({ extended: true }))
-app.use(express.json({ extended: true }));
+app.use(express.json({ extended: true }))
 app.use(bodyParser.urlencoded({ extended: true }))
 // app.use(
 //   cookieSession({
@@ -107,9 +107,12 @@ app.get('/cards', (req, res) => {
 //------cards by user id
 app.get('/cards/:id', (req, res) => {
   console.log(req.params)
-  db.query(`SELECT * FROM users
+  db.query(
+    `SELECT * FROM users
 JOIN gift_cards ON user_id = users.id
-WHERE gift_cards.user_id = $1`, [req.params.id])
+WHERE gift_cards.user_id = $1`,
+    [req.params.id]
+  )
     .then((data) => res.json({ data: data.rows }))
     .catch((err) => res.json({ error: err.message }))
 })
@@ -119,25 +122,36 @@ app.post('/cards/:id', (req, res) => {
   // if buying for self
   let user = req.body
   console.log(user)
-  if (user.email === "undefined") {
-    console.log("here");
-    db.query(`INSERT INTO gift_cards(user_id, balance, store_id) 
+  if (user.email === 'undefined') {
+    console.log('here')
+    db.query(
+      `INSERT INTO gift_cards(user_id, balance, store_id) 
     VALUES($1, $2, $3 ) RETURNING *;`,
-      [req.body.user_id, req.body.balance, req.body.store_id])
+      [
+        req.body.user_id,
+        req.body.balance,
+        req.body.store_id,
+      ]
+    )
       .then((data) => res.json({ data: data.rows }))
       .catch((err) => console.log('error', err.message))
   } else if (user.email) {
     // console.log(user.email);
-    db.query(`SELECT id FROM users
-  WHERE email LIKE $1`, [`${user.email}%`])
+    db.query(
+      `SELECT id FROM users
+  WHERE email LIKE $1`,
+      [`${user.email}%`]
+    )
       .then((data) => {
         // console.log(data.rows)
         return data.rows[0]
       })
       .then((data) => {
-        db.query(`INSERT INTO gift_cards(user_id, balance, store_id) 
+        db.query(
+          `INSERT INTO gift_cards(user_id, balance, store_id) 
         VALUES($1, $2, $3 ) RETURNING *;`,
-          [data.id, req.body.balance, req.body.store_id])
+          [data.id, req.body.balance, req.body.store_id]
+        )
           .then((data) => res.json({ data: data.rows }))
           .catch((err) => console.log('error', err.message))
       })
@@ -145,9 +159,7 @@ app.post('/cards/:id', (req, res) => {
 })
 
 app.get('/checkout', (req, res) => {
-  db.query(`SELECT * FROM transactions
-  WHERE `)
-
+  db.query(``)
 })
 
 ////////////////
