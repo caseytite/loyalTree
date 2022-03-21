@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway:400,500,700");
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,500,700');
 
 .card-row {
   display: flex;
@@ -119,20 +119,20 @@
 }
 
 /* Removes form Controls  */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   margin: 0;
 }
 
-input[type="month"]::-webkit-inner-spin-button {
+input[type='month']::-webkit-inner-spin-button {
   -webkit-appearance: none;
   display: none;
 }
 
-input[type="month"]::-webkit-calendar-picker-indicator {
+input[type='month']::-webkit-calendar-picker-indicator {
   -webkit-appearance: none;
   display: none;
 }

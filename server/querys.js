@@ -3,7 +3,7 @@ const USERS = 'SELECT * FROM users';
 
 const USER = (params) => {
   return [
-    `SELECT users.email, users.id, stores.id as store_id  FROM users                                       
+    `SELECT users.email, users.id, users.first_name, stores.id as store_id  FROM users                                       
     JOIN stores ON users.id = stores.owner_id
     WHERE email LIKE $1
    AND password LIKE $2;`,
@@ -11,7 +11,7 @@ const USER = (params) => {
   ];
 };
 
-const ADD_USER = params => {
+const ADD_USER = (params) => {
   return [
     `INSERT INTO users (first_name,last_name,password,email,isStoreOwner,city)
   VALUES ($1,$2,$3,$4,$5,$6) RETURNING *;`,
@@ -23,11 +23,11 @@ const ADD_USER = params => {
       params.isStoreOwner,
       params.city,
     ],
-  ]
-}
+  ];
+};
 
 //----------SEARCH BY STORES-----------------------
-const STORES = 'SELECT * FROM stores'
+const STORES = 'SELECT * FROM stores';
 
 const STORE_DETAIL = (params) => {
   // [`%${params.category.toLowerCase().slice(1)}%`]
@@ -39,7 +39,7 @@ const STORE_DETAIL = (params) => {
   ];
 };
 
-const USERS_STORES = params => {
+const USERS_STORES = (params) => {
   // users stores is gonna have to be req.sessions.users.id
   // params.owner_id
   return [
@@ -53,7 +53,7 @@ const USERS_STORES = params => {
 //---------------GIFT CARDS --------------------------
 const GIFT_CARDS = `SELECT * FROM gift_cards;`;
 
-const USERS_GIFT_CARDS = params => {
+const USERS_GIFT_CARDS = (params) => {
   // params.id
   return [
     `SELECT * FROM gift_cards
@@ -64,7 +64,7 @@ const USERS_GIFT_CARDS = params => {
   ];
 };
 
-const GIFT_CARDS_BY_STORE = params => {
+const GIFT_CARDS_BY_STORE = (params) => {
   return [
     `SELECT * FROM gift_cards
   JOIN stores ON gift_cards.store_id = stores.id
@@ -77,7 +77,7 @@ const GIFT_CARDS_BY_STORE = params => {
 
 const TRANSACTIONS = `SELECT * FROM transactions;`;
 
-const STORE_TRANSACTIONS = params => {
+const STORE_TRANSACTIONS = (params) => {
   return [
     `SELECT * FROM transactions
   JOIN stores ON transactions.store_id = stores.id
