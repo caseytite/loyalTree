@@ -3,15 +3,15 @@
  - [ ] /logout -get 
 
  - [ ] /stores -GET (reg user landing page when logged in)
- - [ ]/stores/:id———
- - [ ]/cards get ———
- - [ ]/cards/:id GET ———
- - [ ]/cards/:id/ -POST (include receiving user and amount) ——
+ - [x]/stores/:id———
+ - [x]/cards get ———
+ - [x]/cards/:id GET ———
+ - [x]/cards/:id/ -POST (include receiving user and amount) ——
  - [ ]/card/:id/ PUT
 <!-- /cart GET -->
  /checkout GET?
-
- - [ ]/dashboard (store owner landing page when logged in) GET
+<!-- transactions -->
+ - [ ]/dashboard/:id (store owner landing page when logged in) GET
 display logo, 
 	short list of transactions
 	scanner
