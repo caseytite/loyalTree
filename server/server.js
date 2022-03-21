@@ -169,23 +169,38 @@ app.get('/checkout', (req, res) => {
 // Dashboard //
 ///////////////
 ////add return store_id
-// ---transactions specific to a store
+//------------TRANSACTIONS
+// ---transactions specific to a store and user
 app.get('/transactions/:store/:user', (req, res) => {
-  // console.log(req)
-  console.log(req.params)
-  console.log(req.query)
   db.query(`SELECT * FROM transactions
 JOIN stores ON store_id = stores.id
 JOIN users ON owner_id = users.id
-where users.id = $2 AND store_id = $1`, [req.params.store, req.params.user])
+where users.id = $2 AND store_id = $1
+ORDER BY transactions.created_at ASC
+`, [req.params.store, req.params.user])
     .then((data) => res.json({ data: data.rows }))
     .catch((err) => res.json({ error: err.message }))
 })
 
 
-//------------TRANSACTIONS
+
+// app.get('/transactions/:store/:user', (req, res) => {
+
+//   // console.log(req)
+//   console.log(req.params)
+//   console.log(req.query)
+//   db.query(
+//     `SELECT transactions.created_at FROM transactions
+
+// `,
+//     [req.params.store, req.params.user]
+//   )
+//     .then((data) => res.json({ data: data.rows }))
+//     .catch((err) => res.json({ error: err.message }))
+// })
 
 app.get('/transactions', (req, res) => {
+  console.log("poopy pants");
   db.query(TRANSACTIONS)
     .then(data => res.json({ data: data.rows }))
     .catch(err => res.json({ error: err.message }));
@@ -203,17 +218,4 @@ app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}!`)
 })
 
-app.get('/transactions/:store/:user', (req, res) => {
-  // console.log(req)
-  console.log(req.params)
-  console.log(req.query)
-  db.query(
-    `SELECT * FROM transactions
-JOIN stores ON store_id = stores.id
-JOIN users ON owner_id = users.id
-where users.id = $2 AND store_id = $1`,
-    [req.params.store, req.params.user]
-  )
-    .then((data) => res.json({ data: data.rows }))
-    .catch((err) => res.json({ error: err.message }))
-})
+

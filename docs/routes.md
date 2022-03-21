@@ -11,7 +11,7 @@
 <!-- /cart GET -->
  /checkout GET?
 <!-- transactions -->
- - [ ]/dashboard/:id (store owner landing page when logged in) GET
+ - [ ]/transactions/:store/:id (store owner landing page when logged in) GET
 display logo, 
 	short list of transactions
 	scanner
