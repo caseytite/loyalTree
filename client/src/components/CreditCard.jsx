@@ -3,10 +3,12 @@ import { useState, useContext } from 'react';
 import LoggedInUser from '../context/AuthContext';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import X from './X';
 
 //*****//    Design by: http://collectui.com/designers/pattiewaffle/checkout */
 
 const Checkout = (props) => {
+  const { closeCard } = props;
   const context = useContext(LoggedInUser);
   const navigate = useNavigate();
   const [name, setName] = useState(context.user.first_name);
@@ -47,6 +49,9 @@ const Checkout = (props) => {
   return (
     <div className="checkout">
       <div className="checkout-container">
+        <button className="close-btn" onClick={() => closeCard(false)}>
+          <X />
+        </button>
         <h3 className="heading-3">Credit card checkout</h3>
         <Input
           value={name}

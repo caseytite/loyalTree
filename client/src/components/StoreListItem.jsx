@@ -58,7 +58,7 @@ function StoreListItem(props) {
           <Button onClick={() => handletrans()}>check transactions</Button>
         )}
       </article>
-      {card && <CreditCard />}
+      {card && <CreditCard closeCard={setCard} />}
     </>
   );
 }
