@@ -21,11 +21,11 @@ update
     - [ ] create view for all gift cards
 - [ ] As a user I can buy a gift card
     - [ ]  as a user i can add a balance to my giftcard
-    - [ ] get credit card transactions to work 
+    - [X] get credit card transactions to work 
     - [ ] physically update balance on gift card
     - [ ] show proof of transaction to bit owner and user
 - [ ] As a user I can transfer a purchased gift card to someone else as a gift on purchase
-    - [ ] as a user I can buy a gift card for some one else(by email)
+    - [X] as a user I can buy a gift card for some one else(by email)
     - [ ] create a transfer view
     - [ ] make the transfer occur
 - [ ] As a user I can search/filter for gift cards by category or name
@@ -54,5 +54,3 @@ Business owners
 
 
 Use this to generate a smalldatetime between 01 Jan 1900 and 06 Jun 2079 (not checked, SQL not installed)
-
-DATEADD(day, (ABS(CHECKSUM(NEWID())) % 65530), 0)
