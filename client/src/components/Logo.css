@@ -1,11 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Prompt:wght@200;300;400;500;600;700&display=swap");
-/* font-family: 'Prompt', sans-serif; */
-:root {
-  --size: 3rem;
-  --bud-green: hsla(115, 40%, 51%, 1);
-}
 
 .logo {
+  --size: 3rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -13,11 +9,11 @@
   margin: calc(var(--size) * 0.25);
 }
 
-img {
+.logo img {
   height: var(--size);
 }
 
-p {
+.logo p {
   margin: 0 0 0 calc(var(--size) * 0.25);
   color: var(--bud-green);
   font-family: "Prompt", serif;
@@ -27,6 +23,6 @@ p {
   letter-spacing: calc(var(--size) * 0.04);
 }
 
-span {
+.logo span {
   font-weight: 500;
 }
