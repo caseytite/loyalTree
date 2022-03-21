@@ -22,9 +22,16 @@ render(
     <Routes>
       <Route path="/" element={<App />}>
         <Route path="stores" element={<Stores />} />
-        <Route path='stores/:id' element={<StoreDetails />} />
         <Route
+          path="stores/:id"
+          element={<StoreDetails />}
+        />
+        {/* <Route
           path="transactions"
+          element={<Transactions />}
+        /> */}
+        <Route
+          path="transactions/:store_id/:id"
           element={<Transactions />}
         />
         <Route path="scan" element={<Scan />} />

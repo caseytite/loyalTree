@@ -87,8 +87,11 @@ app.get('/stores', (req, res) => {
 })
 
 app.get('/stores/:id', (req, res) => {
-  db.query(`SELECT * FROM stores
-     WHERE id = $1;`, [req.params.id])
+  db.query(
+    `SELECT * FROM stores
+     WHERE id = $1;`,
+    [req.params.id]
+  )
 
     .then((data) => res.json({ data: data.rows }))
     .catch((err) => res.json({ error: err.message }))
@@ -198,4 +201,19 @@ app.get('/store/transactions', (req, res) => {
 // to run use npx nodemon
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}!`)
+})
+
+app.get('/transactions/:store/:user', (req, res) => {
+  // console.log(req)
+  console.log(req.params)
+  console.log(req.query)
+  db.query(
+    `SELECT * FROM transactions
+JOIN stores ON store_id = stores.id
+JOIN users ON owner_id = users.id
+where users.id = $2 AND store_id = $1`,
+    [req.params.store, req.params.user]
+  )
+    .then((data) => res.json({ data: data.rows }))
+    .catch((err) => res.json({ error: err.message }))
 })
