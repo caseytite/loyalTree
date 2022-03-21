@@ -45,5 +45,5 @@ CREATE TABLE gift_cards (
   giftcard_id INTEGER REFERENCES gift_cards(id),
   store_id INTEGER REFERENCES stores(id),
   amount INTEGER,
-  created_at TIMESTAMP 
+  created_at TIMESTAMP DEFAULT NOW()
   );
