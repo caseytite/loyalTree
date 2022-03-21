@@ -142,16 +142,29 @@ app.post('/cards/:id', (req, res) => {
           .catch((err) => console.log('error', err.message))
       })
   }
-  // buy for some else by email
-  // step 1 check if req.body contains an email///
-  // step 2 write query to find other user by email
-  // step 3 write query to insert gift card into user by finding thier email and id
 })
 
 app.get('/checkout', (req, res) => {
-  db.query(``)
+  db.query(`SELECT * FROM transactions
+  WHERE `)
 
 })
+
+////////////////
+// Dashboard //
+///////////////
+app.get('/transactions/:store/:user', (req, res) => {
+  // console.log(req)
+  console.log(req.params)
+  console.log(req.query)
+  db.query(`SELECT * FROM transactions
+JOIN stores ON store_id = stores.id
+JOIN users ON owner_id = users.id
+where users.id = $2 AND store_id = $1`, [req.params.store, req.params.user])
+    .then((data) => res.json({ data: data.rows }))
+    .catch((err) => res.json({ error: err.message }))
+})
+
 
 //------------TRANSACTIONS
 
