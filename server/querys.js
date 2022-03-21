@@ -52,14 +52,13 @@ const USERS_STORES = params => {
 //---------------GIFT CARDS --------------------------
 const GIFT_CARDS = `SELECT * FROM gift_cards;`;
 
-const USERS_GIFT_CARDS = params => {
+const USERS_GIFT_CARDS = userID => {
   // params.id
-  return [
-    `SELECT * FROM gift_cards
-  JOIN users ON user_id = users.id
-  JOIN stores ON gift_cards.id = stores.id
-  WHERE gift_cards.user_id = 1;`,
-    [],
+  return [`
+    SELECT * FROM gift_cards
+    JOIN users ON user_id = users.id
+    JOIN stores ON gift_cards.id = stores.id
+    WHERE gift_cards.user_id = $1;`, [userID]
   ];
 };
 
