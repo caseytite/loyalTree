@@ -88,8 +88,7 @@ app.get('/stores', (req, res) => {
 
 app.get('/stores/:id', (req, res) => {
   db.query(`SELECT * FROM stores
-  JOIN users ON owner_id = users.id
-   WHERE stores.owner_id = $1;`, [req.params.id])
+     WHERE id = $1;`, [req.params.id])
 
     .then((data) => res.json({ data: data.rows }))
     .catch((err) => res.json({ error: err.message }))
