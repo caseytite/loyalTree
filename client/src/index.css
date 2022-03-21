@@ -3,6 +3,8 @@
   --cultured: hsla(60, 5%, 96%, 1);
   --bud-green: hsla(115, 40%, 51%, 1);
   --fern-green: hsla(115, 24%, 38%, 1);
+
+  font-size: 16px;
 }
 
 body {
