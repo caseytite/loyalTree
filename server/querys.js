@@ -1,11 +1,12 @@
 // -----------USERS--------------------
 const USERS = 'SELECT * FROM users';
 
-const USER = params => {
+const USER = (params) => {
   return [
-    `SELECT * FROM users
-  WHERE email LIKE $1
-  AND password LIKE $2;`,
+    `SELECT users.email, users.id, stores.id as store_id  FROM users                                       
+    JOIN stores ON users.id = stores.owner_id
+    WHERE email LIKE $1
+   AND password LIKE $2;`,
     [`${params.email}%`, `${params.password}%`],
   ];
 };
@@ -22,13 +23,13 @@ const ADD_USER = params => {
       params.isStoreOwner,
       params.city,
     ],
-  ];
-};
+  ]
+}
 
 //----------SEARCH BY STORES-----------------------
-const STORES = 'SELECT * FROM stores';
+const STORES = 'SELECT * FROM stores'
 
-const STORE_DETAIL = params => {
+const STORE_DETAIL = (params) => {
   // [`%${params.category.toLowerCase().slice(1)}%`]
   console.log('params in query', params);
   return [

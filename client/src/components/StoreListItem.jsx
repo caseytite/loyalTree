@@ -1,12 +1,16 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Button from "./Button";
-import axios from "axios";
-import "./StoreListItem.css";
-import CreditCard from "./CreditCard";
+import React, { useState, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
+import Button from './Button'
+import axios from 'axios'
+import './StoreListItem.css'
+import CreditCard from './CreditCard'
+import LoggedInUser from '../context/AuthContext'
+import { useParams } from 'react-router-dom'
 
 function StoreListItem(props) {
-  let navigate = useNavigate();
+  let navigate = useNavigate()
+  const context = useContext(LoggedInUser)
+  const params = useParams()
 
   const {
     storeID,
@@ -21,25 +25,16 @@ function StoreListItem(props) {
   } = props;
 
   const [card, setCard] = useState(false);
-  const onAdd = (e) => {
-    const amount = e.target.innerHTML;
-    setAmount(amount);
-  };
 
-  const getStoreDetails = (name) => {
-    showDetail(name);
-
-    // we may not need this axios request it looks possible to do it just with state
-    // just keeping this here incase it becomes needed
-
-    // axios
-    //   .get('/store/detail', { params: { name } })
-    //   .then((res) => {
-    //     console.log(res.data.data)
-    //     // how do we do a redirect here to go to another page??
-    //   })
-    //   .catch((err) => console.log(err.message))
-  };
+  const handletrans = () => {
+    axios
+      .get(`/transactions/${params.id}/${context.user.id}`)
+      .then((res) => {
+        navigate(
+          `/transactions/${params.id}/${context.user.id}`
+        )
+      })
+  }
 
   return (
     <>
@@ -64,6 +59,11 @@ function StoreListItem(props) {
             {detail && <Button onClick={() => setCard(!card)}>Purchase</Button>}
           </div>
         </div>
+        {context.user.store_id === storeID && detail && (
+          <Button onClick={() => handletrans()}>
+            check transactions
+          </Button>
+        )}
       </article>
       {card && <CreditCard />}
     </>

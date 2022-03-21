@@ -18,11 +18,11 @@ db.connect();
 const app = express();
 // const router = express.Router()
 
-app.use(morgan('dev'));
-app.use(cors());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json({ extended: true }));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(morgan('dev'))
+app.use(cors())
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true }))
 // app.use(
 //   cookieSession({
 //     name: 'session',
@@ -109,24 +109,24 @@ app.get('/cards', (req, res) => {
 
 //------cards by user id
 app.get('/cards/:id', (req, res) => {
-  console.log(req.params);
+  console.log(req.params)
   db.query(
     `SELECT * FROM users
 JOIN gift_cards ON user_id = users.id
 WHERE gift_cards.user_id = $1`,
     [req.params.id]
   )
-    .then(data => res.json({ data: data.rows }))
-    .catch(err => res.json({ error: err.message }));
-});
+    .then((data) => res.json({ data: data.rows }))
+    .catch((err) => res.json({ error: err.message }))
+})
 
 //----cards post by id
 app.post('/cards/:id', (req, res) => {
   // if buying for self
-  let user = req.body;
-  console.log(user);
+  let user = req.body
+  console.log(user)
   if (user.email === 'undefined') {
-    console.log('here');
+    console.log('here')
     db.query(
       `INSERT INTO gift_cards(user_id, balance, store_id) 
     VALUES($1, $2, $3 ) RETURNING *;`,
@@ -136,8 +136,8 @@ app.post('/cards/:id', (req, res) => {
         req.body.store_id,
       ]
     )
-      .then(data => res.json({ data: data.rows }))
-      .catch(err => console.log('error', err.message));
+      .then((data) => res.json({ data: data.rows }))
+      .catch((err) => console.log('error', err.message))
   } else if (user.email) {
     // console.log(user.email);
     db.query(
@@ -145,29 +145,43 @@ app.post('/cards/:id', (req, res) => {
   WHERE email LIKE $1`,
       [`${user.email}%`]
     )
-      .then(data => {
+      .then((data) => {
         // console.log(data.rows)
         return data.rows[0];
       })
-      .then(data => {
+      .then((data) => {
         db.query(
           `INSERT INTO gift_cards(user_id, balance, store_id) 
         VALUES($1, $2, $3 ) RETURNING *;`,
           [data.id, req.body.balance, req.body.store_id]
         )
-          .then(data => res.json({ data: data.rows }))
-          .catch(err => console.log('error', err.message));
-      });
+          .then((data) => res.json({ data: data.rows }))
+          .catch((err) => console.log('error', err.message))
+      })
   }
-  // buy for some else by email
-  // step 1 check if req.body contains an email///
-  // step 2 write query to find other user by email
-  // step 3 write query to insert gift card into user by finding thier email and id
-});
+})
 
 app.get('/checkout', (req, res) => {
-  db.query(``);
-});
+  db.query(``)
+})
+
+////////////////
+// Dashboard //
+///////////////
+////add return store_id
+// ---transactions specific to a store
+app.get('/transactions/:store/:user', (req, res) => {
+  // console.log(req)
+  console.log(req.params)
+  console.log(req.query)
+  db.query(`SELECT * FROM transactions
+JOIN stores ON store_id = stores.id
+JOIN users ON owner_id = users.id
+where users.id = $2 AND store_id = $1`, [req.params.store, req.params.user])
+    .then((data) => res.json({ data: data.rows }))
+    .catch((err) => res.json({ error: err.message }))
+})
+
 
 //------------TRANSACTIONS
 
@@ -186,5 +200,20 @@ app.get('/store/transactions', (req, res) => {
 
 // to run use npx nodemon
 app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}!`);
-});
+  console.log(`Server listening on port ${PORT}!`)
+})
+
+app.get('/transactions/:store/:user', (req, res) => {
+  // console.log(req)
+  console.log(req.params)
+  console.log(req.query)
+  db.query(
+    `SELECT * FROM transactions
+JOIN stores ON store_id = stores.id
+JOIN users ON owner_id = users.id
+where users.id = $2 AND store_id = $1`,
+    [req.params.store, req.params.user]
+  )
+    .then((data) => res.json({ data: data.rows }))
+    .catch((err) => res.json({ error: err.message }))
+})
