@@ -1,29 +1,112 @@
-.GiftCardListItem-card {
-  width: 80vw;
-  background-color: aquamarine;
-  border-radius: 15px;
-  padding: 1em;
+.card-list {
+  margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem;
 }
 
-.GiftCardListItem-card ul {
-  list-style: none;
+.card-frame {
+  border: 1px solid var(--jet);
+  border-radius: var(--radius);
+  margin: 0.5rem;
 }
 
-.giftCard-description {
+.gift-card {
+  --card-width: 275px;
+  --radius: 0.75rem;
+  width: var(--card-width);
+  height: calc(var(--card-width) * 8 / 12);
+
+  border-radius: var(--radius);
+  
   display: flex;
   flex-direction: column;
-  padding: 1em;
-  list-style: none;
   justify-content: space-between;
+  align-items: center;
+  /* background-color: var(--jet); */
+  background-size: cover;
+  color: var(--bud-green);
 }
 
-.giftCard-description .gc-balance {
-  /* color: pink; */
-  align-self: flex-end;
+.gift-card * {
+  margin: 0;
+  padding: 0;
 }
 
-.giftcard-img {
-  max-width: 150px;
+.gift-card header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  /* padding: 0.5rem; */
+}
+
+.gift-card header .points{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 50%;
+  background-color: var(--fern-green);
+  color: var(--jet);
+  opacity: 0.9;
+  font-size: 1.8rem;
+}
+.gift-card header .points-total {
+  position: absolute;
+  font-size: 0.4rem;
+  color: var(--jet);
+  bottom: 0.6rem;
+  right: 0.8rem;
+}
+
+.gift-card header .card-balance {
+  margin-left: auto;
+  background-color: var(--jet);
+  opacity: 0.8;
+  border-radius: 0 var(--radius) 0 var(--radius);
+  width: fit-content;
+  padding: 0.3rem 1rem;
+  font-size: 1.8rem;
+}
+
+.gift-card main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gift-card .store-name {
+  border-radius: var(--radius);
+  background-color: var(--jet);
+  font-size: 1.5rem;
+  padding: 0.8rem;
+  opacity: 0.8;
+}
+
+.gift-card footer {
+  width: 100%;
+  border-radius: 0 0 var(--radius) var(--radius);
+  opacity: 0.8;
+
+  grid-column: span 2;
+  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* margin-top: auto; */
+  /* justify-content: space-evenly; */
+  
+  font-size: 0.9rem;
+  background-color: var(--jet);
+}
+
+.gift-card footer p {
+  padding: 0rem 1rem;
 }

@@ -46,7 +46,7 @@ export const Primary = () => {
 
 export const Second = () => {
   const props = {
-    address: "665 Westminster Avenue",
+    address: "665 Westminster Interior Avenue",
     balance: 5525,
     category: "Restaurant",
     description:
