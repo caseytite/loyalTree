@@ -1,14 +1,13 @@
-import React from 'react'
-import TransactionListItem from './TransactionListItem'
+import React from "react";
+import TransactionListItem from "./TransactionListItem";
 
 function TransactionList(props) {
   return (
     <div>
       <h2>TransactionList</h2>
-        <TransactionListItem/>
+      <TransactionListItem />
     </div>
-
-  )
+  );
 }
 
-export default TransactionList
+export default TransactionList;

@@ -3,8 +3,8 @@ import React from "react";
 function TransactionListItem(props) {
   const { amount, date, storeId } = props;
   // console.log(date.getUTCFullYear());
-  const day = new Date(date)
-  const tdate = day.toLocaleDateString()
+  const day = new Date(date);
+  const tdate = day.toLocaleDateString();
 
   return (
     <div>

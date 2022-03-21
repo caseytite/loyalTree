@@ -1,4 +1,4 @@
-import './CreditCard.css'
+import "./CreditCard.css";
 
 //*****//    Design by: http://collectui.com/designers/pattiewaffle/checkout */
 
@@ -6,11 +6,7 @@ const Checkout = (props) => (
   <div className="checkout">
     <div className="checkout-container">
       <h3 className="heading-3">Credit card checkout</h3>
-      <Input
-        label="Cardholder's Name"
-        type="text"
-        name="name"
-      />
+      <Input label="Cardholder's Name" type="text" name="name" />
       <Input
         label="Card Number"
         type="number"
@@ -22,17 +18,13 @@ const Checkout = (props) => (
         <Input label="Amount" type="amount" name="amount" />
       </div>
       <div className="card-row">
-        <Input
-          label="Expiration Date"
-          type="month"
-          name="exp_date"
-        />
+        <Input label="Expiration Date" type="month" name="exp_date" />
         <Input label="CVV" type="number" name="cvv" />
       </div>
       <Button text="Place order" />
     </div>
   </div>
-)
+);
 
 const Input = (props) => (
   <div className="input">
@@ -42,16 +34,16 @@ const Input = (props) => (
       <img src={props.imgSrc} />
     </div>
   </div>
-)
+);
 
 const Button = (props) => (
   <button
-    onClick={() => console.log('click')}
+    onClick={() => console.log("click")}
     className="checkout-btn"
     type="button"
   >
     {props.text}
   </button>
-)
+);
 
-export default Checkout
+export default Checkout;
