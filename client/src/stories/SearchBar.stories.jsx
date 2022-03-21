@@ -1,13 +1,10 @@
-import SearchBar from '../components/SearchBar'
+import SearchBar from "../components/SearchBar";
 
 export default {
-  title: 'Loyaltree/SearchBar',
+  title: "Loyaltree/SearchBar",
   component: SearchBar,
 };
 
-
 export const primary = (props) => {
-  return(
-    <SearchBar/>
-  )
-}
+  return <SearchBar />;
+};

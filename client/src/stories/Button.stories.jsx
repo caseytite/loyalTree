@@ -1,12 +1,10 @@
 import Button from "../components/Button";
 
 export default {
-  title: 'Loyaltree/Button',
-  component: Button
-}
+  title: "Loyaltree/Button",
+  component: Button,
+};
 
 export const primary = (props) => {
-  return (
-    <Button>Add to Cart</Button>
-  )
-}
+  return <Button>Add to Cart</Button>;
+};

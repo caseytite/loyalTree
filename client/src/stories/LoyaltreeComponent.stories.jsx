@@ -1,17 +1,18 @@
 import React from "react";
 
-import LoyaltreeComponent from './LoyaltreeComponent'
+import LoyaltreeComponent from "./LoyaltreeComponent";
 
 export default {
-  title: 'Loyaltree/LoyaltreeComponent',
+  title: "Loyaltree/LoyaltreeComponent",
   component: LoyaltreeComponent,
 };
 
 //you can put any JS here
-const pText = "Howdy from ptext variable"
-
+const pText = "Howdy from ptext variable";
 
 // Primary is the story name
 export const Primary = () => <LoyaltreeComponent text={pText} />;
 
-export const Secondary = () => <LoyaltreeComponent text="There is no storybook" />;
+export const Secondary = () => (
+  <LoyaltreeComponent text="There is no storybook" />
+);

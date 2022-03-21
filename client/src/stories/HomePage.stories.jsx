@@ -1,20 +1,18 @@
-import HomePage from '../components/HomePage'
-import Navigation from '../components/Navigation'
-import Footer from '../components/Footer'
-
+import HomePage from "../components/HomePage";
+import Navigation from "../components/Navigation";
+import Footer from "../components/Footer";
 
 export default {
-  title: 'Loyaltree/HomePage',
+  title: "Loyaltree/HomePage",
   component: HomePage,
 };
 
-
 export const primary = (props) => {
-  return(
+  return (
     <>
-    <Navigation />
-      <HomePage className='homepage'/>
+      <Navigation />
+      <HomePage className="homepage" />
       <Footer />
     </>
-  )
-}
+  );
+};

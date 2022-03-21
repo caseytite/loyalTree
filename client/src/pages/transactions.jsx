@@ -1,19 +1,17 @@
-import  { useEffect, useState } from "react"
-import axios from 'axios'
-import TransactionListItem from "../components/TransactionListItem"
+import { useEffect, useState } from "react";
+import axios from "axios";
+import TransactionListItem from "../components/TransactionListItem";
 
 const Transactions = (props) => {
-  const [transactions, setTransactions] = useState([])
+  const [transactions, setTransactions] = useState([]);
 
-    useEffect(() => {
-     axios.get('/transactions')
-      .then(res => {
-        setTransactions(res.data.data)
-      })
-  },[])
+  useEffect(() => {
+    axios.get("/transactions").then((res) => {
+      setTransactions(res.data.data);
+    });
+  }, []);
 
-
-  const transactionsArr = transactions.map(transaction => {
+  const transactionsArr = transactions.map((transaction) => {
     return (
       <TransactionListItem
         key={transaction.id}
@@ -21,16 +19,15 @@ const Transactions = (props) => {
         storeId={transaction.store_id}
         date={transaction.created_at}
       />
-    )
-  })
+    );
+  });
 
-  return(
+  return (
     <>
-    <h1>Transactions</h1>
+      <h1>Transactions</h1>
       {transactionsArr}
     </>
-  )
+  );
+};
 
-}
-
-export default Transactions
+export default Transactions;
