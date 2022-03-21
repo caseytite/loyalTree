@@ -16,13 +16,15 @@ const Cards = () => {
   }, [])
 
   const cardList = cards.map((card) => {
-    return <GiftCardListItem />;
+    return <GiftCardListItem key={card.card_id} {...card} />;
   });
 
   return (
     <>
       <h2>List of user's cards</h2>
-      {cardList}
+      <div className="card-list">
+        {cardList}
+      </div>
     </>
   );
 };
