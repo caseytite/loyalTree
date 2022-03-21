@@ -60,7 +60,9 @@ const USERS_GIFT_CARDS = userID => {
   // params.id
   return [
     `
-    SELECT * FROM gift_cards
+    SELECT store_id, name as store_name, category, city, address, balance,
+    point_balance, redeem_at, photo_url, user_id
+    FROM gift_cards
     JOIN users ON user_id = users.id
     JOIN stores ON gift_cards.id = stores.id
     WHERE gift_cards.user_id = $1;`,
