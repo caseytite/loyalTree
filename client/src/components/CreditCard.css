@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway:400,500,700');
+/* @import url('https://fonts.googleapis.com/css?family=Raleway:400,500,700'); */
 
 .card-row {
   display: flex;
@@ -31,44 +31,45 @@
   box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
 }
 
-.item-container .item-image img {
+/* .item-container .item-image img {
   height: 430px;
   width: 50%;
-}
+} */
 
-.item-image {
+/* .item-image {
   position: absolute;
   z-index: 1;
-}
+} */
 
-.item-details {
+/* .item-details {
   position: absolute;
   bottom: 0;
   margin-bottom: 15px;
   margin-left: 20px;
-}
+} */
 
-.item-name {
+/* .item-name {
   font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
-}
+} */
 
-.item-price {
+/* .item-price {
   font-size: 25px;
   font-weight: 700;
   color: #0b8a6d;
-}
+} */
 
 .checkout {
   height: 430px;
-  background-color: #05000a;
+  /* background-color: #05000a; */
   color: white;
   width: 50%;
   border-radius: 1em;
   align-items: center;
-  margin: -12em auto 6em;
+  margin: -25em auto 6em;
   z-index: 99;
+  max-width: 475px;
 }
 
 .checkout-container {
@@ -76,6 +77,7 @@
   margin: auto;
   background-color: var(--jet);
   border-radius: 1em;
+  max-width: 475px;
 }
 
 .checkout-container:hover {
@@ -84,9 +86,13 @@
 
 .input {
   padding: 5px 0;
+  margin: auto;
 }
 .card-row {
   width: 50%;
+}
+.card-row input {
+  margin: auto;
 }
 
 .input label {
@@ -97,13 +103,15 @@
 }
 
 .input input {
-  /* width: 100%; */
+  width: 100%;
   padding: 5px 10px;
   color: white;
   letter-spacing: 0px;
   font-size: 14px;
   background: 0;
   border: 0;
+  margin: auto;
+  word-wrap: break-word;
 }
 
 .input input:focus {
@@ -114,6 +122,7 @@
   border: 1px solid #78757c;
   border-radius: 5px;
   position: relative;
+  margin: auto;
 }
 
 .input-field img {

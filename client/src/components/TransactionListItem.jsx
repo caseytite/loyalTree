@@ -1,10 +1,15 @@
-import React from "react";
+import React from 'react';
 
 function TransactionListItem(props) {
   const { amount, date, storeId } = props;
   // console.log(date.getUTCFullYear());
   const day = new Date(date);
   const tdate = day.toLocaleDateString();
+
+  const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  });
 
   return (
     <div>
@@ -18,7 +23,7 @@ function TransactionListItem(props) {
         </thead>
         <tbody>
           <tr>
-            <td>{amount}</td>
+            <td>{formatter.format(amount / 100)}</td>
             <td>{storeId}</td>
             <td>{tdate}</td>
           </tr>

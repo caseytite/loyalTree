@@ -1,32 +1,32 @@
-require("dotenv").config();
+require('dotenv').config();
 
 const PORT = 3009; // Client will be 3000
-const express = require("express");
+const express = require('express');
 
 // middleware
-const morgan = require("morgan");
-const cors = require("cors");
-const bodyParser = require("body-parser");
-const cookieSession = require("cookie-session");
+const morgan = require('morgan');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const cookieSession = require('cookie-session');
 
 // database
-const { Pool } = require("pg");
-const dbParams = require("./lib/db.js");
+const { Pool } = require('pg');
+const dbParams = require('./lib/db.js');
 const db = new Pool(dbParams);
 db.connect();
 
 const app = express();
 // const router = express.Router()
 
-app.use(morgan("dev"));
+app.use(morgan('dev'));
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cookieSession({
-    name: "session",
-    keys: ["chicken", "horse", "cat"],
+    name: 'session',
+    keys: ['chicken', 'horse', 'cat'],
   })
 );
 
@@ -42,17 +42,17 @@ const {
   USERS_GIFT_CARDS,
   STORE_TRANSACTIONS,
   GIFT_CARDS_BY_STORE,
-} = require("./querys");
+} = require('./querys');
 // const { query } = require('express')
 
 // ---------------------USERS ----------------------
-app.get("/users", (req, res) => {
+app.get('/users', (req, res) => {
   db.query(USERS)
     .then((data) => res.json({ data: data.rows }))
     .catch((err) => res.json({ error: err.message }));
 });
 
-app.post("/login", (req, res) => {
+app.post('/login', (req, res) => {
   const [query, params] = USER(req.body);
   db.query(query, params)
     .then((data) => {
@@ -66,7 +66,7 @@ app.post("/login", (req, res) => {
     .catch((err) => res.json({ error: err.message }));
 });
 
-app.post("/users", (req, res) => {
+app.post('/users', (req, res) => {
   const [query, params] = ADD_USER(req.body);
   db.query(query, params)
     .then((data) => res.json({ data: data.rows }))
@@ -78,13 +78,13 @@ app.post("/users", (req, res) => {
 ///////////////
 // -STORES   //
 ///////////////
-app.get("/stores", (req, res) => {
+app.get('/stores', (req, res) => {
   db.query(STORES)
     .then((data) => res.json({ data: data.rows }))
     .catch((err) => res.json({ error: err.message }));
 });
 
-app.get("/stores/:id", (req, res) => {
+app.get('/stores/:id', (req, res) => {
   db.query(
     `SELECT * FROM stores
      WHERE id = $1;`,
@@ -99,32 +99,35 @@ app.get("/stores/:id", (req, res) => {
 //--CARDS----//
 //////////////
 // -----all cards
-app.get("/card/:id", (req, res) => {
-  console.log(req.body)
-  db.query(`SELECT *  FROM gift_cards
-WHERE gift_cards.id = $1`, [req.params.id])
-    .then(data => res.json({ data: data.rows }))
-})
-
-app.get("/cards", (req, res) => {
-  const [query, params] = USERS_GIFT_CARDS(req.session.id);
-  db.query(query, params)
-    .then(data => res.json({ data: data.rows }))
-    .catch(err => res.json({ error: err.message }));
+app.get('/gift_card', (req, res) => {
+  console.log(req.body);
+  console.log(req.params);
+  console.log(req.body);
+  console.log('in card/');
+  db.query(
+    `SELECT *  FROM gift_cards
+WHERE gift_cards.id = $1`,
+    [req.params.id]
+  ).then((data) => res.json({ data: data.rows }));
 });
 
-
-
+// app.get('/cards', (req, res) => {
+//   const [query, params] = USERS_GIFT_CARDS(req.session.id);
+//   console.log('in cards/');
+//   db.query(query, params)
+//     .then((data) => res.json({ data: data.rows }))
+//     .catch((err) => res.json({ error: err.message }));
+// });
 
 //------cards by user id
-app.get("/cards/:id", (req, res) => {
-  console.log(req.params);
+app.get('/cards', (req, res) => {
+  console.log('consolelog in cards/:id', req.query);
   db.query(
     `SELECT *, gift_cards.id as gift_card_id FROM users
 JOIN gift_cards ON user_id = users.id
-JOIN stores ON users.id = user_id
+JOIN stores on stores.id = store_id
 WHERE gift_cards.user_id = $1`,
-    [req.params.id]
+    [req.query.id]
   )
     .then((data) => res.json({ data: data.rows }))
     .catch((err) => res.json({ error: err.message }));
@@ -133,14 +136,17 @@ WHERE gift_cards.user_id = $1`,
 //----cards post by user id, creates new transaction record
 app.post('/cards/:id', (req, res) => {
   // if buying for self
+  console.log('bought a card', req.body);
   let user = req.body;
   if (user.email === '') {
+    console.log('one');
     db.query(
       `INSERT INTO gift_cards(user_id, balance, store_id) 
     VALUES($1, $2, $3 ) RETURNING *;`,
       [req.body.user_id, req.body.balance, req.body.store_id]
     )
-      .then((data) =>
+      .then(
+        (data) => console.log('two'),
         db.query(
           `
       INSERT INTO transactions(giftcard_id,store_id, amount)
@@ -151,6 +157,7 @@ app.post('/cards/:id', (req, res) => {
       .then((data) => res.json(data.rows))
       .catch((err) => console.log('error', err.message));
   } else if (user.email) {
+    console.log('3');
     db.query(
       `SELECT id FROM users
   WHERE email LIKE $1`,
@@ -160,6 +167,7 @@ app.post('/cards/:id', (req, res) => {
         return data.rows[0];
       })
       .then((data) => {
+        console.log('4');
         db.query(
           `INSERT INTO gift_cards(user_id, balance, store_id) 
         VALUES($1, $2, $3 ) RETURNING *;`,
@@ -212,13 +220,13 @@ ORDER BY transactions.created_at ASC
     .catch((err) => res.json({ error: err.message }));
 });
 
-app.get("/transactions", (req, res) => {
+app.get('/transactions', (req, res) => {
   db.query(TRANSACTIONS)
     .then((data) => res.json({ data: data.rows }))
     .catch((err) => res.json({ error: err.message }));
 });
 
-app.get("/store/transactions", (req, res) => {
+app.get('/store/transactions', (req, res) => {
   const [query, params] = STORE_TRANSACTIONS();
   db.query(query)
     .then((data) => res.json({ data: data.rows }))

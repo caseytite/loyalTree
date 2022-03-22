@@ -1,6 +1,7 @@
-import React from "react";
+import axios from 'axios';
+import React from 'react';
 // import Button from  './Button'
-import "./GiftCardListItem.css";
+import './GiftCardListItem.css';
 
 function GiftCardListItem(props) {
   const {
@@ -16,13 +17,23 @@ function GiftCardListItem(props) {
     store_name,
     user_id,
     card_id,
+    id,
+    gift_card_id,
   } = props;
 
-  const formatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
+  const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
   });
 
+  // const getCard = (id) => {
+  //   console.log(id);
+  //   axios
+  //     .get('/gift_card', { params: { id } })
+  //     .then((res) => console.log(res))
+  //     .catch((err) => console.log(err.message));
+  // };
+  // onClick={() => getCard(gift_card_id)}
   return (
     <div>
       <p className="store-name">{store_name}</p>
