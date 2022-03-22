@@ -1,17 +1,17 @@
 // -----------USERS--------------------
 const USERS = "SELECT * FROM users";
 
-const USER = params => {
+const USER = (params) => {
   return [
-    `
-    SELECT * FROM users
+    `SELECT users.email, users.id, users.first_name, stores.id as store_id  FROM users                                       
+    JOIN stores ON users.id = stores.owner_id
     WHERE email LIKE $1
-    AND password LIKE $2;`,
+   AND password LIKE $2;`,
     [`${params.email}%`, `${params.password}%`],
   ];
 };
 
-const ADD_USER = params => {
+const ADD_USER = (params) => {
   return [
     `
     INSERT INTO users (first_name,last_name,password,email,isStoreOwner,city)
@@ -30,7 +30,7 @@ const ADD_USER = params => {
 //----------SEARCH BY STORES-----------------------
 const STORES = "SELECT * FROM stores";
 
-const STORE_DETAIL = params => {
+const STORE_DETAIL = (params) => {
   // [`%${params.category.toLowerCase().slice(1)}%`]
   console.log("params in query", params);
   return [
@@ -41,7 +41,7 @@ const STORE_DETAIL = params => {
   ];
 };
 
-const USERS_STORES = params => {
+const USERS_STORES = (params) => {
   // users stores is gonna have to be req.sessions.users.id
   // params.owner_id
   return [
@@ -71,7 +71,7 @@ const USERS_GIFT_CARDS = userID => {
   ];
 };
 
-const GIFT_CARDS_BY_STORE = params => {
+const GIFT_CARDS_BY_STORE = (params) => {
   return [
     `
     SELECT * FROM gift_cards
@@ -85,7 +85,7 @@ const GIFT_CARDS_BY_STORE = params => {
 
 const TRANSACTIONS = `SELECT * FROM transactions;`;
 
-const STORE_TRANSACTIONS = params => {
+const STORE_TRANSACTIONS = (params) => {
   return [
     `
     SELECT * FROM transactions

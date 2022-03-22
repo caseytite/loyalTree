@@ -25,7 +25,7 @@ const StoreDetails = (props) => {
       category={store.category}
       // setAmount={setAmount}
       // showDetail={showDetail}
-      // detail={detail}
+      detail={true}
     />
   );
 };
