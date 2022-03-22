@@ -1,5 +1,7 @@
 /* @import url('https://fonts.googleapis.com/css?family=Raleway:400,500,700'); */
 
+/* https://www.w3schools.com/css/css_positioning.asp */
+
 .card-row {
   display: flex;
   flex-direction: row;
@@ -67,7 +69,8 @@
   width: 50%;
   border-radius: 1em;
   align-items: center;
-  margin: -25em auto 6em;
+  margin-bottom: 5em;
+  /* position: fixed; */
   z-index: 99;
   max-width: 475px;
 }

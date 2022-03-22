@@ -8,51 +8,50 @@ import X from './X';
 //*****//    Design by: http://collectui.com/designers/pattiewaffle/checkout */
 
 const Checkout = (props) => {
-  const { closeCard } = props;
+  const { closeCard, open, onPay, text, setText } = props;
   const context = useContext(LoggedInUser);
   const navigate = useNavigate();
-  const [name, setName] = useState(context.user.first_name);
+  const [name, setName] = useState('Casey');
   const [card, setCard] = useState('1234123412341234');
-  const [email, setEmail] = useState(context.user.email);
+  const [email, setEmail] = useState('casey@example.com');
   const [amount, setAmount] = useState('100');
   const [exp, setExp] = useState('');
   const [cvv, setCvv] = useState('123');
-  const [text, setText] = useState('Place Order');
+  // const [text, setText] = useState('Place Order');
   const params = useParams();
 
-  const handlePayment = () => {
-    const id = context.user.id;
-    axios
-      .post(`/cards/${id}`, {
-        email,
-        balance: amount,
-        user_id: id,
-        store_id: params.id,
-      })
-      .then((res) => {
-        console.log('in process');
-        setText('Processing');
-        setTimeout(() => {
-          setAmount('');
-          setName('');
-          setCard('');
-          setEmail('');
-          setCvv('');
-          setExp('');
-          setText('Thank you for your purchase!');
-          setTimeout(() => {
-            navigate('/stores');
-          }, 1000);
-        }, 1000);
-      })
+  // const handlePayment = () => {
+  //   const id = context.userID;
+  //   axios
+  //     .post(`/cards/${id}`, {
+  //       email,
+  //       balance: amount,
+  //       user_id: id,
+  //       store_id: params.id,
+  //     })
+  //     .then((res) => {
+  //       setText('Processing');
+  //       setTimeout(() => {
+  //         setAmount('');
+  //         setName('');
+  //         setCard('');
+  //         setEmail('');
+  //         setCvv('');
+  //         setExp('');
+  //         setText('Thank you for your purchase!');
+  //         setTimeout(() => {
+  //           navigate('/stores');
+  //         }, 1000);
+  //       }, 2000);
+  //     })
 
-      .catch((err) => console.log(err.message));
-  };
+  //     .catch((err) => console.log(err.message));
+  // };
 
   return (
     <div className="checkout">
       <div className="checkout-container">
-        <button className="close-btn" onClick={() => closeCard(false)}>
+        <button className="close-btn" onClick={() => closeCard(!card)}>
           <X />
         </button>
         <h3 className="heading-3">Credit card checkout</h3>
@@ -62,7 +61,6 @@ const Checkout = (props) => {
           label="Cardholder's Name"
           type="text"
           name="name"
-          placeHolder="Casey"
         />
         <Input
           value={card}
@@ -72,7 +70,6 @@ const Checkout = (props) => {
           name="card_number"
           imgSrc="https://seeklogo.com/images/V/visa-logo-6F4057663D-seeklogo.com.png"
         />
-
         <Input
           value={email}
           setValue={setEmail}
@@ -102,7 +99,11 @@ const Checkout = (props) => {
           type="number"
           name="cvv"
         />
-        <Button className="checkout-btn" onClick={handlePayment} text={text} />
+        <Button
+          className="checkout-btn"
+          onClick={() => onPay(email, amount)}
+          text={text}
+        />
       </div>
     </div>
   );

@@ -1,11 +1,12 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import "./Navigation.css";
-import Logo from "./Logo";
-import Button from "./Button";
-import { useNavigate } from "react-router-dom";
-import Cookies from "universal-cookie";
-import LoggedInUser from "../context/AuthContext";
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import './Navigation.css';
+import Logo from './Logo';
+import Button from './Button';
+import { useNavigate } from 'react-router-dom';
+import Cookies from 'universal-cookie';
+import LoggedInUser from '../context/AuthContext';
+import axios from 'axios';
 
 const Navigation = (props) => {
   const context = useContext(LoggedInUser);
@@ -15,26 +16,29 @@ const Navigation = (props) => {
   const navigate = useNavigate();
   // handles the login button click redirect
   const handleLogin = () => {
-    return navigate("/signin");
+    return navigate('/signin');
   };
   // clears cookie on logout click and redirects
   // sets user context to state
   const handleLogout = () => {
-    cookies.remove("id", { path: "/" });
-    context.isLoggedIn = false;
+    cookies.remove('id', { path: '/' });
     context.user = {};
-    return navigate("/");
+    localStorage.clear();
+
+    axios.post('/logout');
+
+    return navigate('/');
   };
 
   return (
     <nav className="nav">
-      <Link to={{ pathname: "/" }}>
+      <Link to={{ pathname: '/' }}>
         <Logo />
       </Link>
       <div className="header-logins">
         {user && <Button onClick={handleLogout}>Log Out</Button>}
         {!user && <Button onClick={handleLogin}>Log in</Button>}
-        <Link className="nav-text" to={{ pathname: "/register" }}>
+        <Link className="nav-text" to={{ pathname: '/register' }}>
           Register
         </Link>
       </div>

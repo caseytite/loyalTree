@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react';
-// import Button from  './Button'
 import './GiftCardListItem.css';
+import { useNavigate } from 'react-router-dom';
 
 function GiftCardListItem(props) {
   const {
@@ -14,29 +14,42 @@ function GiftCardListItem(props) {
     point_balance,
     redeem_at,
     store_id,
-    store_name,
+    name,
     user_id,
     card_id,
     id,
     gift_card_id,
   } = props;
 
+  const navigate = useNavigate();
+
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
   });
+  const getCard = (id) => {
+    axios.get(`/cards/${gift_card_id}`).then((res) => {
+      //navigates to card to show single card how to pass data?
+      navigate(`/cards/${gift_card_id}`, {
+        state: {
+          name,
+          photo_url,
+          point_balance,
+          redeem_at,
+          balance,
+          store_id,
+          address,
+          city,
+          gift_card_id,
+        },
+      });
+    });
+    // .catch((err) => console.log(err.message));
+  };
 
-  // const getCard = (id) => {
-  //   console.log(id);
-  //   axios
-  //     .get('/gift_card', { params: { id } })
-  //     .then((res) => console.log(res))
-  //     .catch((err) => console.log(err.message));
-  // };
-  // onClick={() => getCard(gift_card_id)}
   return (
-    <div>
-      <p className="store-name">{store_name}</p>
+    <div key={gift_card_id} onClick={() => getCard(gift_card_id)}>
+      <p className="store-name">{name}</p>
       <article
         className="gift-card"
         style={{

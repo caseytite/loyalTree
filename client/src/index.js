@@ -12,6 +12,7 @@ import Transactions from './pages/transactions';
 import Scan from './pages/scan';
 import Signin from './pages/signin';
 import Register from './pages/register';
+import SingleGiftCard from './pages/singleGiftCard';
 
 const rootElement = document.getElementById('root');
 render(
@@ -21,6 +22,7 @@ render(
         <Route path="stores" element={<Stores />} />
         <Route path="stores/:id" element={<StoreDetails />} />
         <Route path="cards" element={<Cards />} />
+        <Route path="cards/:id" element={<SingleGiftCard />} />
         <Route path="transactions/:store_id/:id" element={<Transactions />} />
         <Route path="scan" element={<Scan />} />
         <Route path="signin" element={<Signin />} />

@@ -66,6 +66,11 @@ app.post("/login", (req, res) => {
     .catch((err) => res.json({ error: err.message }));
 });
 
+app.post("/logout", (req, res) => {
+  req.session = null;
+  res.redirect("/");
+});
+
 app.post("/users", (req, res) => {
   const [query, params] = ADD_USER(req.body);
   db.query(query, params)
@@ -100,12 +105,10 @@ app.get("/stores/:id", (req, res) => {
 //////////////
 // -----a specific card
 app.get("/cards/:id", (req, res) => {
-  console.log(req.body);
-  console.log(req.params);
-  console.log(req.body);
-  console.log("in card/");
   db.query(
-    `SELECT *  FROM gift_cards
+    `SELECT *, gift_cards.id as gift_card_id FROM users
+JOIN gift_cards ON user_id = users.id
+JOIN stores on stores.id = store_id
 WHERE gift_cards.id = $1`,
     [req.params.id]
   ).then((data) => res.json({ data: data.rows }));
@@ -260,4 +263,4 @@ app.get("/store/transactions", (req, res) => {
 // to run use npx nodemon
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}!`);
-})
+});

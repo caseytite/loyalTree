@@ -25,11 +25,35 @@ function StoreListItem(props) {
   } = props;
 
   const [card, setCard] = useState(false);
+  const [text, setText] = useState('Place Order');
+  // console.log(context.user.store_id);
+  const currentStore = localStorage.getItem('store');
 
   const handletrans = () => {
     axios.get(`/transactions/${params.id}/${context.user.id}`).then((res) => {
       navigate(`/transactions/${params.id}/${context.user.id}`);
     });
+  };
+  const onPay = (email, amount) => {
+    const id = context.userID;
+    axios
+      .post(`/cards/${id}`, {
+        email,
+        balance: amount,
+        user_id: id,
+        store_id: params.id,
+      })
+      .then((res) => {
+        setText('Processing');
+        setTimeout(() => {
+          setText('Thank you for your purchase!');
+          setTimeout(() => {
+            navigate('/stores');
+          }, 1000);
+        }, 2000);
+      })
+
+      .catch((err) => console.log(err.message));
   };
   return (
     <>
@@ -54,11 +78,19 @@ function StoreListItem(props) {
             {detail && <Button onClick={() => setCard(!card)}>Purchase</Button>}
           </div>
         </div>
-        {context.user.store_id === storeID && detail && (
+        {+currentStore === storeID && detail && (
           <Button onClick={() => handletrans()}>check transactions</Button>
         )}
       </article>
-      {card && <CreditCard closeCard={setCard} />}
+      {card && (
+        <CreditCard
+          text={text}
+          setText={setText}
+          open={card}
+          closeCard={setCard}
+          onPay={onPay}
+        />
+      )}
     </>
   );
 }

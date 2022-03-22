@@ -11,15 +11,12 @@ const Cards = () => {
   const context = useContext(LoggedInUser);
 
   useEffect(() => {
-    console.log('in cards get', context);
-    axios.get(`/cards`, { params: { id: context.user.id } }).then((res) => {
-      console.log(res.data.data);
+    axios.get(`/cards`).then((res) => {
       setCards(res.data.data);
     });
   }, []);
-
   const cardList = cards.map((card) => {
-    return <GiftCardListItem key={card.card_id} {...card} />;
+    return <GiftCardListItem key={card.giftcard_id} {...card} />;
   });
 
   return (

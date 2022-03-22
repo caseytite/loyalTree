@@ -4,6 +4,7 @@
   flex-wrap: wrap;
   gap: 1rem;
   margin: 1rem;
+  margin-bottom: 5em;
 }
 
 .card-frame {
@@ -19,7 +20,7 @@
   height: calc(var(--card-width) * 8 / 12);
 
   border-radius: var(--radius);
-  
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -43,7 +44,7 @@
   /* padding: 0.5rem; */
 }
 
-.gift-card header .points{
+.gift-card header .points {
   position: relative;
   display: flex;
   justify-content: center;
@@ -96,13 +97,13 @@
   opacity: 0.8;
 
   grid-column: span 2;
-  
+
   display: flex;
   flex-direction: row;
   align-items: center;
   /* margin-top: auto; */
   /* justify-content: space-evenly; */
-  
+
   font-size: 0.9rem;
   background-color: var(--jet);
 }
