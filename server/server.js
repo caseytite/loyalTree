@@ -155,109 +155,109 @@ app.put("/cards/:id", (req, res) => {
         [req.body.email, receivingCard.store_id, receivingCard.balance]
       );
     });
+});
 
-
-  //------cards by user id from cookie
-  app.get("/cards", (req, res) => {
-    db.query(
-      `SELECT *, gift_cards.id as gift_card_id FROM users
+//------cards by user id from cookie
+app.get("/cards", (req, res) => {
+  db.query(
+    `SELECT *, gift_cards.id as gift_card_id FROM users
 JOIN gift_cards ON user_id = users.id
 JOIN stores on stores.id = store_id
 WHERE gift_cards.user_id = $1`,
-      [req.session.id]
-    )
-      .then((data) => res.json({ data: data.rows }))
-      .catch((err) => res.json({ error: err.message }));
-  });
+    [req.session.id]
+  )
+    .then((data) => res.json({ data: data.rows }))
+    .catch((err) => res.json({ error: err.message }));
+});
 
-  //----cards post by user id, creates new transaction record
-  app.post("/cards/:id", (req, res) => {
-    // if buying for self
-    console.log("bought a card", req.body);
-    let user = req.body;
-    if (user.email === "") {
-      console.log("one");
-      db.query(
-        `INSERT INTO gift_cards(user_id, balance, store_id) 
-    VALUES($1, $2, $3 ) RETURNING *;`,
-        [req.body.user_id, req.body.balance, req.body.store_id]
-      )
-        .then(
-          (data) => console.log("two"),
-          db.query(
-            `
-      INSERT INTO transactions(giftcard_id,store_id, amount)
-      VALUES($1, $2, $3) RETURNING *;`,
-            [data.rows[0].id, data.rows[0].store_id, data.rows[0].balance]
-          )
-        )
-        .then((data) => res.json(data.rows))
-        .catch((err) => console.log("error", err.message));
-    } else if (user.email) {
-      console.log("3");
-      db.query(
-        `SELECT id FROM users
-  WHERE email LIKE $1`,
-        [`${user.email}%`]
-      )
-        .then((data) => {
-          return data.rows[0];
-        })
-        .then((data) => {
-          console.log("4");
-          db.query(
-            `INSERT INTO gift_cards(user_id, balance, store_id) 
-        VALUES($1, $2, $3 ) RETURNING *;`,
-            [data.id, req.body.balance * 100, req.body.store_id]
-          )
-            .then((data) =>
-              db.query(
-                `
-      INSERT INTO transactions(giftcard_id,store_id, amount)
-      VALUES($1, $2, $3) RETURNING *;`,
-                [data.rows[0].id, data.rows[0].store_id, data.rows[0].balance]
-              )
-            )
-            .then((data) => res.json({ data: data.rows }))
-            .catch((err) => console.log("error", err.message));
-        });
-    }
-  });
-
-  ////////////////
-  // Dashboard //
-  ///////////////
-  //------------TRANSACTIONS
-  // ---transactions specific to a store and user
-  // not dashboard/transactions/:userID ?
-  app.get("/transactions/:store/:user", (req, res) => {
+//----cards post by user id, creates new transaction record
+app.post("/cards/:id", (req, res) => {
+  // if buying for self
+  console.log("bought a card", req.body);
+  let user = req.body;
+  if (user.email === "") {
+    console.log("one");
     db.query(
-      `SELECT * FROM transactions
+      `INSERT INTO gift_cards(user_id, balance, store_id) 
+    VALUES($1, $2, $3 ) RETURNING *;`,
+      [req.body.user_id, req.body.balance, req.body.store_id]
+    )
+      .then(
+        (data) => console.log("two"),
+        db.query(
+          `
+      INSERT INTO transactions(giftcard_id,store_id, amount)
+      VALUES($1, $2, $3) RETURNING *;`,
+          [data.rows[0].id, data.rows[0].store_id, data.rows[0].balance]
+        )
+      )
+      .then((data) => res.json(data.rows))
+      .catch((err) => console.log("error", err.message));
+  } else if (user.email) {
+    console.log("3");
+    db.query(
+      `SELECT id FROM users
+  WHERE email LIKE $1`,
+      [`${user.email}%`]
+    )
+      .then((data) => {
+        return data.rows[0];
+      })
+      .then((data) => {
+        console.log("4");
+        db.query(
+          `INSERT INTO gift_cards(user_id, balance, store_id) 
+        VALUES($1, $2, $3 ) RETURNING *;`,
+          [data.id, req.body.balance * 100, req.body.store_id]
+        )
+          .then((data) =>
+            db.query(
+              `
+      INSERT INTO transactions(giftcard_id,store_id, amount)
+      VALUES($1, $2, $3) RETURNING *;`,
+              [data.rows[0].id, data.rows[0].store_id, data.rows[0].balance]
+            )
+          )
+          .then((data) => res.json({ data: data.rows }))
+          .catch((err) => console.log("error", err.message));
+      });
+  }
+});
+
+////////////////
+// Dashboard //
+///////////////
+//------------TRANSACTIONS
+// ---transactions specific to a store and user
+// not dashboard/transactions/:userID ?
+app.get("/transactions/:store/:user", (req, res) => {
+  db.query(
+    `SELECT * FROM transactions
 JOIN stores ON store_id = stores.id
 JOIN users ON owner_id = users.id
 where users.id = $2 AND store_id = $1
 ORDER BY transactions.created_at ASC
 `,
-      [req.params.store, req.params.user]
-    )
-      .then((data) => res.json({ data: data.rows }))
-      .catch((err) => res.json({ error: err.message }));
-  });
+    [req.params.store, req.params.user]
+  )
+    .then((data) => res.json({ data: data.rows }))
+    .catch((err) => res.json({ error: err.message }));
+});
 
-  app.get("/transactions", (req, res) => {
-    db.query(TRANSACTIONS)
-      .then((data) => res.json({ data: data.rows }))
-      .catch((err) => res.json({ error: err.message }));
-  });
+app.get("/transactions", (req, res) => {
+  db.query(TRANSACTIONS)
+    .then((data) => res.json({ data: data.rows }))
+    .catch((err) => res.json({ error: err.message }));
+});
 
-  app.get("/store/transactions", (req, res) => {
-    const [query, params] = STORE_TRANSACTIONS();
-    db.query(query)
-      .then((data) => res.json({ data: data.rows }))
-      .catch((err) => res.json({ error: err.message }));
-  });
+app.get("/store/transactions", (req, res) => {
+  const [query, params] = STORE_TRANSACTIONS();
+  db.query(query)
+    .then((data) => res.json({ data: data.rows }))
+    .catch((err) => res.json({ error: err.message }));
+});
 
-  // to run use npx nodemon
-  app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}!`);
-  })
+// to run use npx nodemon
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}!`);
+})
