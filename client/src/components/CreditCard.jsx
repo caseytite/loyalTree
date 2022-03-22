@@ -71,38 +71,36 @@ const Checkout = (props) => {
           name="card_number"
           imgSrc="https://seeklogo.com/images/V/visa-logo-6F4057663D-seeklogo.com.png"
         />
-        <div className="card-params">
-          <Input
-            value={email}
-            setValue={setEmail}
-            label="Email"
-            type="email"
-            name="email"
-          />
-          <Input
-            value={amount}
-            setValue={setAmount}
-            label="Amount"
-            type="amount"
-            name="amount"
-          />
-        </div>
-        <div className="card-row">
-          <Input
-            value={exp}
-            setValue={setExp}
-            label="Expiration Date"
-            type="month"
-            name="exp_date"
-          />
-          <Input
-            value={cvv}
-            setValue={setCvv}
-            label="CVV"
-            type="number"
-            name="cvv"
-          />
-        </div>
+
+        <Input
+          value={email}
+          setValue={setEmail}
+          label="Email"
+          type="email"
+          name="email"
+        />
+        <Input
+          value={amount}
+          setValue={setAmount}
+          label="Amount"
+          type="amount"
+          name="amount"
+        />
+
+        <Input
+          value={exp}
+          setValue={setExp}
+          label="Expiration Date"
+          type="month"
+          name="exp_date"
+        />
+        <Input
+          value={cvv}
+          setValue={setCvv}
+          label="CVV"
+          type="number"
+          name="cvv"
+        />
         <Button className="checkout-btn" onClick={handlePayment} text={text} />
       </div>
     </div>
