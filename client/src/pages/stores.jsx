@@ -2,25 +2,25 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import StoreListItem from "../components/StoreListItem";
 
-const Stores = props => {
+const Stores = (props) => {
   const [stores, setStores] = useState([]);
   const [amount, setAmount] = useState(0);
   const [detail, showDetail] = useState("");
   const [nameFilter, setNameFilter] = useState("");
 
   useEffect(() => {
-    axios.get("/stores").then(res => {
+    axios.get("/stores").then((res) => {
       setStores(res.data.data);
     });
   }, []);
 
   // shows all the stores if showDetail is falsey
   const storesArr = stores
-    .filter(store => {
+    .filter((store) => {
       const regex = new RegExp(nameFilter, "gi");
       return regex.test(store.name);
     })
-    .map(store => {
+    .map((store) => {
       return (
         <StoreListItem
           key={store.id}
@@ -43,7 +43,7 @@ const Stores = props => {
       <input
         id="name-filter"
         value={nameFilter}
-        onChange={e => {
+        onChange={(e) => {
           setNameFilter(e.target.value);
         }}
       />
