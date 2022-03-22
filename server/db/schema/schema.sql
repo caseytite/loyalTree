@@ -40,10 +40,11 @@ CREATE TABLE gift_cards (
 );
 
 
-   CREATE TABLE transactions (
+CREATE TABLE transactions (
   id SERIAL PRIMARY KEY NOT NULL,
   giftcard_id INTEGER REFERENCES gift_cards(id),
-  store_id INTEGER REFERENCES stores(id),
+  store_id INTEGER REFERENCES stores(id) DEFAULT NULL,
   amount INTEGER,
+  receiver_id INTEGER REFERENCES users(id) DEFAULT NULL,
   created_at TIMESTAMP DEFAULT NOW()
-  );
+);
