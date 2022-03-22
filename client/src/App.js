@@ -10,8 +10,8 @@ function App() {
     <div className="App">
       <LoggedInUser.Provider
         value={{
-          user: {},
-          isLoggedIn: false,
+          user: localStorage.getItem('user'),
+          userID: Number(document.cookie.slice(3)),
         }}
       >
         <Navigation />

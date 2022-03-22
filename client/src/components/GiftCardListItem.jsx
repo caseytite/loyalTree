@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react';
-// import Button from  './Button'
 import './GiftCardListItem.css';
+import { useNavigate } from 'react-router-dom';
 
 function GiftCardListItem(props) {
   const {
@@ -21,21 +21,24 @@ function GiftCardListItem(props) {
     gift_card_id,
   } = props;
 
+  const navigate = useNavigate();
+
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
   });
+  // navigate(`/gift_card/${gift_card_id}`)
+  const getCard = (id) => {
+    console.log(gift_card_id);
 
-  // const getCard = (id) => {
-  //   console.log(id);
-  //   axios
-  //     .get('/gift_card', { params: { id } })
-  //     .then((res) => console.log(res))
-  //     .catch((err) => console.log(err.message));
-  // };
-  // onClick={() => getCard(gift_card_id)}
+    axios.get(`/gift_card/${gift_card_id}`).then((res) => {
+      console.log(res);
+    });
+    // .catch((err) => console.log(err.message));
+  };
+
   return (
-    <div>
+    <div onClick={() => getCard(gift_card_id)}>
       <p className="store-name">{store_name}</p>
       <article
         className="gift-card"

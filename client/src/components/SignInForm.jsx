@@ -23,8 +23,9 @@ const SignInForm = (props) => {
         .post('/login', { email, password })
         .then((res) => {
           cookies.set('id', res.data.user.id, { path: '/' });
-          context.isLoggedIn = true;
           context.user = res.data.user;
+          context.userID = res.data.user.id;
+          localStorage.setItem('user', res.data.user);
         })
         .then((response) => {
           navigate('/stores');

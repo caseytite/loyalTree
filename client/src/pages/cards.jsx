@@ -12,14 +12,14 @@ const Cards = () => {
 
   useEffect(() => {
     console.log('in cards get', context);
-    axios.get(`/cards`, { params: { id: context.user.id } }).then((res) => {
+    axios.get(`/cards`, { params: { id: context.userID } }).then((res) => {
       console.log(res.data.data);
       setCards(res.data.data);
     });
   }, []);
-
   const cardList = cards.map((card) => {
-    return <GiftCardListItem key={card.card_id} {...card} />;
+    console.log(card);
+    return <GiftCardListItem key={card.giftcard_id} {...card} />;
   });
 
   return (

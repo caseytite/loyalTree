@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import StoreListItem from "../components/StoreListItem";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import StoreListItem from '../components/StoreListItem';
 
 const Stores = (props) => {
   const [stores, setStores] = useState([]);
   const [amount, setAmount] = useState(0);
-  const [detail, showDetail] = useState("");
+  const [detail, showDetail] = useState('');
 
   useEffect(() => {
-    axios.get("/stores").then((res) => {
+    axios.get('/stores').then((res) => {
       setStores(res.data.data);
     });
   }, []);

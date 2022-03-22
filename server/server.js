@@ -99,13 +99,13 @@ app.get('/stores/:id', (req, res) => {
 //--CARDS----//
 //////////////
 // -----all cards
-app.get('/gift_card', (req, res) => {
-  console.log(req.body);
+app.get('/gift_card/:id', (req, res) => {
   console.log(req.params);
-  console.log(req.body);
-  console.log('in card/');
+  console.log('in gift_card get req_params works');
   db.query(
-    `SELECT *  FROM gift_cards
+    `SELECT *, gift_cards.id as gift_card_id FROM users
+JOIN gift_cards ON user_id = users.id
+JOIN stores on stores.id = store_id
 WHERE gift_cards.id = $1`,
     [req.params.id]
   ).then((data) => res.json({ data: data.rows }));

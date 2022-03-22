@@ -25,6 +25,7 @@ function StoreListItem(props) {
   } = props;
 
   const [card, setCard] = useState(false);
+  // console.log(context.user.store_id);
 
   const handletrans = () => {
     axios.get(`/transactions/${params.id}/${context.user.id}`).then((res) => {
