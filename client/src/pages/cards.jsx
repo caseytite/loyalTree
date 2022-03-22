@@ -16,7 +16,7 @@ const Cards = () => {
   const cardList = cards
     .filter((card) => {
       const regex = new RegExp(nameFilter, "gi");
-      return regex.test(card.category) || regex.test(card.name);
+      return regex.test(card.name) || regex.test(card.category);
     })
     .map((card) => {
       return <GiftCardListItem key={card.gift_card_id} {...card} />;
