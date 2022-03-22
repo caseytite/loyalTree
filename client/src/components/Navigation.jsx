@@ -6,6 +6,7 @@ import Button from './Button';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import LoggedInUser from '../context/AuthContext';
+import axios from 'axios';
 
 const Navigation = (props) => {
   const context = useContext(LoggedInUser);
@@ -23,6 +24,9 @@ const Navigation = (props) => {
     cookies.remove('id', { path: '/' });
     context.user = {};
     localStorage.clear();
+
+    axios.post('/logout');
+
     return navigate('/');
   };
 

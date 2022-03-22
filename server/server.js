@@ -66,6 +66,11 @@ app.post('/login', (req, res) => {
     .catch((err) => res.json({ error: err.message }));
 });
 
+app.post('/logout', (req, res) => {
+  req.session = null;
+  res.redirect('/');
+});
+
 app.post('/users', (req, res) => {
   const [query, params] = ADD_USER(req.body);
   db.query(query, params)
@@ -99,7 +104,7 @@ app.get('/stores/:id', (req, res) => {
 //--CARDS----//
 //////////////
 // -----all cards
-app.get('/gift_card/:id', (req, res) => {
+app.get('/cards/:id', (req, res) => {
   console.log(req.params);
   console.log('in gift_card get req_params works');
   db.query(
@@ -121,7 +126,7 @@ WHERE gift_cards.id = $1`,
 
 //------cards by user id
 app.get('/cards', (req, res) => {
-  console.log('consolelog in cards/:id', req.session.id);
+  console.log('consolelog in cards', req.session.id);
   db.query(
     `SELECT *, gift_cards.id as gift_card_id FROM users
 JOIN gift_cards ON user_id = users.id

@@ -28,7 +28,7 @@ function GiftCardListItem(props) {
     currency: 'USD',
   });
   const getCard = (id) => {
-    axios.get(`/gift_card/${gift_card_id}`).then((res) => {
+    axios.get(`/cards/${gift_card_id}`).then((res) => {
       //navigates to card to show single card how to pass data?
       navigate(`/cards/${gift_card_id}`, {
         state: {
@@ -37,6 +37,7 @@ function GiftCardListItem(props) {
           point_balance,
           redeem_at,
           balance,
+          store_id,
           address,
           city,
           gift_card_id,
