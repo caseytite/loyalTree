@@ -1,9 +1,9 @@
-import React from "react";
-import "./App.css";
-import Navigation from "./components/Navigation";
-import Footer from "./components/Footer";
-import { Link, Outlet } from "react-router-dom";
-import LoggedInUser from "./context/AuthContext";
+import React from 'react';
+import './App.css';
+import Navigation from './components/Navigation';
+import Footer from './components/Footer';
+import { Link, Outlet } from 'react-router-dom';
+import LoggedInUser from './context/AuthContext';
 
 function App() {
   return (
@@ -15,10 +15,9 @@ function App() {
         }}
       >
         <Navigation />
-        <div>
-          <Link to="/stores">All Stores</Link> |{" "}
-          <Link to="/cards">My Cards</Link> |{" "}
-          <Link to="/scan">Scanner</Link>
+        <div className="top-links">
+          <Link to="/stores">All Stores</Link> |{' '}
+          <Link to="/cards">My Cards</Link> | <Link to="/scan">Scanner</Link>
           <Outlet />
         </div>
         <Footer />
