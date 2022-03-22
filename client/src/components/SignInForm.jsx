@@ -20,16 +20,17 @@ const SignInForm = (props) => {
     e.preventDefault();
     if (email && password) {
       axios
-        .get("/login", { params: { email, password } })
+        .post("/login", { email, password })
         .then((res) => {
           cookies.set("id", res.data.user.id, { path: "/" });
           context.isLoggedIn = true;
           context.user = res.data.user;
         })
-        .then(() => {
+        .then((response) => {
+          console.log("login response =", response)
           navigate("/stores");
         })
-        .catch((err) => console.log(err.message));
+        .catch((err) => console.log("Login Error:", err.message));
     }
     navigate("/signin");
   };

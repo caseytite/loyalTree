@@ -3,23 +3,59 @@ import React from "react";
 import "./GiftCardListItem.css";
 
 function GiftCardListItem(props) {
+  const {
+    address,
+    balance,
+    category,
+    description,
+    city,
+    photo_url,
+    point_balance,
+    redeem_at,
+    store_id,
+    store_name,
+    user_id,
+    card_id,
+  } = props;
+
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+
   return (
-    <div className="GiftCardListItem-card">
-      <ul>
-        <li>{props.firstName}'s Gift Card</li>
-        <li>{props.storeName}</li>
-        <li>
-          <img
-            className="giftcard-img"
-            src={props.photo_url}
-            alt={props.storeName}
-          />
-        </li>
-      </ul>
-      <div className="giftCard-description">
-        <li>{props.description}</li>
-        <li className="gc-balance">${props.balance}</li>
-      </div>
+    <div>
+      <p className="store-name">{store_name}</p>
+      <article
+        className="gift-card"
+        style={{
+          backgroundImage: `url(${photo_url})`,
+        }}
+      >
+        <header>
+          {redeem_at > 0 && (
+            <>
+              <div className="points">
+                <p>{point_balance}</p>
+                <div className="points-total">
+                  {/* <p>/</p> */}
+                  <p>/ {redeem_at}</p>
+                </div>
+              </div>
+            </>
+          )}
+          {balance > 0 && (
+            <div className="card-balance">
+              <p>{formatter.format(balance / 100)}</p>
+            </div>
+          )}
+        </header>
+
+        <footer>
+          <p>{address}</p>
+          <p>{city}</p>
+        </footer>
+      </article>
     </div>
   );
 }
