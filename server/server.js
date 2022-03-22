@@ -99,6 +99,13 @@ app.get("/stores/:id", (req, res) => {
 //--CARDS----//
 //////////////
 // -----all cards
+app.get("/card/:id", (req, res) => {
+  console.log(req.body)
+  db.query(`SELECT *  FROM gift_cards
+WHERE gift_cards.id = $1`, [req.params.id])
+    .then(data => res.json({ data: data.rows }))
+})
+
 app.get("/cards", (req, res) => {
   const [query, params] = USERS_GIFT_CARDS(req.session.id);
   db.query(query, params)
@@ -106,12 +113,16 @@ app.get("/cards", (req, res) => {
     .catch(err => res.json({ error: err.message }));
 });
 
+
+
+
 //------cards by user id
 app.get("/cards/:id", (req, res) => {
   console.log(req.params);
   db.query(
-    `SELECT * FROM users
+    `SELECT *, gift_cards.id as gift_card_id FROM users
 JOIN gift_cards ON user_id = users.id
+JOIN stores ON users.id = user_id
 WHERE gift_cards.user_id = $1`,
     [req.params.id]
   )
@@ -185,7 +196,6 @@ app.put('/cards/:id', (req, res) => {
 ////////////////
 // Dashboard //
 ///////////////
-////add return store_id
 //------------TRANSACTIONS
 // ---transactions specific to a store and user
 app.get('/transactions/:store/:user', (req, res) => {
@@ -201,21 +211,6 @@ ORDER BY transactions.created_at ASC
     .then((data) => res.json({ data: data.rows }))
     .catch((err) => res.json({ error: err.message }));
 });
-
-// app.get('/transactions/:store/:user', (req, res) => {
-
-//   // console.log(req)
-//   console.log(req.params)
-//   console.log(req.query)
-//   db.query(
-//     `SELECT transactions.created_at FROM transactions
-
-// `,
-//     [req.params.store, req.params.user]
-//   )
-//     .then((data) => res.json({ data: data.rows }))
-//     .catch((err) => res.json({ error: err.message }))
-// })
 
 app.get("/transactions", (req, res) => {
   db.query(TRANSACTIONS)
