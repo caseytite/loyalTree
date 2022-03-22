@@ -3,10 +3,10 @@ import axios from "axios";
 import StoreListItem from "../components/StoreListItem";
 
 const Stores = (props) => {
+  const [nameFilter, setNameFilter] = useState("");
   const [stores, setStores] = useState([]);
   const [amount, setAmount] = useState(0);
   const [detail, showDetail] = useState("");
-  const [nameFilter, setNameFilter] = useState("");
 
   useEffect(() => {
     axios.get("/stores").then((res) => {
@@ -14,11 +14,10 @@ const Stores = (props) => {
     });
   }, []);
 
-  // shows all the stores if showDetail is falsey
   const storesArr = stores
     .filter((store) => {
       const regex = new RegExp(nameFilter, "gi");
-      return regex.test(store.name);
+      return regex.test(store.name) || regex.test(store.category);
     })
     .map((store) => {
       return (
@@ -39,7 +38,7 @@ const Stores = (props) => {
 
   return (
     <div className="stores-list">
-      <label htmlFor="name-filter">Filter by Name:</label>
+      <label htmlFor="name-filter">Filter: </label>
       <input
         id="name-filter"
         value={nameFilter}

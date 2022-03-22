@@ -1,29 +1,40 @@
-import { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import LoggedInUser from '../context/AuthContext';
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-import GiftCardListItem from '../components/GiftCardListItem';
+import GiftCardListItem from "../components/GiftCardListItem";
 
 const Cards = () => {
+  const [nameFilter, setNameFilter] = useState("");
   const [cards, setCards] = useState([]);
-  // const params = useParams();
-  const context = useContext(LoggedInUser);
 
   useEffect(() => {
     axios.get(`/cards`).then((res) => {
       setCards(res.data.data);
     });
   }, []);
-  const cardList = cards.map((card) => {
-    return <GiftCardListItem key={card.giftcard_id} {...card} />;
-  });
+
+  const cardList = cards
+    .filter((card) => {
+      const regex = new RegExp(nameFilter, "gi");
+      return regex.test(card.category) || regex.test(card.name);
+    })
+    .map((card) => {
+      return <GiftCardListItem key={card.gift_card_id} {...card} />;
+    });
 
   return (
-    <>
+    <div className="cards-list">
       <h2>List of user's cards</h2>
+      <label htmlFor="name-filter">Filter: </label>
+      <input
+        id="name-filter"
+        value={nameFilter}
+        onChange={(e) => {
+          setNameFilter(e.target.value);
+        }}
+      />
       <div className="card-list">{cardList}</div>
-    </>
+    </div>
   );
 };
 
