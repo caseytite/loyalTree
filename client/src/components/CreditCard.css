@@ -1,14 +1,27 @@
 /* @import url('https://fonts.googleapis.com/css?family=Raleway:400,500,700'); */
 
 /* https://www.w3schools.com/css/css_positioning.asp */
+.modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-content {
+  width: 100%;
+  background-color: fff;
+}
 
 .card-row {
   display: flex;
   flex-direction: row;
 }
-/* .col input {
-  width: 30%;
-} */
+
 .card-params {
   display: flex;
   flex-direction: row;
@@ -33,43 +46,17 @@
   box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
 }
 
-/* .item-container .item-image img {
-  height: 430px;
-  width: 50%;
-} */
-
-/* .item-image {
-  position: absolute;
-  z-index: 1;
-} */
-
-/* .item-details {
-  position: absolute;
-  bottom: 0;
-  margin-bottom: 15px;
-  margin-left: 20px;
-} */
-
-/* .item-name {
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-} */
-
-/* .item-price {
-  font-size: 25px;
-  font-weight: 700;
-  color: #0b8a6d;
-} */
-
 .checkout {
   height: 430px;
   /* background-color: #05000a; */
+  min-width: 275px;
   color: white;
   width: 50%;
   border-radius: 1em;
   align-items: center;
-  margin-bottom: 5em;
+  /* margin-left: 25%;
+  margin-right: 25%; */
+  margin: auto;
   /* position: fixed; */
   z-index: 99;
   max-width: 475px;
@@ -138,20 +125,20 @@
 }
 
 /* Removes form Controls  */
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   margin: 0;
 }
 
-input[type='month']::-webkit-inner-spin-button {
+input[type="month"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   display: none;
 }
 
-input[type='month']::-webkit-calendar-picker-indicator {
+input[type="month"]::-webkit-calendar-picker-indicator {
   -webkit-appearance: none;
   display: none;
 }
