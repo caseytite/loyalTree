@@ -26,16 +26,16 @@ function GiftCardListItem(props) {
     currency: 'USD',
   });
 
-  const getCard = (id) => {
-    console.log(id);
-    axios
-      .get('/card', { params: { id } })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err.message));
-  };
-
+  // const getCard = (id) => {
+  //   console.log(id);
+  //   axios
+  //     .get('/gift_card', { params: { id } })
+  //     .then((res) => console.log(res))
+  //     .catch((err) => console.log(err.message));
+  // };
+  // onClick={() => getCard(gift_card_id)}
   return (
-    <div onClick={() => getCard(gift_card_id)}>
+    <div>
       <p className="store-name">{store_name}</p>
       <article
         className="gift-card"

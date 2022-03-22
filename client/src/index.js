@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react';
 // import ReactDOM from 'react-dom';
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import { render } from "react-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Stores from "./pages/stores";
-import StoreDetails from "./pages/storeDetails";
-import Cards from "./pages/cards";
-import Transactions from "./pages/transactions";
-import Scan from "./pages/scan";
-import Signin from "./pages/signin";
-import Register from "./pages/register";
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import { render } from 'react-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Stores from './pages/stores';
+import StoreDetails from './pages/storeDetails';
+import Cards from './pages/cards';
+import Transactions from './pages/transactions';
+import Scan from './pages/scan';
+import Signin from './pages/signin';
+import Register from './pages/register';
 
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById('root');
 render(
   <BrowserRouter>
     <Routes>

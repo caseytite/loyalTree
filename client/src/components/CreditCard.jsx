@@ -30,6 +30,7 @@ const Checkout = (props) => {
         store_id: params.id,
       })
       .then((res) => {
+        console.log('in process');
         setText('Processing');
         setTimeout(() => {
           setAmount('');

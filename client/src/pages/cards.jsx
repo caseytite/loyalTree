@@ -7,10 +7,11 @@ import GiftCardListItem from '../components/GiftCardListItem';
 
 const Cards = () => {
   const [cards, setCards] = useState([]);
-  const params = useParams();
+  // const params = useParams();
   const context = useContext(LoggedInUser);
 
   useEffect(() => {
+    console.log('in cards get', context);
     axios.get(`/cards`, { params: { id: context.user.id } }).then((res) => {
       console.log(res.data.data);
       setCards(res.data.data);
