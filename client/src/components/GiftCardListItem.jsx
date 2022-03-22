@@ -14,7 +14,7 @@ function GiftCardListItem(props) {
     point_balance,
     redeem_at,
     store_id,
-    store_name,
+    name,
     user_id,
     card_id,
     id,
@@ -27,19 +27,28 @@ function GiftCardListItem(props) {
     style: 'currency',
     currency: 'USD',
   });
-  // navigate(`/gift_card/${gift_card_id}`)
   const getCard = (id) => {
-    console.log(gift_card_id);
-
     axios.get(`/gift_card/${gift_card_id}`).then((res) => {
-      console.log(res);
+      //navigates to card to show single card how to pass data?
+      navigate(`/cards/${gift_card_id}`, {
+        state: {
+          name,
+          photo_url,
+          point_balance,
+          redeem_at,
+          balance,
+          address,
+          city,
+          gift_card_id,
+        },
+      });
     });
     // .catch((err) => console.log(err.message));
   };
 
   return (
-    <div onClick={() => getCard(gift_card_id)}>
-      <p className="store-name">{store_name}</p>
+    <div key={gift_card_id} onClick={() => getCard(gift_card_id)}>
+      <p className="store-name">{name}</p>
       <article
         className="gift-card"
         style={{

@@ -26,6 +26,7 @@ function StoreListItem(props) {
 
   const [card, setCard] = useState(false);
   // console.log(context.user.store_id);
+  const currentStore = localStorage.getItem('store');
 
   const handletrans = () => {
     axios.get(`/transactions/${params.id}/${context.user.id}`).then((res) => {
@@ -55,11 +56,11 @@ function StoreListItem(props) {
             {detail && <Button onClick={() => setCard(!card)}>Purchase</Button>}
           </div>
         </div>
-        {context.user.store_id === storeID && detail && (
+        {+currentStore === storeID && detail && (
           <Button onClick={() => handletrans()}>check transactions</Button>
         )}
       </article>
-      {card && <CreditCard closeCard={setCard} />}
+      {card && <CreditCard open={card} closeCard={setCard} />}
     </>
   );
 }

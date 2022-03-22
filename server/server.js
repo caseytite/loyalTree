@@ -121,13 +121,13 @@ WHERE gift_cards.id = $1`,
 
 //------cards by user id
 app.get('/cards', (req, res) => {
-  console.log('consolelog in cards/:id', req.query);
+  console.log('consolelog in cards/:id', req.session.id);
   db.query(
     `SELECT *, gift_cards.id as gift_card_id FROM users
 JOIN gift_cards ON user_id = users.id
 JOIN stores on stores.id = store_id
 WHERE gift_cards.user_id = $1`,
-    [req.query.id]
+    [req.session.id]
   )
     .then((data) => res.json({ data: data.rows }))
     .catch((err) => res.json({ error: err.message }));

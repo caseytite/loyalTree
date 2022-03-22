@@ -24,8 +24,9 @@ const SignInForm = (props) => {
         .then((res) => {
           cookies.set('id', res.data.user.id, { path: '/' });
           context.user = res.data.user;
-          context.userID = res.data.user.id;
+          // context.userID = res.data.user.id;
           localStorage.setItem('user', res.data.user);
+          localStorage.setItem('store', res.data.user.store_id);
         })
         .then((response) => {
           navigate('/stores');
@@ -34,6 +35,7 @@ const SignInForm = (props) => {
     }
     navigate('/signin');
   };
+
   return (
     <form action="" onSubmit={onFormSubmission}>
       <div className="form-container">

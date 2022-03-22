@@ -8,12 +8,12 @@ import X from './X';
 //*****//    Design by: http://collectui.com/designers/pattiewaffle/checkout */
 
 const Checkout = (props) => {
-  const { closeCard } = props;
+  const { closeCard, open } = props;
   const context = useContext(LoggedInUser);
   const navigate = useNavigate();
-  const [name, setName] = useState(context.user.first_name);
+  const [name, setName] = useState('Casey');
   const [card, setCard] = useState('1234123412341234');
-  const [email, setEmail] = useState(context.user.email);
+  const [email, setEmail] = useState('casey@example.com');
   const [amount, setAmount] = useState('100');
   const [exp, setExp] = useState('');
   const [cvv, setCvv] = useState('123');
@@ -21,7 +21,7 @@ const Checkout = (props) => {
   const params = useParams();
 
   const handlePayment = () => {
-    const id = context.user.id;
+    const id = context.userID;
     axios
       .post(`/cards/${id}`, {
         email,
@@ -30,7 +30,6 @@ const Checkout = (props) => {
         store_id: params.id,
       })
       .then((res) => {
-        console.log('in process');
         setText('Processing');
         setTimeout(() => {
           setAmount('');
@@ -43,7 +42,7 @@ const Checkout = (props) => {
           setTimeout(() => {
             navigate('/stores');
           }, 1000);
-        }, 1000);
+        }, 2000);
       })
 
       .catch((err) => console.log(err.message));
@@ -52,8 +51,8 @@ const Checkout = (props) => {
   return (
     <div className="checkout">
       <div className="checkout-container">
-        <button className="close-btn" onClick={() => closeCard(false)}>
-          <X />
+        <button className="close-btn" onClick={(e) => console.log(e.target)}>
+          <X onClick={() => console.log('click close')} />
         </button>
         <h3 className="heading-3">Credit card checkout</h3>
         <Input
@@ -62,7 +61,6 @@ const Checkout = (props) => {
           label="Cardholder's Name"
           type="text"
           name="name"
-          placeHolder="Casey"
         />
         <Input
           value={card}
