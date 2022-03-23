@@ -2,7 +2,7 @@
 update 
 #
 
-- [ ] As a user i can "login"
+- [X] As a user i can "login"
       - [X] Create login view
       - [X] Set up login form 
       - [X] get data from form
@@ -15,7 +15,7 @@ update
     - [x] create view for stores 
     - [x] create view for all stores 
 - [X] As a user I can look at my collection of gift cards because I want to see their balance/points balance
-    - [ ] create a detailed view for a gift card (including how to buy)
+    - [x] create a detailed view for a gift card (including how to buy)
         - [x] get qr codes to render (based off of card id)
     - [X] create view for gift card 
     - [X] create view for all gift cards
@@ -26,9 +26,9 @@ update
     - [ ] show proof of transaction to bit owner and user
 - [ ] As a user I can transfer a purchased gift card to someone else as a gift on purchase
     - [X] as a user I can buy a gift card for some one else(by email)
-    - [ ] create a transfer view
-    - [ ] make the transfer occur
-- [ ] As a user I can search/filter for gift cards by category or name
+    - [X] create a transfer view
+    - [X] make the transfer occur
+- [X] As a user I can search/filter for gift cards by category or name
 
 - [ ] As a user I can review my transactions(on the gift card view)
     - [ ] Create a transactions view
@@ -42,7 +42,7 @@ update
 Business owners
 
 - [ ] As an owner, I want to be able to redeem gift cards at transaction time, and see details (process transactions)
-      - [ ] create a dashboard 
+      - [X] create a dashboard 
       - [ ] Create a transactions view in dashboard
       - [X] Get qr scanning working
       - [ ] Make the transaction occur

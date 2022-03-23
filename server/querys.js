@@ -44,7 +44,7 @@ const STORE_DETAIL = (params) => {
 const USERS_STORES = (userCookie) => {
   return [
     `
-    SELECT * FROM stores
+    SELECT *, stores.id as store_id FROM stores
     JOIN users ON owner_id = users.id
     WHERE stores.owner_id = $1
     LIMIT 1;`,

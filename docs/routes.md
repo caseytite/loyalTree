@@ -1,13 +1,13 @@
 - [ ] /register -GET
 - [x] /login -GET ———
-- [ ] /logout -get
+- [x] /logout -post
 
-- [ ] /stores -GET (reg user landing page when logged in)
+- [x] /stores -GET (reg user landing page when logged in)
 - [x]/stores/:id———
 - [x]/cards get ———
 - [x]/cards/:id GET ———
 - [x]/cards/:id/ -POST (include receiving user and amount) ——
-- [ ]/cards/:id/ PUT
+- [x]/cards/:id/ PUT
   <!-- /cart GET -->
   /checkout GET?
   <!-- transactions -->
@@ -18,5 +18,6 @@
   redeem?
   link to long list of transactions
 
-- [ ]/dashboard/redeem (scanner) GET
+- [x]/dashboard/redeem (scanner) GET/POST
+- [x]/dashboard
 - [ ]/dashboard/transactions GET
