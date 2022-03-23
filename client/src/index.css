@@ -10,4 +10,5 @@
 body {
   margin: 0 auto;
   max-width: 960px;
+  background-image: url("../public/leaves-pattern.png");
 }

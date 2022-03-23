@@ -1,8 +1,15 @@
 .store-list-item {
-  background-color: rgb(217, 221, 221);
+  background-color: whitesmoke;
   width: 90%;
-  border-radius: 1em;
+  border-radius: 0.5em;
   margin: 1em auto;
+  transition: width 0.5s, height 0.5s;
+}
+.store-list-item:hover {
+  box-shadow: 5px 5px hsl(0, 4%, 71%);
+  width: 89%;
+  background-color: white;
+  border: 1px solid hsl(0, 4%, 71%);
 }
 
 .store-list-top {
@@ -20,6 +27,7 @@
   width: 50%;
   padding: 1em;
   border-radius: 2em;
+  transition: width 0.5s, height 0.5s;
 }
 
 .store-description {
@@ -33,7 +41,50 @@
   padding: 1em;
 }
 
-.store-list-btn {
-  background-color: blue;
-  color: red;
+.hr {
+  width: 90%;
+}
+
+/* ------------------------- */
+.text-container {
+  position: relative;
+  width: 80%;
+}
+
+/* .store-list-image {
+  display: block;
+  width: 100%;
+  height: auto;
+} */
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #008cba;
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  transition: 0.5s ease;
+}
+
+.text-container:hover .overlay {
+  width: 100%;
+}
+.overlay:active {
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
 }
