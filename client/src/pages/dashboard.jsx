@@ -1,16 +1,19 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 import Scanner from "../components/Scanner";
 
 const Dashboard = (props) => {
+  const [storeInfo, setStoreInfo] = useState({});
 
   useEffect(() => {
-    axios.get("/dashboard", (response) => {
-      console.log("Welcome, store owner")
-      console.log(response.data )
-    })
-  })
+    axios.get("/dashboard").then((response) => {
+      setStoreInfo(response.data);
+    });
+  }, []);
+
+  // while building dashboard
+  console.log(storeInfo);
 
   return (
     <div className="dashboard">
