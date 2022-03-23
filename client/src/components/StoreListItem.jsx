@@ -48,10 +48,7 @@ function StoreListItem(props) {
   };
   return (
     <>
-      <article
-        className="store-list-item"
-        onClick={() => navigate(`/stores/${storeID}`)}
-      >
+      <article className="store-list-item">
         <div className="store-list-top">
           <h1>{storeName}</h1>
           <h3>{address}</h3>
@@ -65,7 +62,12 @@ function StoreListItem(props) {
               <div className="text-container">
                 <img className="store-list-img" src={photo} alt={category} />
                 <div class="overlay">
-                  <div class="text">Click to Learn More</div>
+                  <div
+                    onClick={() => navigate(`/stores/${storeID}`)}
+                    class="text"
+                  >
+                    Click to Learn More
+                  </div>
                 </div>
               </div>
             )}

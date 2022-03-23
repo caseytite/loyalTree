@@ -51,12 +51,6 @@
   width: 80%;
 }
 
-/* .store-list-image {
-  display: block;
-  width: 100%;
-  height: auto;
-} */
-
 .overlay {
   position: absolute;
   bottom: 0;
@@ -74,8 +68,8 @@
 .text-container:hover .overlay {
   width: 100%;
 }
-.overlay:active {
-}
+/* .overlay:active {
+} */
 
 .text {
   color: white;
