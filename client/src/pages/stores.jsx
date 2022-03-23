@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import StoreListItem from "../components/StoreListItem";
+import "../components/StoreListItem.css";
 
 const Stores = (props) => {
   const [nameFilter, setNameFilter] = useState("");
@@ -36,7 +37,9 @@ const Stores = (props) => {
 
   return (
     <div className="stores-list">
-      <label htmlFor="name-filter">Filter: </label>
+      <label htmlFor="name-filter">
+        Find a card for <i>You</i>{" "}
+      </label>
       <input
         id="name-filter"
         value={nameFilter}

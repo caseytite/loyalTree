@@ -21,7 +21,7 @@ const Checkout = (props) => {
             <button className="close-btn" onClick={() => closeCard(!card)}>
               <X />
             </button>
-            <h3 className="heading-3">Credit card checkout</h3>
+            <h3 className="heading-3">For you or for a friend</h3>
             <Input
               value={name}
               setValue={setName}
