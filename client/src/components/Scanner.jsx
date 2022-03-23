@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 import axios from "axios";
 import QrScanner from "qr-scanner";
@@ -12,6 +12,7 @@ const Scanner = (props) => {
   const [error, setError] = useState(null);
   const [transAmt, setTransAmt] = useState("");
   const [cardID, setCardID] = useState(null);
+  const [transaction, setTransaction] = useState();
 
   let qrScanner;
 
@@ -50,9 +51,13 @@ const Scanner = (props) => {
           setError(null);
           setTransAmt("");
           setCardID(null);
-      });
-  };
+          setTransaction(response.data);
+        });
+      };
+      console.log("transaction", transaction);
 
+  
+ 
   return (
     <div className="scanner">
       <h2>Redeem from Gift Card</h2>
@@ -73,6 +78,11 @@ const Scanner = (props) => {
       )}
       {error && <p>{error}</p>}
       <video ref={previewEl}></video>
+       {transaction && <div className="transaction-details">
+        <h3>Transaction Details</h3>
+        <p>Transaction ID: {transaction.id}</p>
+        <p>Transaction amount: ${transaction.amount / 100 * -1}</p>
+       </div>}
     </div>
   );
 };

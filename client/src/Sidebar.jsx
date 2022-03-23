@@ -10,7 +10,7 @@ export default function Sidebar(props)  {
 
 
   return (
-    <Menu>
+    <Menu right>
       <a className="menu-item" href="/">
         Home
       </a>
