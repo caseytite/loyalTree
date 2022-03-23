@@ -48,10 +48,6 @@ function App() {
           handleLogout={handleLogout}
           handleLogin={handleLogin}
         />
-        <div className="top-links">
-          {/* <Link to="/stores">All Stores</Link> |{' '}
-          <Link to="/cards">My Cards</Link> | <Link to="/scan">Scanner</Link> */}
-        </div>
         <Sidebar
           handleRegister={handleRegister}
           user={user}
