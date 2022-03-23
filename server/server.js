@@ -297,8 +297,46 @@ app.get("/dashboard/redeem", (req, res) => {
     });
 });
 
-// redeem
-app.post("/dashboard/redeem", (req, res) => {});
+// redeem amount from gift card
+app.post("/dashboard/redeem", (req, res) => {
+  const cardID = req.body.cardID;
+  const storeID = req.session.store_id;
+  const transAmt = req.body.transAmt * 100;
+  const cardAmt = req.body.cardAmt;
+  const debitAmt = transAmt > cardAmt ? cardAmt : transAmt;
+
+  // remove balance from card
+  console.log("attempting to remove balance from card");
+  db.query(
+    `
+    UPDATE gift_cards
+    SET balance = balance - $1
+    WHERE id = $2
+    returning *
+  `,
+    [debitAmt, cardID]
+  )
+    .then((data) => {
+      // create transaction record
+      console.log("first data =", data.rows[0]);
+      console.log("attempting to create record");
+      return db.query(
+        `
+      INSERT INTO transactions (
+        giftcard_id, store_id, amount )
+      VALUES (
+        $1, $2, $3 )
+      RETURNING *
+        `,
+        [cardID, storeID, debitAmt * -1]
+      );
+    })
+    .then((data) => {
+      // return transaction record
+      console.log("second data =", data.rows[0]);
+      res.json(data.rows[0]);
+    });
+});
 
 // to run use npx nodemon
 app.listen(PORT, () => {
