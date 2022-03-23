@@ -8,11 +8,14 @@ import "./Scanner.css";
 const Scanner = (props) => {
   const previewEl = useRef(null);
   const outputEl = useRef(null);
-  const [cardAmount, setCardAmount] = useState("");
+  const [cardAmount, setCardAmount] = useState(null);
+  const [error, setError] = useState(null);
 
   let qrScanner;
 
   const scanCode = () => {
+    setError(null);
+    setCardAmount(null);
     qrScanner = new QrScanner(previewEl.current, (result) => {
       console.log("decoded qr code:", result);
       qrScanner.destroy();
@@ -23,7 +26,9 @@ const Scanner = (props) => {
         .get("/dashboard/redeem", { params: { cardID: result } })
         .then((response) => {
           console.log(response.data);
-          setCardAmount(response.data.balance)
+          return response.data.error
+            ? setError(response.data.error)
+            : setCardAmount(response.data.balance);
         });
     });
     qrScanner.start();
@@ -39,6 +44,7 @@ const Scanner = (props) => {
         cardAmount / 100 || "--"
       }`}</p>
       {cardAmount && <Button children={"Accept transaction"} />}
+      {error && <p>{error}</p>}
       <Button onClick={() => scanCode()} children={"Click to scan"} />
       <video ref={previewEl}></video>
     </div>
