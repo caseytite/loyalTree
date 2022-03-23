@@ -14,3 +14,12 @@
   max-width: 450px;
   width: 100%;
 }
+
+.transaction-container {
+  width: 80%;
+  background-color: blueviolet;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
