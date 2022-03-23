@@ -301,7 +301,7 @@ app.get("/dashboard/redeem", (req, res) => {
 app.post("/dashboard/redeem", (req, res) => {
   const cardID = req.body.cardID;
   const storeID = req.session.store_id;
-  const transAmt = req.body.transAmt * 100;
+  const transAmt = Math.round(req.body.transAmt * 100);
   const cardAmt = req.body.cardAmt;
   const debitAmt = transAmt > cardAmt ? cardAmt : transAmt;
 
@@ -334,7 +334,7 @@ app.post("/dashboard/redeem", (req, res) => {
     .then((data) => {
       // return transaction record
       console.log("second data =", data.rows[0]);
-      res.json(data.rows[0]);
+      return res.json(data.rows[0]);
     });
 });
 
