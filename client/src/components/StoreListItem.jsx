@@ -58,7 +58,17 @@ function StoreListItem(props) {
         </div>
         <div className="store-list-cont">
           <div>
-            <img className="store-list-img" src={photo} alt={category} />
+            {detail && (
+              <img className="store-list-img" src={photo} alt={category} />
+            )}
+            {!detail && (
+              <div className="text-container">
+                <img className="store-list-img" src={photo} alt={category} />
+                <div class="overlay">
+                  <div class="text">Click to Learn More</div>
+                </div>
+              </div>
+            )}
             <div className="store-description">
               <h2>About Us!</h2>
               <h3>{description}</h3>
@@ -73,6 +83,7 @@ function StoreListItem(props) {
           <Button onClick={() => handletrans()}>check transactions</Button>
         )}
       </article>
+
       {card && (
         <CreditCard
           text={text}
