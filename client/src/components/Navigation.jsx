@@ -30,6 +30,10 @@ const Navigation = (props) => {
     return navigate('/');
   };
 
+   const handleRegister = () => {
+    return navigate('/register');
+  };
+
   return (
     <nav className="nav">
       <Link to={{ pathname: '/' }}>
@@ -38,9 +42,9 @@ const Navigation = (props) => {
       <div className="header-logins">
         {user && <Button onClick={handleLogout}>Log Out</Button>}
         {!user && <Button onClick={handleLogin}>Log in</Button>}
-        <Link className="nav-text" to={{ pathname: '/register' }}>
+        <Button className="nav-text" onClick={handleRegister} >
           Register
-        </Link>
+        </Button>
       </div>
     </nav>
   );
