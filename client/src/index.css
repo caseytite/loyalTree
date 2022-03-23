@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@400;500;700&display=swap");
 :root {
   --jet: hsla(260, 3%, 23%, 1);
   --cultured: hsla(60, 5%, 96%, 1);
@@ -9,6 +10,17 @@
 
 body {
   margin: 0 auto;
-  max-width: 960px;
+  /* max-width: 960px; */
+  font-family: "Roboto";
   background-image: url("../public/leaves-pattern.png");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#page-wrap {
+  padding-bottom: 10px;
+  padding-top: 10px;
+  max-width: 960px;
 }
