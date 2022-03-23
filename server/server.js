@@ -285,14 +285,16 @@ app.get("/dashboard/redeem", (req, res) => {
     AND store_id = $2
   `,
     [cardID, storeID]
-  ).then((data) => {
-    const results = data.rows[0]
-    // check if balance is missing
-    console.log(data.rows[0]);
-    return results.balance ? res.json(data.rows[0]) : undefined
-  }).catch((err) => {
-    res.json({error: 'Card not valid'})
-  });
+  )
+    .then((data) => {
+      const results = data.rows[0];
+      // check if balance is missing
+      console.log(data.rows[0]);
+      return results.balance ? res.json(data.rows[0]) : undefined;
+    })
+    .catch((err) => {
+      res.json({ error: "Card not valid" });
+    });
 });
 
 // redeem
