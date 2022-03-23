@@ -40,14 +40,15 @@ function App() {
     <div className="App" id="outer-container">
       <LoggedInUser.Provider
         value={{
-          user: localStorage.getItem('user'),
+          user: localStorage.getItem("user"),
           // userID: Number(document.cookie.slice(3)),
         }}
       >
         <Navigation handleRegister={handleRegister} user={user} handleLogout={handleLogout} handleLogin={handleLogin} />
         <div className="top-links">
-          <Link to="/stores">All Stores</Link> |{' '}
-          <Link to="/cards">My Cards</Link> | <Link to="/scan">Scanner</Link>
+          <Link to="/stores">All Stores</Link> |{" "}
+          <Link to="/cards">My Cards</Link> |{" "}
+          <Link to="/dashboard">Dashboard</Link>
         </div>
         <Sidebar handleRegister={handleRegister} user={user} handleLogout={handleLogout} handleLogin={handleLogin} pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
         <div id="page-wrap">
