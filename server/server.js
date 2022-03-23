@@ -260,10 +260,15 @@ app.get("/store/transactions", (req, res) => {
     .catch((err) => res.json({ error: err.message }));
 });
 
+// store owner's dashboard for making transactions, check that user is valid
 app.get("/dashboard", (req, res) => {
   const [query, params] = USERS_STORES(req.session.id);
   db.query(query, params)
-    .then((data) => console.log(data.rows[0]) || res.json(data.rows[0]))
+    .then((data) => {
+      req.session.store_id = data.rows[0].id;
+      console.log(data.rows[0]);
+      res.json(data.rows[0]);
+    })
     .catch((err) => res.json({ error: err.message }));
 });
 
