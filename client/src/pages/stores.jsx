@@ -29,8 +29,6 @@ const Stores = (props) => {
           photo={store.photo_url}
           description={store.description}
           category={store.category}
-          setAmount={setAmount} // what is this?
-          showDetail={showDetail}
           detail={detail}
         />
       );

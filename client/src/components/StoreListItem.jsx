@@ -1,33 +1,24 @@
-import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Button from './Button';
-import axios from 'axios';
-import './StoreListItem.css';
-import CreditCard from './CreditCard';
-import LoggedInUser from '../context/AuthContext';
-import { useParams } from 'react-router-dom';
+import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import Button from "./Button";
+import axios from "axios";
+import "./StoreListItem.css";
+import CreditCard from "./CreditCard";
+import LoggedInUser from "../context/AuthContext";
+import { useParams } from "react-router-dom";
 
 function StoreListItem(props) {
   let navigate = useNavigate();
   const context = useContext(LoggedInUser);
   const params = useParams();
 
-  const {
-    storeID,
-    storeName,
-    description,
-    address,
-    category,
-    photo,
-    setAmount,
-    showDetail,
-    detail,
-  } = props;
+  const { storeID, storeName, description, address, category, photo, detail } =
+    props;
 
   const [card, setCard] = useState(false);
-  const [text, setText] = useState('Place Order');
+  const [text, setText] = useState("Place Order");
   // console.log(context.user.store_id);
-  const currentStore = localStorage.getItem('store');
+  const currentStore = localStorage.getItem("store");
 
   const handletrans = () => {
     axios.get(`/transactions/${params.id}/${context.user.id}`).then((res) => {
@@ -44,11 +35,11 @@ function StoreListItem(props) {
         store_id: params.id,
       })
       .then((res) => {
-        setText('Processing');
+        setText("Processing");
         setTimeout(() => {
-          setText('Thank you for your purchase!');
+          setText("Thank you for your purchase!");
           setTimeout(() => {
-            navigate('/stores');
+            navigate("/stores");
           }, 1000);
         }, 2000);
       })
@@ -91,6 +82,7 @@ function StoreListItem(props) {
           onPay={onPay}
         />
       )}
+      <hr className="hr" />
     </>
   );
 }

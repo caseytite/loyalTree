@@ -1,8 +1,15 @@
 .store-list-item {
-  background-color: rgb(217, 221, 221);
+  background-color: whitesmoke;
   width: 90%;
-  border-radius: 1em;
+  border-radius: 0.5em;
   margin: 1em auto;
+  transition: width 0.5s, height 0.5s;
+}
+.store-list-item:hover {
+  box-shadow: 5px 5px hsl(0, 4%, 71%);
+  width: 89%;
+  background-color: white;
+  border: 1px solid hsl(0, 4%, 71%);
 }
 
 .store-list-top {
@@ -20,6 +27,12 @@
   width: 50%;
   padding: 1em;
   border-radius: 2em;
+  transition: width 0.5s, height 0.5s;
+}
+.store-list-img:hover {
+  /* box-shadow: 5px 5px hsl(0, 4%, 71%); */
+  width: 51%;
+  background-color: white;
 }
 
 .store-description {
@@ -33,7 +46,6 @@
   padding: 1em;
 }
 
-.store-list-btn {
-  background-color: blue;
-  color: red;
+.hr {
+  width: 90%;
 }
