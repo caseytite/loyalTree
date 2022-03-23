@@ -17,9 +17,14 @@
 
 .transaction-container {
   width: 80%;
-  background-color: blueviolet;
-  display: flex;
-  flex-direction: column;
+  background-color: whitesmoke;
+  text-align: center;
   align-items: center;
-  gap: 1rem;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+
+.transaction-details {
+  display: flex;
+  justify-content: space-around;
 }
