@@ -272,6 +272,33 @@ app.get("/dashboard", (req, res) => {
     .catch((err) => res.json({ error: err.message }));
 });
 
+// check that scanned card is valid and get balance
+app.get("/dashboard/redeem", (req, res) => {
+  const cardID = +req.query.cardID;
+  const storeID = req.session.store_id;
+  console.log({ card: cardID, store: storeID });
+
+  db.query(
+    `
+    SELECT id, balance, store_id FROM gift_cards
+    WHERE id = $1
+    AND store_id = $2
+  `,
+    [cardID, storeID]
+  ).then((data) => {
+    const results = data.rows[0]
+    // check if balance is missing
+
+    console.log(data.rows[0]);
+    res.json(data.rows[0])
+  }).catch((err) => {
+    res.json({error: 'Card not valid'})
+  });
+});
+
+// redeem
+app.post("/dashboard/redeem", (req, res) => {});
+
 // to run use npx nodemon
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}!`);
