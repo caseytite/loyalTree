@@ -17,6 +17,7 @@ const Dashboard = (props) => {
 
   return (
     <div className="dashboard">
+      <h2>{`Dashboard » ${storeInfo.name}`}</h2>
       <Scanner />
     </div>
   );
