@@ -14,7 +14,6 @@
 }
 .modal-content {
   width: 100%;
-  background-color: fff;
 }
 
 .card-row {
@@ -48,16 +47,13 @@
 
 .checkout {
   height: 430px;
-  /* background-color: #05000a; */
+  background-color: #05000a;
   min-width: 275px;
   color: white;
   width: 50%;
   border-radius: 1em;
   align-items: center;
-  /* margin-left: 25%;
-  margin-right: 25%; */
   margin: auto;
-  /* position: fixed; */
   z-index: 99;
   max-width: 475px;
 }
@@ -160,7 +156,6 @@ input[type="month"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
 .checkout-btn:hover {
-  /* background-color: green; */
   box-shadow: 0px 0px 10px rgb(0, 0, 0);
 }
 

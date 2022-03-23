@@ -1,51 +1,17 @@
 import "./CreditCard.css";
-import { useState, useContext } from "react";
-import LoggedInUser from "../context/AuthContext";
-import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import X from "./X";
 
 //*****//    Design by: http://collectui.com/designers/pattiewaffle/checkout */
 
 const Checkout = (props) => {
-  const { closeCard, open, onPay, text, setText } = props;
-  const context = useContext(LoggedInUser);
-  const navigate = useNavigate();
+  const { closeCard, open, onPay, text } = props;
   const [name, setName] = useState("Casey");
   const [card, setCard] = useState("1234123412341234");
   const [email, setEmail] = useState("casey@example.com");
   const [amount, setAmount] = useState("100");
   const [exp, setExp] = useState("");
   const [cvv, setCvv] = useState("123");
-  const params = useParams();
-
-  // const handlePayment = () => {
-  //   const id = context.userID;
-  //   axios
-  //     .post(`/cards/${id}`, {
-  //       email,
-  //       balance: amount,
-  //       user_id: id,
-  //       store_id: params.id,
-  //     })
-  //     .then((res) => {
-  //       setText('Processing');
-  //       setTimeout(() => {
-  //         setAmount('');
-  //         setName('');
-  //         setCard('');
-  //         setEmail('');
-  //         setCvv('');
-  //         setExp('');
-  //         setText('Thank you for your purchase!');
-  //         setTimeout(() => {
-  //           navigate('/stores');
-  //         }, 1000);
-  //       }, 2000);
-  //     })
-
-  //     .catch((err) => console.log(err.message));
-  // };
 
   return (
     <div className="modal">
