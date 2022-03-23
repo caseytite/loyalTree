@@ -42,6 +42,7 @@ function App() {
           // userID: Number(document.cookie.slice(3)),
         }}
       >
+
         <Navigation
           handleRegister={handleRegister}
           user={user}
@@ -56,6 +57,7 @@ function App() {
           pageWrapId={"page-wrap"}
           outerContainerId={"outer-container"}
         />
+
         <div id="page-wrap">
           <Outlet />
         </div>

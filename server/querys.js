@@ -41,22 +41,21 @@ const STORE_DETAIL = (params) => {
   ];
 };
 
-const USERS_STORES = (params) => {
-  // users stores is gonna have to be req.sessions.users.id
-  // params.owner_id
+const USERS_STORES = (userCookie) => {
   return [
     `
     SELECT * FROM stores
     JOIN users ON owner_id = users.id
-    WHERE stores.owner_id = 1;`,
-    [],
+    WHERE stores.owner_id = $1
+    LIMIT 1;`,
+    [userCookie],
   ];
 };
 
 //---------------GIFT CARDS --------------------------
 const GIFT_CARDS = `SELECT * FROM gift_cards;`;
 
-const USERS_GIFT_CARDS = userID => {
+const USERS_GIFT_CARDS = (userID) => {
   // params.id
   return [
     `
