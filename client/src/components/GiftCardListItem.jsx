@@ -1,7 +1,7 @@
-import axios from 'axios';
-import React from 'react';
-import './GiftCardListItem.css';
-import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import React from "react";
+import "./GiftCardListItem.css";
+import { useNavigate } from "react-router-dom";
 
 function GiftCardListItem(props) {
   const {
@@ -23,9 +23,9 @@ function GiftCardListItem(props) {
 
   const navigate = useNavigate();
 
-  const formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
   });
   const getCard = (id) => {
     axios.get(`/cards/${gift_card_id}`).then((res) => {
