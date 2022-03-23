@@ -41,6 +41,7 @@ const Stores = (props) => {
         Find a card for <i>You</i>{" "}
       </label>
       <input
+        width={"10"}
         id="name-filter"
         value={nameFilter}
         onChange={(e) => {
