@@ -1,20 +1,20 @@
-import React from 'react';
+import React from "react";
 // import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { render } from 'react-dom';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Stores from './pages/stores';
-import StoreDetails from './pages/storeDetails';
-import Cards from './pages/cards';
-import Transactions from './pages/transactions';
-import Scan from './pages/scan';
-import Signin from './pages/signin';
-import Register from './pages/register';
-import SingleGiftCard from './pages/singleGiftCard';
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { render } from "react-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Stores from "./pages/stores";
+import StoreDetails from "./pages/storeDetails";
+import Cards from "./pages/cards";
+import Transactions from "./pages/transactions";
+import Dashboard from "./pages/dashboard";
+import Signin from "./pages/signin";
+import Register from "./pages/register";
+import SingleGiftCard from "./pages/singleGiftCard";
 
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById("root");
 render(
   <BrowserRouter>
     <Routes>
@@ -24,7 +24,7 @@ render(
         <Route path="cards" element={<Cards />} />
         <Route path="cards/:id" element={<SingleGiftCard />} />
         <Route path="transactions/:store_id/:id" element={<Transactions />} />
-        <Route path="scan" element={<Scan />} />
+        <Route path="dashboard" element={<Dashboard />} />
         <Route path="signin" element={<Signin />} />
         <Route path="register" element={<Register />} />
       </Route>
