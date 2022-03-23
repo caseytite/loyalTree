@@ -1,22 +1,33 @@
+.stores-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 5em;
+  padding-top: 1em;
+}
+
 .store-list-item {
+  background-image: url("../../public/bedge-grunge.png");
   background-color: whitesmoke;
-  width: 90%;
-  border-radius: 0.5em;
-  margin: 1em auto;
+  border-radius: 5px;
   transition: width 0.5s, height 0.5s;
 }
 .store-list-item:hover {
   box-shadow: 5px 5px hsl(0, 4%, 71%);
-  width: 89%;
+  width: 98%;
   background-color: white;
   border: 1px solid hsl(0, 4%, 71%);
+}
+.img-about-cont {
+  display: flex;
+  flex-direction: row;
 }
 
 .store-list-top {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 1em;
+  padding: 1em 1em 0 1em;
 }
 .store-list-cont {
   display: flex;
@@ -24,14 +35,15 @@
 }
 
 .store-list-img {
-  width: 50%;
+  width: 310px;
   padding: 1em;
-  border-radius: 2em;
+  border-radius: 1.2em;
   transition: width 0.5s, height 0.5s;
+  padding-top: 0;
 }
 
 .store-description {
-  padding: 1em;
+  position: initial;
 }
 
 .store-list-foot {
@@ -45,10 +57,27 @@
   width: 90%;
 }
 
+#name-filter {
+  width: 50%;
+  align-self: center;
+  padding: 8px;
+  margin-bottom: 5em;
+  font-size: larger;
+}
+#name-filter:focus {
+  outline: none;
+}
+.stores-list > label {
+  align-self: center;
+  margin-bottom: 1em;
+  font-size: xxx-large;
+}
+
 /* ------------------------- */
 .text-container {
   position: relative;
   width: 80%;
+  margin-right: 1em;
 }
 
 .overlay {
@@ -59,6 +88,7 @@
   background-color: #008cba;
   border-top-right-radius: 1em;
   border-bottom-right-radius: 1em;
+  background-image: url("../../public/blu-stripes.png");
   overflow: hidden;
   width: 0;
   height: 100%;
@@ -68,8 +98,12 @@
 .text-container:hover .overlay {
   width: 100%;
 }
-/* .overlay:active {
-} */
+
+.overlay:active {
+  height: 95%;
+  margin-bottom: 0.5em;
+  margin-right: 1em;
+}
 
 .text {
   color: white;
@@ -81,4 +115,25 @@
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   white-space: nowrap;
+}
+
+.store-list-address {
+  color: hsl(0, 3%, 63%);
+}
+
+@media (max-width: 800px) {
+  .img-about-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .store-list-img {
+    width: 280px;
+    height: 200px;
+    transition: width 0.5s, height 0.5s;
+  }
+  .text-container {
+    position: relative;
+    width: 100%;
+  }
 }

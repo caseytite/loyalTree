@@ -46,27 +46,28 @@ function StoreListItem(props) {
 
       .catch((err) => console.log(err.message));
   };
+
   return (
     <>
       <article className="store-list-item">
         <div className="store-list-top">
           <h1>{storeName}</h1>
-          <h3>{address}</h3>
+          <h3 className="store-list-address">{address}</h3>
         </div>
         <div className="store-list-cont">
-          <div>
+          <div className="img-about-cont">
             {detail && (
               <img className="store-list-img" src={photo} alt={category} />
             )}
             {!detail && (
-              <div className="text-container">
+              <div
+                className="text-container"
+                onClick={() => navigate(`/stores/${storeID}`)}
+              >
                 <img className="store-list-img" src={photo} alt={category} />
-                <div class="overlay">
-                  <div
-                    onClick={() => navigate(`/stores/${storeID}`)}
-                    class="text"
-                  >
-                    Click to Learn More
+                <div className="overlay">
+                  <div className="text">
+                    Click to Learn <i>More</i>
                   </div>
                 </div>
               </div>
@@ -95,7 +96,7 @@ function StoreListItem(props) {
           onPay={onPay}
         />
       )}
-      <hr className="hr" />
+      {!detail && <hr className="hr" />}
     </>
   );
 }
