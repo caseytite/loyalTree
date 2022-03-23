@@ -265,7 +265,7 @@ app.get("/dashboard", (req, res) => {
   const [query, params] = USERS_STORES(req.session.id);
   db.query(query, params)
     .then((data) => {
-      req.session.store_id = data.rows[0].id;
+      req.session.store_id = data.rows[0].store_id;
       console.log(data.rows[0]);
       res.json(data.rows[0]);
     })
