@@ -33,8 +33,8 @@ Sidebar wrapper styles
 Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
 */
 .bm-menu-wrap {
-  /* position: fixed; */
-  float: right;
+  position: fixed;
+  /* float: right; */
   height: 100%;
 }
 
@@ -48,6 +48,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* Morph shape necessary with bubble or elastic */
 .bm-morph-shape {
   fill: #373a47;
+  left: 0;
 }
 
 /* Wrapper for item list */
