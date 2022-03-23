@@ -27,3 +27,7 @@ nav * {
 .nav-text {
   color: whitesmoke;
 }
+
+.nav .button-confirm {
+  margin: 5px;
+}

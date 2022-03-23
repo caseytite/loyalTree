@@ -9,26 +9,7 @@ import LoggedInUser from '../context/AuthContext';
 import axios from 'axios';
 
 const Navigation = (props) => {
-  const context = useContext(LoggedInUser);
-  // gets the session cookie
-  const cookies = new Cookies();
-  let user = document.cookie;
-  const navigate = useNavigate();
-  // handles the login button click redirect
-  const handleLogin = () => {
-    return navigate('/signin');
-  };
-  // clears cookie on logout click and redirects
-  // sets user context to state
-  const handleLogout = () => {
-    cookies.remove('id', { path: '/' });
-    context.user = {};
-    localStorage.clear();
 
-    axios.post('/logout');
-
-    return navigate('/');
-  };
 
   return (
     <nav className="nav">
@@ -36,11 +17,11 @@ const Navigation = (props) => {
         <Logo />
       </Link>
       <div className="header-logins">
-        {user && <Button onClick={handleLogout}>Log Out</Button>}
-        {!user && <Button onClick={handleLogin}>Log in</Button>}
-        <Link className="nav-text" to={{ pathname: '/register' }}>
+        {props.user && <Button onClick={props.handleLogout}>Log Out</Button>}
+        {!props.user && <Button onClick={props.handleLogin}>Log in</Button>}
+        <Button className="nav-text" onClick={props.handleRegister} >
           Register
-        </Link>
+        </Button>
       </div>
     </nav>
   );
