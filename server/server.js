@@ -338,6 +338,17 @@ app.post("/dashboard/redeem", (req, res) => {
     });
 });
 
+//get transactions for store by owner
+app.get('/dashboard/transactions', (req, res) => {
+  console.log(req)
+  db.query(`
+    SELECT * FROM transactions
+    JOIN stores on store_id = stores.id
+    WHERE owner_id = $1
+    `, [req.session.id])
+    .then((data) => res.json({ data: data.rows }))
+})
+
 // to run use npx nodemon
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}!`);
