@@ -43,11 +43,10 @@ function StoreListItem(props) {
         setTimeout(() => {
           setText("Thanks KV!!!");
           setTimeout(() => {
-            navigate("/stores");
+            navigate("/cards");
           }, 2000);
         }, 2000);
       })
-
       .catch((err) => console.log(err.message));
   };
 
@@ -84,11 +83,7 @@ function StoreListItem(props) {
             )}
           </div>
         </div>
-        {+currentStore === storeID && detail && (
-          <Button onClick={() => checkTransactions()}>
-            check transactions
-          </Button>
-        )}
+
       </article>
 
       {card && (
