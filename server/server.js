@@ -113,12 +113,15 @@ app.get("/stores/:id", (req, res) => {
 
 // ----- transactions on a specific card
 app.get("/cards/:id/transactions", (req, res) => {
-  db.query(`
+  db.query(
+    `
     SELECT * FROM transactions
     WHERE giftcard_id = $1
     ORDER BY created_at DESC;
-  `, [req.params.id]).then((data) => res.json(data.rows))
-})
+  `,
+    [req.params.id]
+  ).then((data) => res.json(data.rows));
+});
 
 // -----a specific card
 // cards/id/topup
@@ -189,7 +192,7 @@ app.put("/cards/:id", (req, res) => {
       `,
         [sendingAmount, req.params.id]
       );
-
+      console.log("originCard", originCard);
       return (receivingCard = {
         sendingCardID: originCard.id, // piggybacking data entry
         store_id: originCard.store_id,
@@ -198,13 +201,33 @@ app.put("/cards/:id", (req, res) => {
     })
     .then((receivingCard) => {
       // here we will commit the receiving card to DB
-
+      console.log("second", receivingCard);
       db.query(
         `
         INSERT INTO gift_cards (user_id, balance, store_id )
         VALUES ((SELECT users.id from users WHERE email = $1), $3, $2)
         `,
         [req.body.email, receivingCard.store_id, receivingCard.balance]
+      );
+      return (transactionInfo = {
+        sendingCardID: receivingCard.sendingCardID,
+        store_id: receivingCard.store_id,
+        amount: receivingCard.balance,
+      });
+    })
+    .then((transactionInfo) => {
+      //create a debiting and crediting transaction
+      db.query(
+        `
+        INSERT INTO transactions(giftcard_id, amount)
+        VALUES($1, $2)`,
+        [transactionInfo.sendingCardID, transactionInfo.amount * -1]
+      );
+      db.query(
+        `
+        INSERT INTO transactions(giftcard_id, amount)
+         VALUES($1, $2)`,
+        [transactionInfo.sendingCardID, transactionInfo.amount]
       );
     });
 });
@@ -383,15 +406,17 @@ app.post("/dashboard/redeem", (req, res) => {
 });
 
 //get transactions for store by owner
-app.get('/dashboard/transactions', (req, res) => {
-  console.log(req)
-  db.query(`
+app.get("/dashboard/transactions", (req, res) => {
+  console.log(req);
+  db.query(
+    `
     SELECT *, transactions.id FROM transactions
     JOIN stores on store_id = stores.id
     WHERE owner_id = $1
-    `, [req.session.id])
-    .then((data) => res.json({ data: data.rows }))
-})
+    `,
+    [req.session.id]
+  ).then((data) => res.json({ data: data.rows }));
+});
 
 // to run use npx nodemon
 app.listen(PORT, () => {
