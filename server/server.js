@@ -188,7 +188,7 @@ app.put("/cards/:id", (req, res) => {
       `,
         [sendingAmount, req.params.id]
       );
-
+      console.log("originCard", originCard);
       return (receivingCard = {
         sendingCardID: originCard.id, // piggybacking data entry
         store_id: originCard.store_id,
@@ -197,15 +197,39 @@ app.put("/cards/:id", (req, res) => {
     })
     .then((receivingCard) => {
       // here we will commit the receiving card to DB
-
+      console.log("second", receivingCard);
       db.query(
         `
         INSERT INTO gift_cards (user_id, balance, store_id )
-        VALUES ((SELECT users.id from users WHERE email = $1), $3, $2)
+        VALUES ((SELECT users.id from users WHERE email = $1), $3, $2) RETURNING *;
         `,
         [req.body.email, receivingCard.store_id, receivingCard.balance]
-      );
-    });
+      )
+        .then(data => {
+          return (transactionInfo = {
+            sendingCardID: receivingCard.sendingCardID,
+            store_id: receivingCard.store_id,
+            amount: receivingCard.balance,
+            newCardID: data.rows[0].id,
+          });
+        })
+        .then((transactionInfo) => {
+
+          //create a debiting and crediting transaction
+          db.query(
+            `
+            INSERT INTO transactions(giftcard_id, amount)
+            VALUES($1, $2)`,
+            [transactionInfo.sendingCardID, transactionInfo.amount * -1]
+          );
+          db.query(
+            `
+            INSERT INTO transactions(giftcard_id, amount)
+             VALUES($1, $2)`,
+            [transactionInfo.newCardID, transactionInfo.amount]
+          );
+        });
+    })
 });
 
 //------cards by user id from cookie
