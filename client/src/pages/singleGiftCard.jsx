@@ -6,7 +6,11 @@ import Button from "../components/Button";
 import CreditCard from "../components/CreditCard";
 import axios from "axios";
 import LoggedInUser from "../context/AuthContext";
+
+import GiftCardListItem from "../components/GiftCardListItem";
+
 import CardTransactions from "../components/CardTransactions";
+
 
 const SingleGiftCard = (props) => {
   let params = useParams();
@@ -27,18 +31,20 @@ const SingleGiftCard = (props) => {
   const [card, setCard] = useState(false);
   const [text, setText] = useState("Place Order");
   const [qrCode, setQrCode] = useState(false);
+  const [transferForm, showTransferForm] = useState();
   const context = useContext(LoggedInUser);
   let navigate = useNavigate();
 
-  const formatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  });
+
+  // const formatter = new Intl.NumberFormat("en-US", {
+  //   style: "currency",
+  //   currency: "USD",
+  // });
 
   const onPay = (email, amount) => {
-    const id = context.userID;
+    const id = params.id;
     axios
-      .post(`/cards/${id}`, {
+      .put(`/cards/${id}/topup`, {
         email,
         balance: amount,
         user_id: id,
@@ -49,7 +55,7 @@ const SingleGiftCard = (props) => {
         setTimeout(() => {
           setText("Thanks KV!!!");
           setTimeout(() => {
-            navigate("/stores");
+            navigate("/cards");
           }, 2000);
         }, 2000);
       })
@@ -57,40 +63,32 @@ const SingleGiftCard = (props) => {
       .catch((err) => console.log(err.message));
   };
 
+  const onTransfer = (email, amount) => {
+    const id = params.id;
+    axios.put(`/cards/${id}`, { amount, email }).then((res) => {
+      setText("Processing");
+      setTimeout(() => {
+        setText("Thanks KV!!!");
+        setTimeout(() => {
+          navigate("/cards");
+        }, 2000);
+      }, 2000);
+    });
+  };
+
   return (
     <div className="single-card-content">
       {!qrCode && (
         <div>
           <p className="store-name">{name}</p>
-          <article
-            className="gift-card"
-            style={{
-              backgroundImage: `url(${photo_url})`,
-            }}
-          >
-            <header>
-              {redeem_at > 0 && (
-                <>
-                  <div className="points">
-                    <p>{point_balance}</p>
-                    <div className="points-total">
-                      {/* <p>/</p> */}
-                      <p>/ {redeem_at}</p>
-                    </div>
-                  </div>
-                </>
-              )}
-              {balance > 0 && (
-                <div className="card-balance">
-                  <p>{formatter.format(balance / 100)}</p>
-                </div>
-              )}
-            </header>
-            <footer>
-              <p>{address}</p>
-              <p>{city}</p>
-            </footer>
-          </article>
+          <GiftCardListItem
+            photo_url={photo_url}
+            address={address}
+            balance={balance}
+            city={city}
+            redeem_at={redeem_at}
+            point_balance={point_balance}
+          />
         </div>
       )}
       {qrCode && (
@@ -103,7 +101,16 @@ const SingleGiftCard = (props) => {
       {!qrCode && (
         <Button onClick={() => setQrCode(!qrCode)}>See QR Code</Button>
       )}
-      {!qrCode && <Button onClick={() => setCard(!card)}>Buy More</Button>}
+      <Button onClick={() => showTransferForm(!transferForm)}>Transfer</Button>
+      {!qrCode && <Button onClick={() => setCard(!card)}>Top up</Button>}
+      {transferForm && (
+        <CreditCard
+          closeCard={showTransferForm}
+          onPay={onTransfer}
+          text={text}
+          setText={setText}
+        />
+      )}
       {card && (
         <CreditCard
           className="single-card-checkout"
@@ -118,5 +125,4 @@ const SingleGiftCard = (props) => {
     </div>
   );
 };
-// open={card} closeCard={setCard} onPay={onPay}
 export default SingleGiftCard;

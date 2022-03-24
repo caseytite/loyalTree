@@ -19,22 +19,22 @@ update
         - [x] get qr codes to render (based off of card id)
     - [X] create view for gift card 
     - [X] create view for all gift cards
-- [ ] As a user I can buy a gift card
-    - [ ]  as a user i can add a balance to my giftcard
+- [X] As a user I can buy a gift card
+    - [X]  as a user i can add a balance to my giftcard
     - [X] get credit card transactions to work 
-    - [ ] physically update balance on gift card
+    - [X] physically update balance on gift card
     - [ ] show proof of transaction to bit owner and user
-- [ ] As a user I can transfer a purchased gift card to someone else as a gift on purchase
+- [X] As a user I can transfer a purchased gift card to someone else as a gift on purchase
     - [X] as a user I can buy a gift card for some one else(by email)
     - [X] create a transfer view
     - [X] make the transfer occur
 - [X] As a user I can search/filter for gift cards by category or name
 
-- [ ] As a user I can review my transactions(on the gift card view)
-    - [ ] Create a transactions view
-    - [ ] Create a route to the backend 
-    - [ ] Create a query for transactions from a specific store and user
-    - [ ] Send data back to front end
+- [X] As a user I can review my transactions(on the gift card view)
+    - [X] Create a transactions view
+    - [X] Create a route to the backend 
+    - [X] Create a query for transactions from a specific store and user
+    - [X] Send data back to front end
 - [ ] As a user I can register
     - [ ] do the things
 #
@@ -43,9 +43,9 @@ Business owners
 
 - [ ] As an owner, I want to be able to redeem gift cards at transaction time, and see details (process transactions)
       - [X] create a dashboard 
-      - [ ] Create a transactions view in dashboard
+      - [X] Create a transactions view in dashboard
       - [X] Get qr scanning working
-      - [ ] Make the transaction occur
+      - [X] Make the transaction occur
       - [ ] Display transactions
 - [ ] As an owner, I want to be able to review transactions
       - [ ] display transactions
@@ -53,4 +53,8 @@ Business owners
 - [ ] As an owner I want to be able to register a new store
 
 
-Use this to generate a smalldatetime between 01 Jan 1900 and 06 Jun 2079 (not checked, SQL not installed)
+
+
+
+
+
