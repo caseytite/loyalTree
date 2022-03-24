@@ -84,11 +84,7 @@ function StoreListItem(props) {
             )}
           </div>
         </div>
-        {+currentStore === storeID && detail && (
-          <Button onClick={() => checkTransactions()}>
-            check transactions
-          </Button>
-        )}
+
       </article>
 
       {card && (

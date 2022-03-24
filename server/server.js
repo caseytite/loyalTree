@@ -342,7 +342,7 @@ app.post("/dashboard/redeem", (req, res) => {
 app.get('/dashboard/transactions', (req, res) => {
   console.log(req)
   db.query(`
-    SELECT * FROM transactions
+    SELECT *, transactions.id FROM transactions
     JOIN stores on store_id = stores.id
     WHERE owner_id = $1
     `, [req.session.id])

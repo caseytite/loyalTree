@@ -57,7 +57,7 @@ const Scanner = (props) => {
           setTransaction(response.data);
         });
       };
-      console.log("transaction", transaction);
+      // console.log("transaction", transaction);
  
   
   return (
