@@ -5,7 +5,7 @@ import X from "./X";
 //*****//    Design by: http://collectui.com/designers/pattiewaffle/checkout */
 
 const Checkout = (props) => {
-  const { closeCard, open, onPay, text, transfer } = props;
+  const { closeCard, onPay, text } = props;
   const [name, setName] = useState("Casey");
   const [card, setCard] = useState("1234123412341234");
   const [email, setEmail] = useState("casey@example.com");

@@ -47,7 +47,7 @@ const SingleGiftCard = () => {
         setTimeout(() => {
           setText("Thanks KV!!!");
           setTimeout(() => {
-            navigate("/stores");
+            navigate("/cards");
           }, 2000);
         }, 2000);
       })
@@ -57,9 +57,14 @@ const SingleGiftCard = () => {
 
   const onTransfer = (email, amount) => {
     const id = params.id;
-    console.log("transfer", email, amount, id);
     axios.put(`/cards/${id}`, { amount, email }).then((res) => {
-      console.log("response", res.data);
+      setText("Processing");
+      setTimeout(() => {
+        setText("Thanks KV!!!");
+        setTimeout(() => {
+          navigate("/cards");
+        }, 2000);
+      }, 2000);
     });
   };
 
@@ -114,8 +119,6 @@ const SingleGiftCard = () => {
       {transferForm && (
         <CreditCard
           closeCard={showTransferForm}
-          open={transferForm}
-          transfer={transferForm}
           onPay={onTransfer}
           text={text}
           setText={setText}

@@ -116,10 +116,7 @@ WHERE gift_cards.id = $1`,
 
 // Balance transfer to another user from our specified (/:id) card
 app.put("/cards/:id", (req, res) => {
-  const amount = req.body.amount * 100; // needs to be sent from
-  console.log("req.body", req.body);
-  console.log("params id", req.params);
-  console.log("session", req.session.id);
+  const amount = req.body.amount * 100; // needs to be sent from front
   db.query(
     `SELECT * FROM gift_cards
             WHERE id = $1
@@ -152,7 +149,7 @@ app.put("/cards/:id", (req, res) => {
     })
     .then((receivingCard) => {
       // here we will commit the receiving card to DB
-      console.log("commited", receivingCard);
+
       db.query(
         `
         INSERT INTO gift_cards (user_id, balance, store_id )
@@ -178,18 +175,15 @@ WHERE gift_cards.user_id = $1`,
 
 //----cards post by user id, creates new transaction record
 app.post("/cards/:id", (req, res) => {
-  // if buying for self
-  console.log("bought a card", req.body);
+  // if buying for self;
   let user = req.body;
   if (user.email === "") {
-    console.log("one");
     db.query(
       `INSERT INTO gift_cards(user_id, balance, store_id) 
     VALUES($1, $2, $3 ) RETURNING *;`,
       [req.body.user_id, req.body.balance, req.body.store_id]
     )
       .then(
-        (data) => console.log("two"),
         db.query(
           `
       INSERT INTO transactions(giftcard_id,store_id, amount)
@@ -200,7 +194,6 @@ app.post("/cards/:id", (req, res) => {
       .then((data) => res.json(data.rows))
       .catch((err) => console.log("error", err.message));
   } else if (user.email) {
-    console.log("3");
     db.query(
       `SELECT id FROM users
   WHERE email LIKE $1`,
@@ -210,7 +203,6 @@ app.post("/cards/:id", (req, res) => {
         return data.rows[0];
       })
       .then((data) => {
-        console.log("4");
         db.query(
           `INSERT INTO gift_cards(user_id, balance, store_id) 
         VALUES($1, $2, $3 ) RETURNING *;`,
@@ -235,7 +227,7 @@ app.post("/cards/:id", (req, res) => {
 ///////////////
 //------------TRANSACTIONS
 // ---transactions specific to a store and user
-// not dashboard/transactions/:userID ?
+
 app.get("/transactions/:store/:user", (req, res) => {
   db.query(
     `SELECT * FROM transactions
