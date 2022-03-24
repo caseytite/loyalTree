@@ -42,7 +42,6 @@ function App() {
           // userID: Number(document.cookie.slice(3)),
         }}
       >
-
         <Navigation
           handleRegister={handleRegister}
           user={user}

@@ -46,10 +46,17 @@ const {
 // const { query } = require('express')
 
 // ---------------------USERS ----------------------
+
 app.get("/users", (req, res) => {
   db.query(USERS)
     .then((data) => res.json({ data: data.rows }))
     .catch((err) => res.json({ error: err.message }));
+});
+
+app.get("/user", (req, res) => {
+  db.query("select * from users where users.id = $1", [req.session.id]).then(
+    (data) => res.json({ user: data.rows })
+  );
 });
 
 app.post("/login", (req, res) => {

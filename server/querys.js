@@ -3,7 +3,7 @@ const USERS = "SELECT * FROM users";
 
 const USER = (params) => {
   return [
-    `SELECT users.email, users.id, users.first_name, stores.id as store_id  FROM users                                       
+    `SELECT users.email, users.isStoreOwner, users.id, users.first_name, stores.id as store_id  FROM users                                       
     JOIN stores ON users.id = stores.owner_id
     WHERE email LIKE $1
    AND password LIKE $2;`,
