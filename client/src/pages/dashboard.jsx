@@ -4,6 +4,7 @@ import Button from "../components/Button";
 import Scanner from "../components/Scanner";
 import { useNavigate } from "react-router-dom";
 import TransactionListItem from "../components/TransactionListItem";
+import "./dashboard.css";
 
 const Dashboard = (props) => {
   const [storeInfo, setStoreInfo] = useState({});
@@ -17,11 +18,9 @@ const Dashboard = (props) => {
       setTransactions(values[1].data.data);
     });
     console.log(storeInfo);
-    console.log(transactions);
   }, []);
-
- 
-
+  
+  console.log(transactions);
   // while building dashboard
   // console.log(storeInfo);
 
@@ -31,27 +30,27 @@ const Dashboard = (props) => {
         <h2>{`Dashboard » ${storeInfo.name}`}</h2>
         <Scanner />
       </div>
-      <section className="transactions-table">
+      {transactions.length> 1 ? <section className="transactions-table">
         <h2>Transaction History</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Transaction Number</th>
-            <th>Amount</th>
-            <th>Date</th>
-          </tr>
-        </thead>
-        {transactions.map((transaction) => (
-          <TransactionListItem
-            key={transaction.id}
-            id={transaction.id}
-            amount={transaction.amount}
-            storeId={transaction.store_id}
-            date={transaction.created_at}
-          />
-        ))}
-      </table>
-      </section>
+        <table>
+          <thead>
+            <tr>
+              <th>Transaction Number</th>
+              <th>Amount</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          {transactions.map((transaction) => (
+            <TransactionListItem
+              key={transaction.id}
+              id={transaction.id}
+              amount={transaction.amount}
+              storeId={transaction.store_id}
+              date={transaction.created_at}
+            />
+          ))}
+        </table>
+      </section>: <h2>No transaction history</h2>}
     </>
   );
 };
