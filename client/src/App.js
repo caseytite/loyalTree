@@ -61,7 +61,6 @@ function App() {
         <div id="page-wrap">
           <Outlet />
         </div>
-        <Footer />
       </LoggedInUser.Provider>
     </div>
   );

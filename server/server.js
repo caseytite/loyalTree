@@ -103,6 +103,16 @@ app.get("/stores/:id", (req, res) => {
 ///////////////
 //--CARDS----//
 //////////////
+
+// ----- transactions on a specific card
+app.get("/cards/:id/transactions", (req, res) => {
+  db.query(`
+    SELECT * FROM transactions
+    WHERE giftcard_id = $1
+    ORDER BY created_at DESC;
+  `, [req.params.id]).then((data) => res.json(data.rows))
+})
+
 // -----a specific card
 app.get("/cards/:id", (req, res) => {
   db.query(
