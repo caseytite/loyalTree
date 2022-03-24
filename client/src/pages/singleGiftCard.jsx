@@ -1,14 +1,14 @@
 import "../components/GiftCardListItem.css";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import CodeView from "../components/CodeView";
 import Button from "../components/Button";
 import CreditCard from "../components/CreditCard";
 import axios from "axios";
 import LoggedInUser from "../context/AuthContext";
 
-const SingleGiftCard = () => {
+const SingleGiftCard = (props) => {
   const { state } = useLocation();
   const {
     name,
@@ -21,17 +21,19 @@ const SingleGiftCard = () => {
     gift_card_id,
     store_id,
   } = state;
+
   const [card, setCard] = useState(false);
   const [text, setText] = useState("Place Order");
   const [qrCode, setQrCode] = useState(false);
+  const [transactions, setTransactions] = useState([]);
   const context = useContext(LoggedInUser);
   let navigate = useNavigate();
-  const params = useParams();
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
   });
+
   const onPay = (email, amount) => {
     const id = context.userID;
     axios
@@ -53,6 +55,23 @@ const SingleGiftCard = () => {
 
       .catch((err) => console.log(err.message));
   };
+
+  useEffect(() => {
+    axios
+      .get(`/cards/${state.gift_card_id}/transactions`)
+      .then((response) => setTransactions(response.data));
+  }, [state.gift_card_id]);
+
+  // map to render transaction table rows
+  const transactionTable = transactions.map((data) => {
+    const formattedDate = new Date(data.created_at);
+    return (
+      <tr>
+        <td>{formatter.format(data.amount / 100)}</td>
+        <td>{formattedDate.toLocaleString()}</td>
+      </tr>
+    );
+  });
 
   return (
     <div className="single-card-content">
@@ -111,6 +130,18 @@ const SingleGiftCard = () => {
           onPay={onPay}
         />
       )}
+      <div className="transaction-list">
+        <h2>Transaction History</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Amount</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>{transactionTable}</tbody>
+        </table>
+      </div>
     </div>
   );
 };
