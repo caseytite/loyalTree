@@ -40,6 +40,7 @@ const Dashboard = (props) => {
               <th>Date</th>
             </tr>
           </thead>
+          <tbody>
           {transactions.map((transaction) => (
             <TransactionListItem
               key={transaction.id}
@@ -49,6 +50,7 @@ const Dashboard = (props) => {
               date={transaction.created_at}
             />
           ))}
+          </tbody>
         </table>
       </section>: <h2>No transaction history</h2>}
     </>

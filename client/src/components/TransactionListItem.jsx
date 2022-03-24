@@ -12,13 +12,11 @@ function TransactionListItem(props) {
   });
 
   return (
-    <tbody>
       <tr>
         <td>{id}</td>
         <td>{formatter.format(amount / 100)}</td>
         <td>{tdate}</td>
       </tr>
-    </tbody>
   );
 }
 
