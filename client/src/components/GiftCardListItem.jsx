@@ -7,17 +7,12 @@ function GiftCardListItem(props) {
   const {
     address,
     balance,
-    category,
-    description,
     city,
     photo_url,
     point_balance,
     redeem_at,
     store_id,
     name,
-    user_id,
-    card_id,
-    id,
     gift_card_id,
   } = props;
 
@@ -28,23 +23,25 @@ function GiftCardListItem(props) {
     currency: "USD",
   });
   const getCard = (id) => {
-    axios.get(`/cards/${gift_card_id}`).then((res) => {
-      //navigates to card to show single card how to pass data?
-      navigate(`/cards/${gift_card_id}`, {
-        state: {
-          name,
-          photo_url,
-          point_balance,
-          redeem_at,
-          balance,
-          store_id,
-          address,
-          city,
-          gift_card_id,
-        },
-      });
-    });
-    // .catch((err) => console.log(err.message));
+    axios
+      .get(`/cards/${gift_card_id}`)
+      .then((res) => {
+        //navigates to card to show single card how to pass data?
+        navigate(`/cards/${gift_card_id}`, {
+          state: {
+            name,
+            photo_url,
+            point_balance,
+            redeem_at,
+            balance,
+            store_id,
+            address,
+            city,
+            gift_card_id,
+          },
+        });
+      })
+      .catch((err) => console.log(err.message));
   };
 
   return (
