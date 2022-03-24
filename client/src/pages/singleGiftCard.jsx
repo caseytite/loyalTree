@@ -24,6 +24,7 @@ const SingleGiftCard = () => {
   const [card, setCard] = useState(false);
   const [text, setText] = useState("Place Order");
   const [qrCode, setQrCode] = useState(false);
+  const [transferForm, showTransferForm] = useState();
   const context = useContext(LoggedInUser);
   let navigate = useNavigate();
   const params = useParams();
@@ -52,6 +53,14 @@ const SingleGiftCard = () => {
       })
 
       .catch((err) => console.log(err.message));
+  };
+
+  const onTransfer = (email, amount) => {
+    const id = params.id;
+    console.log("transfer", email, amount, id);
+    axios.put(`/cards/${id}`, { amount, email }).then((res) => {
+      console.log("response", res.data);
+    });
   };
 
   return (
@@ -101,6 +110,17 @@ const SingleGiftCard = () => {
         <Button onClick={() => setQrCode(!qrCode)}>See QR Code</Button>
       )}
       {!qrCode && <Button onClick={() => setCard(!card)}>Buy More</Button>}
+      <Button onClick={() => showTransferForm(!transferForm)}>Transfer</Button>
+      {transferForm && (
+        <CreditCard
+          closeCard={showTransferForm}
+          open={transferForm}
+          transfer={transferForm}
+          onPay={onTransfer}
+          text={text}
+          setText={setText}
+        />
+      )}
       {card && (
         <CreditCard
           className="single-card-checkout"

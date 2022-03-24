@@ -116,8 +116,10 @@ WHERE gift_cards.id = $1`,
 
 // Balance transfer to another user from our specified (/:id) card
 app.put("/cards/:id", (req, res) => {
-  const amount = req.body.amount; // needs to be sent from
-
+  const amount = req.body.amount * 100; // needs to be sent from
+  console.log("req.body", req.body);
+  console.log("params id", req.params);
+  console.log("session", req.session.id);
   db.query(
     `SELECT * FROM gift_cards
             WHERE id = $1
@@ -139,7 +141,7 @@ app.put("/cards/:id", (req, res) => {
         SET(balance, edited_at) = (balance - $1, now())
         WHERE id = $2
       `,
-        [originCard.balance, req.session.id]
+        [sendingAmount, req.params.id]
       );
 
       return (receivingCard = {
@@ -150,6 +152,7 @@ app.put("/cards/:id", (req, res) => {
     })
     .then((receivingCard) => {
       // here we will commit the receiving card to DB
+      console.log("commited", receivingCard);
       db.query(
         `
         INSERT INTO gift_cards (user_id, balance, store_id )
