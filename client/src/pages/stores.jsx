@@ -38,7 +38,12 @@ const Stores = (props) => {
   return (
     <div className="stores-list">
       <label htmlFor="name-filter">
-        Find a card for <i>You</i>{" "}
+        <div className="filter-text">
+          <span>Find a card </span>
+          <span>
+            for <i>You</i>
+          </span>
+        </div>
       </label>
       <input
         width={"10"}

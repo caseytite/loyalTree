@@ -11,10 +11,9 @@ import GiftCardListItem from "../components/GiftCardListItem";
 
 import CardTransactions from "../components/CardTransactions";
 
-
 const SingleGiftCard = (props) => {
   let params = useParams();
-  
+
   const { state } = useLocation();
   const {
     name,
@@ -35,7 +34,6 @@ const SingleGiftCard = (props) => {
   const context = useContext(LoggedInUser);
   let navigate = useNavigate();
 
-
   // const formatter = new Intl.NumberFormat("en-US", {
   //   style: "currency",
   //   currency: "USD",
@@ -46,7 +44,7 @@ const SingleGiftCard = (props) => {
     axios
       .put(`/cards/${id}/topup`, {
         email,
-        balance: amount,
+        amount: amount,
         user_id: id,
         store_id,
       })

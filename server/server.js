@@ -113,28 +113,28 @@ app.get("/stores/:id", (req, res) => {
 
 // ----- transactions on a specific card
 app.get("/cards/:id/transactions", (req, res) => {
-  db.query(`
+  db.query(
+    `
     SELECT * FROM transactions
     WHERE giftcard_id = $1
     ORDER BY created_at DESC;
-  `, [req.params.id]).then((data) => res.json(data.rows))
-})
+  `,
+    [req.params.id]
+  ).then((data) => res.json(data.rows));
+});
 
 // -----a specific card
 // cards/id/topup
 app.put("/cards/:id/topup", (req, res) => {
-  console.log("body", req.body);
-  console.log("params", req.params);
   db.query(
     `
     UPDATE gift_cards 
     SET(balance, edited_at) = (balance + $1, now())
     WHERE id = $2 RETURNING *;
   `,
-    [req.body.balance * 100, req.params.id]
+    [req.body.amount * 100, req.params.id]
   )
     .then((data) => {
-      console.log("2", data.rows);
       return db.query(
         `
   INSERT INTO transactions(giftcard_id,store_id, amount,receiver_id)
@@ -142,13 +142,12 @@ app.put("/cards/:id/topup", (req, res) => {
         [
           data.rows[0].id,
           data.rows[0].store_id,
-          data.rows[0].balance,
+          req.body.amount * 100,
           req.session.id,
         ]
       );
     })
     .then((data) => {
-      console.log("data3", data.rows);
       res.json({ data: data.rows });
     });
 });
@@ -383,15 +382,17 @@ app.post("/dashboard/redeem", (req, res) => {
 });
 
 //get transactions for store by owner
-app.get('/dashboard/transactions', (req, res) => {
-  console.log(req)
-  db.query(`
+app.get("/dashboard/transactions", (req, res) => {
+  console.log(req);
+  db.query(
+    `
     SELECT *, transactions.id FROM transactions
     JOIN stores on store_id = stores.id
     WHERE owner_id = $1
-    `, [req.session.id])
-    .then((data) => res.json({ data: data.rows }))
-})
+    `,
+    [req.session.id]
+  ).then((data) => res.json({ data: data.rows }));
+});
 
 // to run use npx nodemon
 app.listen(PORT, () => {
