@@ -4,12 +4,7 @@ const Landing = (props) => {
   return (
     <>
       <header>
-        <div className="button-row">
-          <button>Sign In</button>
-          <button>Register</button>
-        </div>
         <img src="loyaltree-large.svg" alt="loyaltree logo" />
-        <h2>Gift cards made easy</h2>
       </header>
 
       <div className="landing-container">
