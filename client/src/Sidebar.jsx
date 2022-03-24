@@ -32,12 +32,12 @@ export default function Sidebar(props) {
       {props.user && <Link to="/cards">My Cards</Link>}
       <Link to="/stores">Stores</Link>
       {user.isstoreowner && <Link to="/dashboard">Dashboard</Link>}
-      <span>About Us</span>
-      <span>Contact Us</span>
-      <span>Careers</span>
-      <span>Join our Community</span>
-      <span>Investor Experience</span>
-      <span>Nasdaq Ticker LYLT</span>
+      <span className="fake-link">About Us</span>
+      <span className="fake-link">Contact Us</span>
+      <span className="fake-link">Careers</span>
+      <span className="fake-link">Join our Community</span>
+      <span className="fake-link">Investor Experience</span>
+      <span className="fake-link">Nasdaq Ticker LYLT</span>
     </Menu>
   );
 }

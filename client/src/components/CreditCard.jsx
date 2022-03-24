@@ -7,8 +7,8 @@ import X from "./X";
 const Checkout = (props) => {
   const { closeCard, onPay, text } = props;
   const [name, setName] = useState("Casey");
-  const [card, setCard] = useState("1234123412341234");
-  const [email, setEmail] = useState("casey@example.com");
+  const [card, setCard] = useState("4111111111111111");
+  const [email, setEmail] = useState("youremail@example.com");
   const [amount, setAmount] = useState("100");
   const [exp, setExp] = useState("");
   const [cvv, setCvv] = useState("123");
