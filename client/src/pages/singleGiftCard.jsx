@@ -35,9 +35,9 @@ const SingleGiftCard = () => {
   //   currency: "USD",
   // });
   const onPay = (email, amount) => {
-    const id = context.userID;
+    const id = params.id;
     axios
-      .post(`/cards/${id}`, {
+      .put(`/cards/${id}/topup`, {
         email,
         balance: amount,
         user_id: id,
@@ -94,8 +94,8 @@ const SingleGiftCard = () => {
       {!qrCode && (
         <Button onClick={() => setQrCode(!qrCode)}>See QR Code</Button>
       )}
-      {!qrCode && <Button onClick={() => setCard(!card)}>Buy More</Button>}
       <Button onClick={() => showTransferForm(!transferForm)}>Transfer</Button>
+      {!qrCode && <Button onClick={() => setCard(!card)}>Top up</Button>}
       {transferForm && (
         <CreditCard
           closeCard={showTransferForm}

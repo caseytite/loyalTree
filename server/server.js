@@ -111,6 +111,38 @@ app.get("/stores/:id", (req, res) => {
 //--CARDS----//
 //////////////
 // -----a specific card
+// cards/id/topup
+app.put("/cards/:id/topup", (req, res) => {
+  console.log("body", req.body);
+  console.log("params", req.params);
+  db.query(
+    `
+    UPDATE gift_cards 
+    SET(balance, edited_at) = (balance + $1, now())
+    WHERE id = $2 RETURNING *;
+  `,
+    [req.body.balance * 100, req.params.id]
+  )
+    .then((data) => {
+      console.log("2", data.rows);
+      return db.query(
+        `
+  INSERT INTO transactions(giftcard_id,store_id, amount,receiver_id)
+  VALUES($1, $2, $3,$4) RETURNING *;`,
+        [
+          data.rows[0].id,
+          data.rows[0].store_id,
+          data.rows[0].balance,
+          req.session.id,
+        ]
+      );
+    })
+    .then((data) => {
+      console.log("data3", data.rows);
+      res.json({ data: data.rows });
+    });
+});
+
 app.get("/cards/:id", (req, res) => {
   db.query(
     `SELECT *, gift_cards.id as gift_card_id FROM users
