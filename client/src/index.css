@@ -20,7 +20,6 @@ body {
 }
 
 #page-wrap {
-  padding-bottom: 10px;
-  padding-top: 10px;
-  /* max-width: 960px; */
+  max-width: 960px;
+  margin: 0 auto;
 }

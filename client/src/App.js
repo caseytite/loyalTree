@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
 import "./App.css";
 import Navigation from "./components/Navigation";
-import Footer from "./components/Footer";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import LoggedInUser from "./context/AuthContext";
 import Sidebar from "./Sidebar";
 import Cookies from "universal-cookie";
