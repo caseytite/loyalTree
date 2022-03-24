@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 4rem;
 }
 
 .landing-container > div {
@@ -15,12 +16,18 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-
 }
+
 #entry-point > button {
   font-size: 2rem;
   height: 5rem;
   width: 20rem;
+  background-color: var(--bud-green);
+  color: var(--cultured);
+  box-shadow: 2px 2px 8px var(--jet);
+  border: none;
+  border-radius: 0.5rem;
+
 }
 
 #landing-hero {
@@ -38,7 +45,6 @@
 }
 
 .landing-item {
-  outline: 1px solid green;
   display: flex;
   flex-direction: row;
 }
@@ -47,14 +53,20 @@
 }
 
 .landing-item div {
-  outline: 1px solid pink;
   width: 50%;
   height: calc(50vw);
+  max-height: calc(960px / 2);
 }
-
-
 
 .landing-image {
   background-size: cover;
   background-position: center;
+}
+
+.landing-message {
+  background-color: var(--cultured);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
 }
