@@ -1,10 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { bubble as Menu } from "react-burger-menu";
+import { Link } from "react-router-dom";
+
 import "./Sidebar.css";
 
 export default function Sidebar(props) {
   const [user, setUser] = useState([]);
+
   useEffect(() => {
     if (props.user) {
       axios.get("/user").then((res) => {
@@ -13,42 +16,28 @@ export default function Sidebar(props) {
       });
     }
   }, []);
-  console.log(user);
+
   return (
     <Menu right>
       {props.user && <h3>Hello {user.first_name} </h3>}
-      <a className="menu-item" href="/">
-        Home
-      </a>
-      {!props.user && (
-        <a className="menu-item" href="/signin">
-          Log In
-        </a>
-      )}
-      {props.user && (
-        <a className="menu-item" href="/" onClick={props.handleLogout}>
-          Log Out
-        </a>
-      )}
 
-      {!props.user && (
-        <a className="menu-item" href="/register">
-          Register
-        </a>
-      )}
+      <Link to="/"></Link>
+      {!props.user && <Link to="/signin">Login</Link>}
       {props.user && (
-        <a className="menu-item" href="/cards">
-          My Cards
-        </a>
+        <Link to="/" onClick={props.handleLogout}>
+          Logout link
+        </Link>
       )}
-      <a className="menu-item" href="/stores">
-        Browse Stores
-      </a>
-      {user.isstoreowner && (
-        <a className="menu-item" href="/dashboard">
-          Dashboard
-        </a>
-      )}
+      {!props.user && <Link to="/register">Register</Link>}
+      {props.user && <Link to="/cards">My Cards</Link>}
+      <Link to="/stores">Stores</Link>
+      {user.isstoreowner && <Link to="/dashboard">Dashboard</Link>}
+      <span>About Us</span>
+      <span>Contact Us</span>
+      <span>Careers</span>
+      <span>Join our Community</span>
+      <span>Investor Experience</span>
+      <span>Nasdaq Ticker LYLT</span>
     </Menu>
   );
 }

@@ -43,7 +43,7 @@ Business owners
 
 - [ ] As an owner, I want to be able to redeem gift cards at transaction time, and see details (process transactions)
       - [X] create a dashboard 
-      - [ ] Create a transactions view in dashboard
+      - [X] Create a transactions view in dashboard
       - [X] Get qr scanning working
       - [X] Make the transaction occur
       - [ ] Display transactions
