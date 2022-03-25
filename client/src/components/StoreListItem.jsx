@@ -48,28 +48,14 @@ function StoreListItem(props) {
 
   return (
     <>
-      <article className={articleClass}>
-        <div className="store-list-top"></div>
-        <div className="store-list-cont">
-          <div className="img-about-cont">
-            {detail && (
-              <img
-                className="store-list-img img-on-detail"
-                src={photo}
-                alt={category}
-              />
-            )}
-            {!detail && (
-              <div
-                className="text-container"
-                onClick={() => navigate(`/stores/${storeID}`)}
-              >
-                <img className="store-list-img" src={photo} alt={category} />
-              </div>
-            )}
-          </div>
-        </div>
-      </article>
+      <div className="stores-list">
+        <article
+          className={articleClass}
+          onClick={() => navigate(`/stores/${storeID}`)}
+        >
+          <img className="store-list-img" src={photo} alt={category} />
+        </article>
+      </div>
 
       {card && (
         <CreditCard
