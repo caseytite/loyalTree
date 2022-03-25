@@ -9,7 +9,7 @@ VALUES
 (2, 'The Leaky Cauldron' , 'Restaurant food drink', 'Local watering hole','https://imgur.com/CLoKIRs.gif', '2923 Alder ave',default, default),
 (6, 'The Roasted Bean' ,'Restaurant food drink local coffe', 'locally roasted coffee and snacks!', 'https://imgur.com/kQR76M6.gif', '2927 Broadway',default, default),
 (5, 'Full Swing Pro Shop' ,'Retail sports', 'Outdoor gear for every adventure', 'https://imgur.com/XvpGZ3d.gif' , '3452 Mountain ave',default, default),
-(11, 'Annas Bakery' ,'Restaurant food', 'Artisan crafted breads and treats', 'https://i.imgur.com/yM1Y6Ob.gif' , '2342 5th street', default,default),
+(11, 'Annas Bakery' ,'Restaurant food', 'Artisan crafted breads and treats', 'https://imgur.com/KzPoWg2.gif' , '2342 5th street', default,default),
 (10,'Indigo Wild', 'Food Artisan', 'Home made Honey beeswax candles','https://imgur.com/bpaqNjh.gif', '1432 store street', default, default ),
 (10, 'Paparazi', 'Photography services', 'award winning professional photography','https://imgur.com/ZQ3ZuVH.gif', '2345 Government street', default, default),
 (10,'The Mowing Magician','lawn care services', 'Landscaping and lawn mowing', 'https://imgur.com/OzkwBui.gif', '3623 Granville street',default, default),
