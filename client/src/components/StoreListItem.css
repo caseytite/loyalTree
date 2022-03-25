@@ -108,7 +108,8 @@ h3 {
 }
 
 .img-on-detail {
-  /* margin-top: 4em; */
+  width: 70%;
+  margin-left: 10%;
 }
 .img-on-detail:hover {
   pointer-events: none;
