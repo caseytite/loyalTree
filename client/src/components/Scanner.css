@@ -38,6 +38,14 @@
 .transaction-details th {
   width: 33%;
 }
+
+#redeem-amount {
+  padding: 8px;
+  width: 45%;
+  border: 1px solid hsl(0, 4%, 71%);
+  text-align: center;
+  border-radius: 20px;
+}
 /* border: 2px solid var(--jet); */
 /* padding: 1rem; */
 /* margin: 1rem; */
