@@ -15,6 +15,11 @@
   box-shadow: 0px 0px 10px rgb(0, 0, 0);
 }
 
+.stores-list p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--jet);
+}
 .socials {
   display: flex;
   flex-direction: row;
