@@ -14,6 +14,7 @@
 
 .store-list-img {
   width: 90%;
+  max-width: 600px;
   border-radius: 1.2em;
   border: 1px solid hsl(0, 4%, 71%);
   margin: 2em 5%;
