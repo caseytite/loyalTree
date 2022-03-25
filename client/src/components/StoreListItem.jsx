@@ -47,10 +47,7 @@ function StoreListItem(props) {
   return (
     <>
       <article className={articleClass}>
-        <div className="store-list-top">
-          {/* <h1>{storeName}</h1> */}
-          {/* <h3 className="store-list-address">{address}</h3> */}
-        </div>
+        <div className="store-list-top"></div>
         <div className="store-list-cont">
           <div className="img-about-cont">
             {detail && (
@@ -66,17 +63,8 @@ function StoreListItem(props) {
                 onClick={() => navigate(`/stores/${storeID}`)}
               >
                 <img className="store-list-img" src={photo} alt={category} />
-                <div className="overlay">
-                  <div className="text">{/* Click to Learn <i>More</i> */}</div>
-                </div>
               </div>
             )}
-            {/* {!detail && (
-              <div className="store-description">
-                <h2>About Us!</h2>
-                <h3>{description}</h3>
-              </div>
-            )} */}
           </div>
         </div>
       </article>
@@ -90,14 +78,13 @@ function StoreListItem(props) {
           onPay={onPay}
         />
       )}
-      {/* <hr className="hr" /> */}
-      
-        {detail && (
-          <div className="purchase">
-            <Button onClick={() => setCard(!card)}>Purchase</Button>
-          </div>
-        )}
-      
+
+      {detail && (
+        <div className="purchase">
+          <Button onClick={() => setCard(!card)}>Purchase</Button>
+        </div>
+      )}
+
       {detail && (
         <div className="detail-page-about">
           <div className="store-description">

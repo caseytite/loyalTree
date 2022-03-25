@@ -14,10 +14,12 @@ import Dashboard from "./pages/dashboard";
 import Signin from "./pages/signin";
 import Register from "./pages/register";
 import SingleGiftCard from "./pages/singleGiftCard";
+import ScrollToTop from "./components/ScrollToTop";
 
 const rootElement = document.getElementById("root");
 render(
   <BrowserRouter>
+    <ScrollToTop />
     <Routes>
       <Route path="/" element={<App />}>
         <Route path="/" element={<Landing />} />
