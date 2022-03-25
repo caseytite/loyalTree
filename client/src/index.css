@@ -22,7 +22,7 @@ body {
   min-height: 100vh;
   /* max-width: 960px; */
   font-family: "Open Sans";
-  background-image: url("../public/light-paper-fibers.png");
+  background-image: url("../public/bedge-grunge.png");
 }
 
 body::-webkit-scrollbar {
