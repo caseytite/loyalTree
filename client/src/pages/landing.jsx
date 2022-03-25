@@ -8,21 +8,23 @@ const Landing = (props) => {
       </header>
 
       <div className="landing-container">
-
-
         <div className="image-group">
           <img src="./images/orange-bag.jpg" alt="" />
-          <article className="article-color-1" >
+          <article className="article-color-1">
             <h2>Gifting made easy</h2>
-            <p>Send love to friends and family while supporting local business.</p>
+            <p>
+              Send love to friends and family while supporting local business.
+            </p>
           </article>
           <img src="./images/checkout-guy.jpg" alt="man using loyaltree" />
-          <img src="./images/nice-lady-shopping.jpg" alt="man using loyaltree" />
+          <img
+            src="./images/nice-lady-shopping.jpg"
+            alt="man using loyaltree"
+          />
         </div>
 
-
         <div className="image-group">
-        <article className="article-color-3">
+          <article className="article-color-3">
             <h2>Always within reach</h2>
             <p>All your cards and purchase info, right in your pocket.</p>
           </article>
@@ -31,7 +33,6 @@ const Landing = (props) => {
           <img src="./images/girl-shopping-flowers.jpg" alt="girl shopping" />
         </div>
 
-        
         <div className="image-group">
           <img src="./images/girl-shopping-tiles.jpg" alt="girl shopping" />
           <img src="./images/open-storefront.jpg" alt="" />
@@ -40,15 +41,38 @@ const Landing = (props) => {
             <p>Connect with customers and build lasting relationships.</p>
           </article>
           <img src="./images/lady-shopping.jpg" alt="" />
-          
-          
+
           {/* 
           <img src="./images/girl-shopping-back.jpg" alt="girl shopping" />
           <img src="./images/taking-pic-product.jpg" alt="" /> 
           */}
-
         </div>
       </div>
+      <footer>
+        <div className="footer-links">
+          <div className="footer-column">
+            <h2>Social</h2>
+            <p>Twitter</p>
+            <p>Facebook</p>
+            <p>Instagram</p>
+          </div>
+          <div className="footer-column">
+            <h2>About Us</h2>
+            <p>Who we are</p>
+            <p>Program Info</p>
+          </div>
+          <div className="footer-column">
+            <h2>Creators</h2>
+            <p>Casey Tite</p>
+            <p>Chris Bell</p>
+            <p>Logan Woolf</p>
+          </div>
+        </div>
+        <p className="thank-you">
+          A very special thanks to the instructors, mentors, and staff at
+          Lighthouse Labs! You are amazing!
+        </p>
+      </footer>
     </>
   );
 };

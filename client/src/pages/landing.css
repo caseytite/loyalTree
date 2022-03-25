@@ -44,3 +44,28 @@ header {
   background-color: var(--gainsboro);
   color: var(--jet)
 }
+
+footer {
+  background-color: var(--jet);
+  color: var(--gainsboro);
+  padding: 1rem 4rem 0.5rem; 
+}
+footer h2 {
+  font-size: 0.9rem;
+}
+footer p {
+  font-size: 0.5rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 8rem;
+}
+
+.thank-you {
+  text-align: center;
+  margin: 0;
+  padding-top: 1rem;
+}
