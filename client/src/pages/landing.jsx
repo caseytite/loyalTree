@@ -3,10 +3,6 @@ import "./landing.css";
 const Landing = (props) => {
   return (
     <>
-      <header>
-        <img src="loyaltree-large.svg" alt="loyaltree logo" />
-      </header>
-
       <div className="landing-container">
         <div className="image-group">
           <img src="./images/orange-bag.jpg" alt="" />
