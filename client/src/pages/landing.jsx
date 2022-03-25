@@ -41,11 +41,6 @@ const Landing = (props) => {
             <p>Connect with customers and build lasting relationships.</p>
           </article>
           <img src="./images/lady-shopping.jpg" alt="" />
-
-          {/* 
-          <img src="./images/girl-shopping-back.jpg" alt="girl shopping" />
-          <img src="./images/taking-pic-product.jpg" alt="" /> 
-          */}
         </div>
       </div>
       <footer>
@@ -69,8 +64,12 @@ const Landing = (props) => {
           </div>
         </div>
         <p className="thank-you">
-          A very special thanks to the instructors, mentors, and staff at
-          Lighthouse Labs! You are amazing!
+          A very special thank you to our families who supported us all the way
+          through and helped with ideas and graphics for this project.
+        </p>
+        <p className="thank-you">
+          Another special thanks to all of the instructors, mentors, and staff
+          at Lighthouse Labs! You are amazing and have changed our lives!
         </p>
       </footer>
     </>

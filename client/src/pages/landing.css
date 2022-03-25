@@ -27,8 +27,6 @@ header {
   padding: 2rem;
   opacity: 0.8;
 }
-.image-group article > * {
-}
 
 .article-color-1 {
   background-color: var(--beaver);
@@ -62,10 +60,10 @@ footer p {
   flex-direction: row;
   justify-content: center;
   gap: 8rem;
+  padding-bottom: 1rem;
 }
 
 .thank-you {
   text-align: center;
   margin: 0;
-  padding-top: 1rem;
 }
