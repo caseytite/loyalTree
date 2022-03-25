@@ -7,6 +7,7 @@ import CreditCard from "./CreditCard";
 import LoggedInUser from "../context/AuthContext";
 import { useParams, Link } from "react-router-dom";
 import classNames from "classnames";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function StoreListItem(props) {
   let navigate = useNavigate();
@@ -104,6 +105,17 @@ function StoreListItem(props) {
               odit mollitia quia ea iure inventore pariatur neque natus, fugiat
               in voluptatum.
             </h3>
+            <div className="socials">
+              <p className="icon">
+                <FontAwesomeIcon icon="fa-brands fa-twitter" />
+              </p>
+              <p className="icon">
+                <FontAwesomeIcon icon="fa-brands fa-facebook" />
+              </p>
+              <p className="icon">
+                <FontAwesomeIcon icon="fa-brands fa-instagram" />
+              </p>
+            </div>
             <Link className="stores-link" to="/stores">
               Back to Stores
             </Link>
