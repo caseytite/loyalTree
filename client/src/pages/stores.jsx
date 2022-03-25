@@ -34,21 +34,17 @@ const Stores = (props) => {
     });
 
   return (
-    <div className="stores-list">
-      <label htmlFor="name-filter">
-        <div className="filter-text"></div>
-      </label>
+    <>
       <input
-        width={"10"}
         id="name-filter"
-        placeholder="   Find a card for you"
         value={nameFilter}
+        placeholder="Find a card for you"
         onChange={(e) => {
           setNameFilter(e.target.value);
         }}
       />
-      {storesArr}
-    </div>
+      <div className="stores-list">{storesArr}</div>
+    </>
   );
 };
 
