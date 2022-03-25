@@ -17,8 +17,19 @@
 }
 .transactions-table th {
   text-align: left;
-  padding-right: 5rem;
   background-color: var(--cultured);
   color: var(--jet);
   font-weight: bold;
+}
+
+.dashboard h2 {
+  margin: 0;
+  padding: 20px;
+  font-size: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .dashboard h2 {
+    font-size: 24px;
+  }
 }

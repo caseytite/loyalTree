@@ -1,14 +1,25 @@
 .form-container {
-  width: 30vw;
+  width: 50vw;
   display: flex;
   flex-direction: column;
+  margin: 0 5%;
 }
 
 .form-container input {
-  width: 100;
-  margin: 5px;
+  height: 24px;
+  width: 100%;
+  padding: 12px;
+  margin: 0.5rem 0;
+  border: 1px solid var(--jet);
+  border-radius: 2rem;
 }
 
 Button {
-  margin-top: 5px;
+  margin: 5px 5px;
+}
+
+@media screen and (min-width: 768px) {
+  .form-container {
+    width: 30vw;
+  }
 }

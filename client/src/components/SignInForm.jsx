@@ -37,8 +37,8 @@ const SignInForm = (props) => {
   };
 
   return (
-    <form action="" onSubmit={onFormSubmission}>
-      <div className="form-container">
+    <div className="form-container">
+        <form action="" onSubmit={onFormSubmission}>
         <label htmlFor="email">email</label>
         <input
           value={email}
@@ -52,8 +52,8 @@ const SignInForm = (props) => {
           type="password"
         />
         <Button onClick={(e) => onFormSubmission(e)}>Sign in</Button>
-      </div>
     </form>
+      </div>
   );
 };
 

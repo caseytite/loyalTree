@@ -83,9 +83,19 @@ const Scanner = (props) => {
        {transaction && <div className="transaction-container">
         <h3>Transaction Details</h3>
           <div className="transaction-details">
-            <p>{day}</p>
-            <p>Transaction ID: {transaction.id}</p>
-            <p>Transaction amount: ${transaction.amount / 100 * -1}</p>
+            <table>
+              <tr>
+                  <th>Transaction #</th> 
+                  <th>Date</th> 
+                  <th>Amount</th>
+              </tr>  
+              <tr>
+              <td>{transaction.id}</td>  
+              <td>{day}</td>  
+              <td>{transaction.amount /100 * -1}</td>  
+              </tr>   
+            </table>
+            
           </div>
        </div>}
     </div>

@@ -60,8 +60,9 @@ Business owners
 - [ ] As an owner I want to be able to register a new store
 
 
-
-
+bugs
+- [ ] server crashes if wrong card scan
+- [ ] app scrolls to the bottom when going to the details page
 
 
 
