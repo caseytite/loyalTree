@@ -5,27 +5,32 @@
   margin: 5em;
   padding-top: 1em;
 }
-.filter-text {
+/* .filter-text {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-}
-.store-list-item {
+} */
+/* .store-list-item {
   background-image: url("../../public/bedge-grunge.png");
   background-color: whitesmoke;
   border-radius: 5px;
   transition: width 0.5s, height 0.5s;
+} */
+.store-list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .store-list-item--center {
   margin: 2em;
   pointer-events: none;
 }
 .store-list-item:hover {
-  box-shadow: 5px 5px hsl(0, 4%, 71%);
+  /* box-shadow: 5px 5px hsl(0, 4%, 71%); */
   width: 98%;
-  background-color: white;
-  border: 1px solid hsl(0, 4%, 71%);
+  /* background-color: white; */
+  /* border: 1px solid hsl(0, 4%, 71%); */
 }
 .img-about-cont {
   display: flex;
@@ -45,8 +50,10 @@
 
 .store-list-img {
   width: 310px;
-  padding: 1em;
+  /* padding: 1em; */
   border-radius: 1.2em;
+  border: 1px solid hsl(0, 4%, 71%);
+  margin-top: 2px;
   transition: width 0.5s, height 0.5s;
   /* padding-top: 0; */
 }
@@ -62,9 +69,9 @@
   padding: 1em;
 }
 
-.hr {
+/* .hr {
   width: 90%;
-}
+} */
 
 #name-filter {
   width: 50%;
@@ -95,7 +102,7 @@
 /* ------------------------- */
 .text-container {
   position: relative;
-  width: 80%;
+  width: 100%;
   margin-right: 1em;
 }
 
@@ -104,10 +111,10 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #008cba;
+  background-color: #fbfbfb8c;
   border-top-right-radius: 1em;
   border-bottom-right-radius: 1em;
-  background-image: url("../../public/blu-stripes.png");
+  /* background-image: url("../../public/blu-stripes.png"); */
   overflow: hidden;
   width: 0;
   height: 100%;
@@ -128,7 +135,7 @@
 }
 
 .text {
-  color: white;
+  color: black;
   font-size: 20px;
   position: absolute;
   top: 50%;

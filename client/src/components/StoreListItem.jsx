@@ -55,7 +55,7 @@ function StoreListItem(props) {
       <article className={articleClass}>
         <div className="store-list-top">
           <h1>{storeName}</h1>
-          <h3 className="store-list-address">{address}</h3>
+          {/* <h3 className="store-list-address">{address}</h3> */}
         </div>
         <div className="store-list-cont">
           <div className="img-about-cont">
@@ -75,15 +75,14 @@ function StoreListItem(props) {
                 </div>
               </div>
             )}
-            {!detail && (
+            {/* {!detail && (
               <div className="store-description">
                 <h2>About Us!</h2>
                 <h3>{description}</h3>
               </div>
-            )}
+            )} */}
           </div>
         </div>
-
       </article>
 
       {card && (
