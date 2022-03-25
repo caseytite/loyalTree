@@ -23,18 +23,20 @@ const Cards = () => {
     });
 
   return (
-    <div className="cards-list">
-      <h2>List of user's cards</h2>
-      <label htmlFor="name-filter">Filter: </label>
-      <input
-        id="name-filter"
-        value={nameFilter}
-        onChange={(e) => {
-          setNameFilter(e.target.value);
-        }}
-      />
+    <>
+      <div className="cards-list">
+        <h2>List of user's cards</h2>
+        <label htmlFor="name-filter">Filter: </label>
+        <input
+          id="name-filter"
+          value={nameFilter}
+          onChange={(e) => {
+            setNameFilter(e.target.value);
+          }}
+        />
+      </div>
       <div className="card-list">{cardList}</div>
-    </div>
+    </>
   );
 };
 

@@ -25,7 +25,7 @@ export default function Sidebar(props) {
       {!props.user && <Link to="/signin">Login</Link>}
       {props.user && (
         <Link to="/" onClick={props.handleLogout}>
-          Logout link
+          Logout
         </Link>
       )}
       {!props.user && <Link to="/register">Register</Link>}

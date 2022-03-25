@@ -1,77 +1,27 @@
 .stores-list {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  margin: 5em;
-  padding-top: 1em;
+  padding-top: 10em;
 }
-/* .filter-text {
+
+.filter-text {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-} */
-/* .store-list-item {
-  background-image: url("../../public/bedge-grunge.png");
-  background-color: whitesmoke;
-  border-radius: 5px;
-  transition: width 0.5s, height 0.5s;
-} */
-.store-list-item {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.store-list-item--center {
-  margin: 2em;
-  pointer-events: none;
-}
-.store-list-item:hover {
-  /* box-shadow: 5px 5px hsl(0, 4%, 71%); */
-  width: 98%;
-  /* background-color: white; */
-  /* border: 1px solid hsl(0, 4%, 71%); */
-}
-.img-about-cont {
-  display: flex;
-  flex-direction: row;
-}
-
-.store-list-top {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 1em 1em 0 1em;
-}
-.store-list-cont {
-  display: flex;
-  flex-direction: row;
+  font-size: xx-large;
 }
 
 .store-list-img {
-  width: 310px;
-  /* padding: 1em; */
+  width: 90%;
   border-radius: 1.2em;
   border: 1px solid hsl(0, 4%, 71%);
-  margin-top: 2px;
-  transition: width 0.5s, height 0.5s;
-  /* padding-top: 0; */
+  margin: 2em 5%;
 }
-
-.store-description {
-  position: initial;
+.store-list-img:hover {
+  cursor: pointer;
+  box-shadow: 0px 0px 10px rgb(0, 0, 0);
 }
-
-.store-list-foot {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 1em;
-}
-
-/* .hr {
-  width: 90%;
-} */
 
 #name-filter {
   width: 50%;
@@ -80,75 +30,14 @@
   margin-bottom: 5em;
   font-size: larger;
   border: 1px solid hsl(0, 4%, 71%);
-  border-radius: 3px;
+  border-radius: 20px;
+  text-align: center;
 }
 #name-filter:focus {
   outline: none;
 }
-.stores-list > label {
-  align-self: center;
-  margin-bottom: 1em;
-  font-size: xxx-large;
-}
-.detail-page-about {
-  margin: 1em 2em 5em 2em;
-}
-.purchase {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
 
 /* ------------------------- */
-.text-container {
-  position: relative;
-  width: 100%;
-  margin-right: 1em;
-}
-
-.overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: #fbfbfb8c;
-  border-top-right-radius: 1em;
-  border-bottom-right-radius: 1em;
-  /* background-image: url("../../public/blu-stripes.png"); */
-  overflow: hidden;
-  width: 0;
-  height: 100%;
-  transition: 0.5s ease;
-}
-
-.text-container:hover .overlay {
-  width: 100%;
-}
-.text-container--dont-hover {
-  pointer-events: none;
-}
-
-.overlay:active {
-  height: 95%;
-  margin-bottom: 0.5em;
-  margin-right: 1em;
-}
-
-.text {
-  color: black;
-  font-size: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  white-space: nowrap;
-}
-
-.store-list-address {
-  color: hsl(0, 3%, 63%);
-}
 
 @media (max-width: 768px) {
   .img-about-cont {
@@ -157,16 +46,16 @@
     align-items: center;
   }
   .store-list-img {
-    width: 280px;
-    height: 200px;
-    transition: width 0.5s, height 0.5s;
+    margin: 5% 1em;
   }
+
   .text-container {
     position: relative;
     width: 100%;
   }
   #name-filter {
-    width: 100%;
+    /* width: 90%; */
+    min-width: 270px;
     align-self: center;
     padding: 8px;
     margin-bottom: 5em;
@@ -194,4 +83,39 @@
     margin: 1em;
     align-items: center;
   }
+}
+
+/* ------------------only the single store detail page styles */
+
+.purchase {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-right: 5%;
+}
+
+.store-description {
+  width: 90%;
+  margin: 2em 5%;
+}
+h2 {
+  font-size: xx-large;
+  margin-top: 0;
+  margin-bottom: -0.1em;
+}
+h3 {
+  font-weight: 100;
+}
+
+.img-on-detail {
+  margin-top: 4em;
+}
+.img-on-detail:hover {
+  pointer-events: none;
+  box-shadow: none;
+}
+.stores-link {
+  text-decoration: none;
+  color: var(--jet);
+  font-size: large;
 }

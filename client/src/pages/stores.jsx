@@ -8,7 +8,6 @@ const Stores = (props) => {
   const [stores, setStores] = useState([]);
   const [amount, setAmount] = useState(0);
   const [detail, showDetail] = useState("");
-
   useEffect(() => {
     axios.get("/stores").then((res) => {
       setStores(res.data.data);
@@ -39,15 +38,16 @@ const Stores = (props) => {
     <div className="stores-list">
       <label htmlFor="name-filter">
         <div className="filter-text">
-          <span>Find a card </span>
+          {/* <span>Find a card </span>
           <span>
             for <i>You</i>
-          </span>
+          </span> */}
         </div>
       </label>
       <input
         width={"10"}
         id="name-filter"
+        placeholder="        Find a card for you"
         value={nameFilter}
         onChange={(e) => {
           setNameFilter(e.target.value);
