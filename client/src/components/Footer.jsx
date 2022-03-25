@@ -1,15 +1,17 @@
 import React from "react";
 import "./Footer.css";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 const Footer = (props) => {
   return (
     <footer id="main-footer">
       <div className="footer-links">
         <div className="footer-column">
           <h2>Social</h2>
-          <p>Twitter</p>
-          <p>Facebook</p>
-          <p>Instagram</p>
+          <p><FontAwesomeIcon icon="fa-brands fa-twitter" /> Twitter</p>
+          <p><FontAwesomeIcon icon="fa-brands fa-facebook" /> Facebook</p>
+          <p><FontAwesomeIcon icon="fa-brands fa-instagram" /> Instagram</p>
         </div>
         <div className="footer-column">
           <h2>About Us</h2>
@@ -18,9 +20,9 @@ const Footer = (props) => {
         </div>
         <div className="footer-column">
           <h2>Creators</h2>
-          <p>Casey Tite</p>
-          <p>Chris Bell</p>
-          <p>Logan Woolf</p>
+          <p><FontAwesomeIcon icon="fa-brands fa-github" /> Casey Tite</p>
+          <p><FontAwesomeIcon icon="fa-brands fa-github" /> Chris Bell</p>
+          <p><FontAwesomeIcon icon="fa-brands fa-github" /> Logan Woolf</p>
         </div>
       </div>
       <p className="thank-you">
