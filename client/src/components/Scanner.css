@@ -35,6 +35,9 @@
   width: 100%;
   padding: 0.5rem;
 }
+.transaction-details th {
+  width: 33%;
+}
 /* border: 2px solid var(--jet); */
 /* padding: 1rem; */
 /* margin: 1rem; */
