@@ -12,7 +12,7 @@ const Cards = () => {
       setCards(res.data.data);
     });
   }, []);
-console.log(cards);
+
   const cardList = cards
     .filter((card) => {
       const regex = new RegExp(nameFilter, "gi");
@@ -23,14 +23,15 @@ console.log(cards);
     });
   return (
     <>
-        <input
-          id="name-filter"
-          value={nameFilter}
-          onChange={(e) => {
-            setNameFilter(e.target.value);
-          }}
-        />
-      <div className="card-list">{cardList}</div>
+      <input
+        id="name-filter"
+        value={nameFilter}
+        placeholder="Find in your cards"
+        onChange={(e) => {
+          setNameFilter(e.target.value);
+        }}
+      />
+      <div className="stores-list">{cardList}</div>
     </>
   );
 };

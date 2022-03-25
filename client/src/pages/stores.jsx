@@ -36,10 +36,9 @@ const Stores = (props) => {
   return (
     <>
       <input
-        width={"10"}
         id="name-filter"
-        placeholder="   Find a card for you"
         value={nameFilter}
+        placeholder="Find a card for you"
         onChange={(e) => {
           setNameFilter(e.target.value);
         }}
