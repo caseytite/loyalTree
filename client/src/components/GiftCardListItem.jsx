@@ -42,14 +42,7 @@ function GiftCardListItem(props) {
 
   return (
     <div key={gift_card_id} onClick={() => getCard(gift_card_id)}>
-      <p className="store-name">{name}</p>
-      <article
-        className="gift-card"
-        style={{
-          backgroundImage: `url(${photo_url})`,
-        }}
-      >
-      </article>
+      <img className="store-list-img" src={photo_url}></img>
     </div>
   );
 }
