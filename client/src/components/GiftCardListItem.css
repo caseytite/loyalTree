@@ -1,11 +1,12 @@
 .card-list {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 5em;
   margin: 1rem 2rem;
   justify-content: space-between;
-  align-items: unset;
+  /* align-items: unset; */
 }
 .single-card-content {
   display: flex;
@@ -78,7 +79,7 @@
 
 .gift-card header .card-balance {
   margin-left: auto;
-  background-color: var(--jet);
+  /* background-color: var(--jet); */
   opacity: 0.8;
   border-radius: 0 var(--radius) 0 var(--radius);
   width: fit-content;
