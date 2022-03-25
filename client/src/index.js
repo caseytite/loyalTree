@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { render } from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Landing from "./pages/landing";
 import Stores from "./pages/stores";
 import StoreDetails from "./pages/storeDetails";
 import Cards from "./pages/cards";
@@ -19,6 +20,7 @@ render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
+        <Route path="/" element={<Landing />} />
         <Route path="stores" element={<Stores />} />
         <Route path="stores/:id" element={<StoreDetails />} />
         <Route path="cards" element={<Cards />} />

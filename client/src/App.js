@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
 import "./App.css";
 import Navigation from "./components/Navigation";
-import Footer from "./components/Footer";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import LoggedInUser from "./context/AuthContext";
 import Sidebar from "./Sidebar";
 import Cookies from "universal-cookie";
@@ -42,12 +41,6 @@ function App() {
           // userID: Number(document.cookie.slice(3)),
         }}
       >
-        <Navigation
-          handleRegister={handleRegister}
-          user={user}
-          handleLogout={handleLogout}
-          handleLogin={handleLogin}
-        />
         <Sidebar
           handleRegister={handleRegister}
           user={user}
