@@ -54,7 +54,7 @@ function App() {
 
         <div id="page-wrap">
           <header>
-            <img src="loyaltree-large.svg" alt="loyaltree logo" />
+            <img src="/loyaltree-large.svg" alt="loyaltree logo" />
           </header>
           <Outlet />
           <Footer />
