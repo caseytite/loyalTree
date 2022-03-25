@@ -45,9 +45,9 @@
     flex-direction: column;
     align-items: center;
   }
-  .store-list-img {
+  /* .store-list-img {
     margin: 5% 1em;
-  }
+  } */
 
   .text-container {
     position: relative;
@@ -108,7 +108,7 @@ h3 {
 }
 
 .img-on-detail {
-  margin-top: 4em;
+  /* margin-top: 4em; */
 }
 .img-on-detail:hover {
   pointer-events: none;
