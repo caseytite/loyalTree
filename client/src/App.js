@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
-import "./App.css";
-import Navigation from "./components/Navigation";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
+
 import LoggedInUser from "./context/AuthContext";
 import Sidebar from "./Sidebar";
+import Footer from "./components/Footer";
 import Cookies from "universal-cookie";
-import { useNavigate } from "react-router-dom";
+
 import axios from "axios";
+
+import "./App.css";
 
 function App() {
   const context = useContext(LoggedInUser);
@@ -55,6 +57,7 @@ function App() {
             <img src="loyaltree-large.svg" alt="loyaltree logo" />
           </header>
           <Outlet />
+          <Footer />
         </div>
       </LoggedInUser.Provider>
     </div>

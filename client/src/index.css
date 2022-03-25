@@ -19,6 +19,7 @@
 
 body {
   margin: 0 auto;
+  min-height: 100vh;
   /* max-width: 960px; */
   font-family: "Open Sans";
   background-image: url("../public/bedge-grunge.png");
@@ -33,6 +34,14 @@ body::-webkit-scrollbar {
 }
 
 #page-wrap {
-  max-width: 960px;
   margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+#page-wrap > div {
+  max-width: 960px;
+  margin: 0 auto 1.5rem;
 }
