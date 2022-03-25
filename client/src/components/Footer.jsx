@@ -27,15 +27,15 @@ const Footer = (props) => {
         <div className="footer-column">
           <h2>Creators</h2>
           <a href="https://github.com/caseytite">
-            <FontAwesomeIcon icon="fa-brands fa-github" />
+            <FontAwesomeIcon icon="fa-brands fa-github" />{" "}
             Casey Tite
           </a>
           <a href="https://github.com/CBBell99">
-            <FontAwesomeIcon icon="fa-brands fa-github" />
+            <FontAwesomeIcon icon="fa-brands fa-github" />{" "}
             Chris Bell
           </a>
           <a href="https://github.com/loganwoolf">
-            <FontAwesomeIcon icon="fa-brands fa-github" />
+            <FontAwesomeIcon icon="fa-brands fa-github" />{" "}
             Logan Woolf
           </a>
         </div>
