@@ -53,7 +53,8 @@ const SingleGiftCard = (props) => {
         setTimeout(() => {
           setText("Thanks KV!!!");
           setTimeout(() => {
-            navigate("/cards");
+            window.location = "/cards";
+            // navigate("/cards");
           }, 2000);
         }, 2000);
       })
