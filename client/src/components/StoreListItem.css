@@ -37,7 +37,8 @@
 }
 
 #name-filter {
-  width: 50%;
+  padding-top: 8px;
+  width: 80vw;
   align-self: center;
   padding: 8px;
   margin-bottom: 5em;
