@@ -20,14 +20,9 @@ export default function Sidebar(props) {
   return (
     <Menu right>
       {props.user && <h3>Hello, {user.first_name}</h3>}
-      {props.user && <h4>Current Points: {user.points}</h4>}
+      {props.user && <h4>LoyalTree Points: {user.points}</h4>}
       <Link to="/"></Link>
       {!props.user && <Link to="/signin">Login</Link>}
-      {props.user && (
-        <Link to="/" onClick={props.handleLogout}>
-          Logout
-        </Link>
-      )}
       {!props.user && <Link to="/register">Register</Link>}
       {props.user && <Link to="/cards">My Cards</Link>}
       <Link to="/stores">Stores</Link>
@@ -38,6 +33,11 @@ export default function Sidebar(props) {
       <span className="fake-link">Join our Community</span>
       <span className="fake-link">Investor Experience</span>
       <span className="fake-link">Nasdaq Ticker LYLT</span>
+      {props.user && (
+        <Link to="/" onClick={props.handleLogout}>
+          Logout
+        </Link>
+      )}
     </Menu>
   );
 }

@@ -24,6 +24,7 @@
 .icon {
   margin: 7px;
   font-size: x-large;
+  color: black;
 }
 .icon:hover {
   cursor: pointer;
@@ -32,6 +33,7 @@
 #name-filter {
   padding-top: 8px;
   width: 80vw;
+  max-width: 600px;
   align-self: center;
   padding: 8px;
   margin-bottom: 5em;
@@ -58,7 +60,7 @@
     width: 100%;
   }
   #name-filter {
-    min-width: 270px;
+    /* min-width: 270px; */
     align-self: center;
     padding: 8px;
     margin-bottom: 5em;
@@ -74,7 +76,7 @@
 
 @media (max-width: 480px) {
   #name-filter {
-    width: 70%;
+    /* width: 70%; */
     min-width: 270px;
     align-self: center;
     padding: 8px;

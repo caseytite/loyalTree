@@ -8,7 +8,7 @@ const Checkout = (props) => {
   const { closeCard, onPay, text } = props;
   const [name, setName] = useState("Casey");
   const [card, setCard] = useState("4111111111111111");
-  const [email, setEmail] = useState("youremail@example.com");
+  const [email, setEmail] = useState("");
   const [amount, setAmount] = useState("100");
   const [exp, setExp] = useState("");
   const [cvv, setCvv] = useState("123");
@@ -21,7 +21,7 @@ const Checkout = (props) => {
             <button className="close-btn" onClick={() => closeCard(!card)}>
               <X />
             </button>
-            <h3 className="heading-3">For you or for a friend</h3>
+            <h3 className="heading-3">Select Payment</h3>
             <Input
               value={name}
               setValue={setName}

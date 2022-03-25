@@ -279,7 +279,6 @@ app.post("/cards/:id", (req, res) => {
       .then((data) => res.json(data.rows))
       .catch((err) => console.log("error", err.message));
   } else if (user.email) {
-    console.log("in here");
     db.query(
       `UPDATE users
     SET points = points + $1
@@ -287,7 +286,7 @@ app.post("/cards/:id", (req, res) => {
     `,
       [Math.floor(req.body.amount / 10), req.session.id]
     );
-    console.log("afterpoints");
+
     db.query(
       `SELECT id FROM users
   WHERE email LIKE $1`,
@@ -386,6 +385,43 @@ app.get("/dashboard/redeem", (req, res) => {
     });
 });
 
+// redeem points for a gift card
+
+app.post("/redeem/points", (req, res) => {
+  db.query(
+    `UPDATE users
+  SET points = points - $1
+  WHERE users.id = $2;
+  `,
+    [Math.floor(req.body.amount), req.session.id]
+  );
+
+  db.query(
+    `SELECT id FROM users
+WHERE email LIKE $1`,
+    [`${req.body.email}%`]
+  )
+    .then((data) => {
+      return data.rows[0];
+    })
+    .then((data) => {
+      db.query(
+        `INSERT INTO gift_cards(user_id, balance, store_id) 
+      VALUES($1, $2, $3 ) RETURNING *;`,
+        [data.id, Math.floor(req.body.amount * 10), req.body.store_id]
+      )
+        .then((data) =>
+          db.query(
+            `
+    INSERT INTO transactions(giftcard_id,store_id, amount)
+    VALUES($1, $2, $3) RETURNING *;`,
+            [data.rows[0].id, data.rows[0].store_id, data.rows[0].balance]
+          )
+        )
+        .then((data) => res.json({ data: data.rows }))
+        .catch((err) => console.log("error", err.message));
+    });
+});
 // redeem amount from gift card
 app.post("/dashboard/redeem", (req, res) => {
   const cardID = req.body.cardID;
@@ -437,9 +473,7 @@ app.get("/dashboard/transactions", (req, res) => {
     ORDER BY transactions.created_at DESC
     `,
     [req.session.id]
-  ).then((data) => res.json({ data: data.rows })
-
-  );
+  ).then((data) => res.json({ data: data.rows }));
 });
 
 // to run use npx nodemon

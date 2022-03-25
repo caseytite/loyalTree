@@ -4,7 +4,7 @@
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  /* background-color: rgba(0, 0, 0, 0.5); */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,6 +17,7 @@
 .store-name {
   text-align: center;
   font-size: xx-large;
+  color: black;
 }
 
 .card-row {
@@ -50,7 +51,7 @@
 
 .checkout {
   height: 430px;
-  background-color: #05000a;
+  /* background-color: #05000a; */
   min-width: 275px;
   color: white;
   width: 50%;
