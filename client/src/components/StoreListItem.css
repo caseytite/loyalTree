@@ -32,6 +32,9 @@
   margin: 7px;
   font-size: x-large;
 }
+.icon:hover {
+  cursor: pointer;
+}
 
 #name-filter {
   width: 50%;
