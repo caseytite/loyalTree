@@ -80,6 +80,7 @@ const SingleGiftCard = (props) => {
       {!qrCode && (
         <div>
           <p className="store-name">{name}</p>
+          <div className="stores-list">
           <GiftCardListItem
             photo_url={photo_url}
             address={address}
@@ -87,7 +88,10 @@ const SingleGiftCard = (props) => {
             city={city}
             redeem_at={redeem_at}
             point_balance={point_balance}
+            name={name}
           />
+          
+        </div>
         </div>
       )}
       {qrCode && (

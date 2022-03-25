@@ -42,7 +42,8 @@ function GiftCardListItem(props) {
 
   return (
     <div key={gift_card_id} onClick={() => getCard(gift_card_id)}>
-      <img className="store-list-img" src={photo_url}></img>
+      <img className="store-list-img" alt={name} src={photo_url} ></img>
+      <p>Balance: ${balance/100} for {props.name}</p>
     </div>
   );
 }
