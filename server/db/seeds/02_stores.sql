@@ -9,5 +9,5 @@ VALUES
 (2, 'The Leaky Cauldron' , 'Restaurant', 'Local watering hole','https://imgur.com/CLoKIRs.gif', '2923 Alder ave',default, default),
 (6, 'The Roasted Bean' ,'Restaurant', 'Locally owned coffee shop', 'https://imgur.com/kQR76M6.gif', '2927 Broadway',default, default),
 (5, 'Full Swing Pro Shop' ,'Retail', 'For golfers, by golfers ', 'https://imgur.com/XvpGZ3d.gif' , '3452 Mountain ave',default, default),
-(11, 'Annas Bakery' ,'Restaurant', 'Artisan crafted breads and treats', 'https://i.imgur.com/yM1Y6Ob.gif' , '2342 5th street', default,default)
+(11, 'Annas Bakery' ,'Restaurant', 'Artisan crafted breads and treats', 'https://i.imgur.com/KzPoWg2.gif' , '2342 5th street', default,default)
 ;

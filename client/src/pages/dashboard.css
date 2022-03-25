@@ -17,7 +17,6 @@
 }
 .transactions-table th {
   text-align: left;
-  padding-right: 5rem;
   background-color: var(--cultured);
   color: var(--jet);
   font-weight: bold;

@@ -60,8 +60,8 @@ Business owners
 - [ ] As an owner I want to be able to register a new store
 
 
-
-
+bugs
+- [ ] 
 
 
 

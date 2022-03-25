@@ -150,7 +150,7 @@
     align-items: center;
   }
   .store-list-img {
-    width: 280px;
+    min-width: 280px;
     height: 200px;
     transition: width 0.5s, height 0.5s;
   }
