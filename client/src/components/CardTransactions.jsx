@@ -23,7 +23,7 @@ const CardTransactions = (props) => {
     return (
       <tr>
         <td>{formatter.format(data.amount / 100)}</td>
-        <td>{formattedDate.toLocaleString()}</td>
+        <td>{formattedDate.toDateString()}</td>
       </tr>
     );
   });
@@ -35,7 +35,7 @@ const CardTransactions = (props) => {
           <thead>
             <tr>
               <th>Amount</th>
-              <th>Time</th>
+              <th>Date</th>
             </tr>
           </thead>
           <tbody>{transactionTable}</tbody>

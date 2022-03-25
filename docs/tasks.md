@@ -61,7 +61,8 @@ Business owners
 
 
 bugs
-- [ ] 
+- [ ] server crashes if wrong card scan
+- [ ] app scrolls to the bottom when going to the details page
 
 
 

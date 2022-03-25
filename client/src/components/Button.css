@@ -1,8 +1,16 @@
 .button-confirm {
-  background-color: var(--bud-green);
+  background-color: var(--jet);
   /* background-color: #4fb94b; */
   padding: 0.8rem 1.5rem;
   color: #fff;
   font-weight: bold;
-  border-radius: 15px;
+  border-radius: 2rem;
+  border: 1px solid var(--jet);
+  width: 50%;
+}
+
+@media (max-width: 768px) {
+  .button-confirm {
+    width: 80%;
+  }
 }
