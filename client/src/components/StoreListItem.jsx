@@ -19,11 +19,12 @@ function StoreListItem(props) {
   console.log(detail);
   const [card, setCard] = useState(false);
   const [text, setText] = useState("Place Order");
+  const [redeem, setRedeem] = useState(false);
 
   const articleClass = classNames("store-list-item", {
     "store-list-item--detail": detail,
   });
-  console.log(context);
+
   const onPay = (email, amount) => {
     const id = context.userID;
     axios
@@ -39,7 +40,27 @@ function StoreListItem(props) {
           setText("Thanks KV!!!");
           setTimeout(() => {
             window.location = "/cards";
-            // navigate("/cards");
+          }, 2000);
+        }, 2000);
+      })
+      .catch((err) => console.log(err.message));
+  };
+
+  const onRedeem = (email, amount) => {
+    const id = context.userID;
+    axios
+      .post(`/redeem/points`, {
+        email,
+        amount: amount,
+        user_id: id,
+        store_id: params.id,
+      })
+      .then((res) => {
+        setText("Processing");
+        setTimeout(() => {
+          setText("Thanks KV!!!");
+          setTimeout(() => {
+            window.location = "/cards";
           }, 2000);
         }, 2000);
       })
@@ -66,10 +87,24 @@ function StoreListItem(props) {
           onPay={onPay}
         />
       )}
+      {redeem && (
+        <CreditCard
+          text={text}
+          setText={setText}
+          open={redeem}
+          closeCard={setRedeem}
+          onPay={onRedeem}
+        />
+      )}
 
       {detail && (
         <div className="purchase">
           <Button onClick={() => setCard(!card)}>Purchase</Button>
+        </div>
+      )}
+      {detail && (
+        <div className="purchase">
+          <Button onClick={() => setRedeem(!redeem)}>Redeem with Points</Button>
         </div>
       )}
 
