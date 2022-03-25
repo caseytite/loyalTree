@@ -108,15 +108,22 @@ h3 {
 }
 
 .img-on-detail {
-  width: 70%;
-  margin-left: 10%;
+  width: 60%;
+  margin-left: 20%;
+  min-width: 325px;
 }
 .img-on-detail:hover {
   pointer-events: none;
   box-shadow: none;
 }
 .stores-link {
-  text-decoration: none;
+  /* text-decoration: none; */
   color: var(--jet);
   font-size: large;
+}
+
+@media (max-width: 768px) {
+  .img-on-detail {
+    margin: auto;
+  }
 }
