@@ -18,10 +18,6 @@ function GiftCardListItem(props) {
 
   const navigate = useNavigate();
 
-  const formatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  });
   const getCard = (id) => {
     axios
       .get(`/cards/${gift_card_id}`)
@@ -53,29 +49,6 @@ function GiftCardListItem(props) {
           backgroundImage: `url(${photo_url})`,
         }}
       >
-        <header>
-          {redeem_at > 0 && (
-            <>
-              <div className="points">
-                <p>{point_balance}</p>
-                <div className="points-total">
-                  {/* <p>/</p> */}
-                  <p>/ {redeem_at}</p>
-                </div>
-              </div>
-            </>
-          )}
-          {balance > 0 && (
-            <div className="card-balance">
-              <p>{formatter.format(balance / 100)}</p>
-            </div>
-          )}
-        </header>
-
-        <footer>
-          <p>{address}</p>
-          <p>{city}</p>
-        </footer>
       </article>
     </div>
   );

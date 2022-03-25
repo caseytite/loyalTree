@@ -97,24 +97,3 @@
   padding: 0.8rem;
   opacity: 0.8;
 }
-
-.gift-card footer {
-  width: 100%;
-  border-radius: 0 0 var(--radius) var(--radius);
-  opacity: 0.8;
-
-  grid-column: span 2;
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  /* margin-top: auto; */
-  /* justify-content: space-evenly; */
-
-  font-size: 0.9rem;
-  background-color: var(--jet);
-}
-
-.gift-card footer p {
-  padding: 0rem 1rem;
-}
