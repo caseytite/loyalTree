@@ -26,7 +26,7 @@
   --card-width: 275px;
   --radius: 0.75rem;
   width: var(--card-width);
-  height: calc(var(--card-width) * 8 / 12);
+  height: calc(var(--card-width) * 7 / 12);
 
   border-radius: var(--radius);
 
@@ -35,6 +35,7 @@
   justify-content: space-between;
   align-items: center;
   background-size: cover;
+  background-position: center;
   color: var(--bud-green);
 }
 
