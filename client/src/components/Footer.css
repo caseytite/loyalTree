@@ -11,7 +11,7 @@
   font-size: 0.9rem;
   padding-bottom: 0.25rem;
 }
-#main-footer a,p {
+#main-footer a,#main-footer p {
   font-size: 0.5rem;
   display: block;
   color: var(--gainsboro);
