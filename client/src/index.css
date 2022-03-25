@@ -1,9 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@400;500;700&display=swap");
 :root {
-  --jet: hsla(260, 3%, 23%, 1);
+  scrollbar-width: none;
+  /* --jet: hsla(260, 3%, 23%, 1); */
   --cultured: hsla(60, 5%, 96%, 1);
   --bud-green: hsla(115, 40%, 51%, 1);
   --fern-green: hsla(115, 24%, 38%, 1);
+
+  /* CSS HSL */
+--jet: hsla(330, 2%, 21%, 1);
+--beaver: hsla(26, 26%, 56%, 1);
+--antique-bronze: hsla(53, 33%, 33%, 1);
+--battleship-grey: hsla(97, 3%, 53%, 1);
+--gainsboro: hsla(213, 26%, 86%, 1);
+--rust: hsla(19, 57%, 44%, 1);
 
   font-size: 16px;
 }
@@ -12,7 +21,11 @@ body {
   margin: 0 auto;
   /* max-width: 960px; */
   font-family: "Roboto";
-  background-image: url("../public/leaves-pattern.png");
+  background-image: url("../public/bedge-grunge.png");
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 * {
@@ -20,7 +33,6 @@ body {
 }
 
 #page-wrap {
-  padding-bottom: 10px;
-  padding-top: 10px;
-  /* max-width: 960px; */
+  max-width: 960px;
+  margin: 0 auto;
 }
