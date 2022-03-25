@@ -27,13 +27,12 @@
 }
 
 .thank-you {
-  text-align: center;
   margin: 0;
   max-width: 275px;
 }
 
 @media (max-width: 600px) {
   .footer-links {
-    gap: 3rem;
+    gap: 2rem;
   }
 }
