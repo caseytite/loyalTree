@@ -91,13 +91,13 @@ function StoreListItem(props) {
         />
       )}
       {/* <hr className="hr" /> */}
-      <div>
+      
         {detail && (
           <div className="purchase">
             <Button onClick={() => setCard(!card)}>Purchase</Button>
           </div>
         )}
-      </div>
+      
       {detail && (
         <div className="detail-page-about">
           <div className="store-description">

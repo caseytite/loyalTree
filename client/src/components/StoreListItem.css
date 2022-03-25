@@ -45,9 +45,9 @@
     flex-direction: column;
     align-items: center;
   }
-  /* .store-list-img {
+  .store-list-img {
     margin: 5% 1em;
-  } */
+  }
 
   .text-container {
     position: relative;
@@ -90,8 +90,8 @@
 .purchase {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
-  margin-right: 5%;
+  justify-content: center;
+  width: 100%;
 }
 
 .store-description {
@@ -108,9 +108,7 @@ h3 {
 }
 
 .img-on-detail {
-  width: 60%;
-  margin-left: 20%;
-  min-width: 325px;
+  margin-top: 4em;
 }
 .img-on-detail:hover {
   pointer-events: none;
