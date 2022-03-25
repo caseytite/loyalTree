@@ -23,9 +23,6 @@ console.log(cards);
     });
   return (
     <>
-      <div className="cards-list" >
-        <h2>My Cards</h2>
-        {/* <label htmlFor="name-filter">Filter: </label> */}
         <input
           id="name-filter"
           value={nameFilter}
@@ -33,7 +30,6 @@ console.log(cards);
             setNameFilter(e.target.value);
           }}
         />
-      </div>
       <div className="card-list">{cardList}</div>
     </>
   );
