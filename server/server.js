@@ -135,6 +135,13 @@ app.put("/cards/:id/topup", (req, res) => {
     [req.body.amount * 100, req.params.id]
   )
     .then((data) => {
+      db.query(
+        `UPDATE users
+      SET points = points + $1
+      WHERE users.id = $2;
+      `,
+        [Math.floor(req.body.amount / 10), req.session.id]
+      );
       return db.query(
         `
   INSERT INTO transactions(giftcard_id,store_id, amount,receiver_id)
@@ -205,7 +212,7 @@ app.put("/cards/:id", (req, res) => {
         `,
         [req.body.email, receivingCard.store_id, receivingCard.balance]
       )
-        .then(data => {
+        .then((data) => {
           return (transactionInfo = {
             sendingCardID: receivingCard.sendingCardID,
             store_id: receivingCard.store_id,
@@ -214,7 +221,6 @@ app.put("/cards/:id", (req, res) => {
           });
         })
         .then((transactionInfo) => {
-
           //create a debiting and crediting transaction
           db.query(
             `
@@ -229,7 +235,7 @@ app.put("/cards/:id", (req, res) => {
             [transactionInfo.newCardID, transactionInfo.amount]
           );
         });
-    })
+    });
 });
 
 //------cards by user id from cookie
@@ -253,19 +259,35 @@ app.post("/cards/:id", (req, res) => {
     db.query(
       `INSERT INTO gift_cards(user_id, balance, store_id) 
     VALUES($1, $2, $3 ) RETURNING *;`,
-      [req.body.user_id, req.body.balance, req.body.store_id]
+      [req.body.user_id, req.body.amount * 100, req.body.store_id]
     )
-      .then(
+      .then((data) => {
         db.query(
+          `UPDATE users
+        SET points = points + $1
+        WHERE users.id = $2;
+        `,
+          [Math.floor(req.body.amount / 10), req.session.id]
+        );
+        return db.query(
           `
       INSERT INTO transactions(giftcard_id,store_id, amount)
       VALUES($1, $2, $3) RETURNING *;`,
           [data.rows[0].id, data.rows[0].store_id, data.rows[0].balance]
-        )
-      )
+        );
+      })
       .then((data) => res.json(data.rows))
       .catch((err) => console.log("error", err.message));
   } else if (user.email) {
+    console.log("in here");
+    db.query(
+      `UPDATE users
+    SET points = points + $1
+    WHERE users.id = $2;
+    `,
+      [Math.floor(req.body.amount / 10), req.session.id]
+    );
+    console.log("afterpoints");
     db.query(
       `SELECT id FROM users
   WHERE email LIKE $1`,
@@ -278,7 +300,7 @@ app.post("/cards/:id", (req, res) => {
         db.query(
           `INSERT INTO gift_cards(user_id, balance, store_id) 
         VALUES($1, $2, $3 ) RETURNING *;`,
-          [data.id, req.body.balance * 100, req.body.store_id]
+          [data.id, req.body.amount * 100, req.body.store_id]
         )
           .then((data) =>
             db.query(

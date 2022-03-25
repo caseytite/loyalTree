@@ -22,7 +22,7 @@ const SignInForm = (props) => {
         .then((res) => {
           cookies.set("id", res.data.user.id, { path: "/" });
           context.user = res.data.user;
-          // context.userID = res.data.user.id;
+          context.userID = res.data.user.id;
           context.user = res.data.user;
         })
         .then((response) => {

@@ -23,13 +23,13 @@ function StoreListItem(props) {
   const articleClass = classNames("store-list-item", {
     "store-list-item--detail": detail,
   });
-
+  console.log(context);
   const onPay = (email, amount) => {
     const id = context.userID;
     axios
       .post(`/cards/${id}`, {
         email,
-        balance: amount,
+        amount: amount,
         user_id: id,
         store_id: params.id,
       })

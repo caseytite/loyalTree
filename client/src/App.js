@@ -17,7 +17,6 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 library.add(fab);
 
-
 function App() {
   const context = useContext(LoggedInUser);
   // gets the session cookie
@@ -48,7 +47,7 @@ function App() {
       <LoggedInUser.Provider
         value={{
           user: localStorage.getItem("user"),
-          // userID: Number(document.cookie.slice(3)),
+          userID: Number(document.cookie.slice(3)),
         }}
       >
         <Sidebar

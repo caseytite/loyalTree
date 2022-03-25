@@ -19,8 +19,8 @@ export default function Sidebar(props) {
 
   return (
     <Menu right>
-      {props.user && <h3>Hello, {user.first_name} </h3>}
-
+      {props.user && <h3>Hello, {user.first_name}</h3>}
+      {props.user && <h4>Current Points: {user.points}</h4>}
       <Link to="/"></Link>
       {!props.user && <Link to="/signin">Login</Link>}
       {props.user && (
