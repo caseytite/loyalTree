@@ -10,6 +10,14 @@ import axios from "axios";
 
 import "./App.css";
 
+// fontawesome
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+// import the next line into each file fontawesome is needed
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+library.add(fab);
+
+
 function App() {
   const context = useContext(LoggedInUser);
   // gets the session cookie
@@ -54,7 +62,7 @@ function App() {
 
         <div id="page-wrap">
           <header>
-            <img src="loyaltree-large.svg" alt="loyaltree logo" />
+            <img src="/loyaltree-large.svg" alt="loyaltree logo" />
           </header>
           <Outlet />
           <Footer />

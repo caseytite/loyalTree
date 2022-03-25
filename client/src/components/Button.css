@@ -9,6 +9,10 @@
   width: 50%;
 }
 
+.button-confirm:hover {
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
   .button-confirm {
     width: 80%;

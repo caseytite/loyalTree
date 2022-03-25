@@ -411,11 +411,13 @@ app.get("/dashboard/transactions", (req, res) => {
   db.query(
     `
     SELECT *, transactions.id FROM transactions
-    JOIN stores on store_id = stores.id
-    WHERE owner_id = $1
+    WHERE store_id = $1
+    ORDER BY transactions.created_at DESC
     `,
     [req.session.id]
-  ).then((data) => res.json({ data: data.rows }));
+  ).then((data) => res.json({ data: data.rows })
+
+  );
 });
 
 // to run use npx nodemon

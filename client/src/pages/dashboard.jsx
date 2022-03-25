@@ -45,7 +45,7 @@ const Dashboard = (props) => {
             <TransactionListItem
               key={transaction.id}
               id={transaction.id}
-              amount={transaction.amount}
+              amount={Math.abs(transaction.amount)}
               storeId={transaction.store_id}
               date={transaction.created_at}
             />

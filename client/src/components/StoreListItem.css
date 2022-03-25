@@ -1,7 +1,7 @@
 .stores-list {
   display: flex;
   flex-direction: column;
-  padding-top: 10em;
+  padding-top: 5em;
 }
 
 .filter-text {
@@ -23,8 +23,22 @@
   box-shadow: 0px 0px 10px rgb(0, 0, 0);
 }
 
+.socials {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.icon {
+  margin: 7px;
+  font-size: x-large;
+}
+.icon:hover {
+  cursor: pointer;
+}
+
 #name-filter {
-  width: 50%;
+  padding-top: 8px;
+  width: 80vw;
   align-self: center;
   padding: 8px;
   margin-bottom: 5em;
@@ -45,16 +59,12 @@
     flex-direction: column;
     align-items: center;
   }
-  .store-list-img {
-    margin: 5% 1em;
-  }
 
   .text-container {
     position: relative;
     width: 100%;
   }
   #name-filter {
-    /* width: 90%; */
     min-width: 270px;
     align-self: center;
     padding: 8px;
@@ -90,8 +100,8 @@
 .purchase {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
-  margin-right: 5%;
+  justify-content: center;
+  width: 100%;
 }
 
 .store-description {
@@ -108,14 +118,21 @@ h3 {
 }
 
 .img-on-detail {
-  margin-top: 4em;
+  width: 60%;
+  margin-left: 20%;
+  min-width: 325px;
 }
 .img-on-detail:hover {
   pointer-events: none;
   box-shadow: none;
 }
 .stores-link {
-  text-decoration: none;
   color: var(--jet);
   font-size: large;
+}
+
+@media (max-width: 768px) {
+  .img-on-detail {
+    margin: auto;
+  }
 }

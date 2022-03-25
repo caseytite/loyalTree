@@ -12,7 +12,7 @@ const Cards = () => {
       setCards(res.data.data);
     });
   }, []);
-
+console.log(cards);
   const cardList = cards
     .filter((card) => {
       const regex = new RegExp(nameFilter, "gi");
@@ -21,12 +21,11 @@ const Cards = () => {
     .map((card) => {
       return <GiftCardListItem key={card.gift_card_id} {...card} />;
     });
-
   return (
     <>
-      <div className="cards-list">
-        <h2>List of user's cards</h2>
-        <label htmlFor="name-filter">Filter: </label>
+      <div className="cards-list" >
+        <h2>My Cards</h2>
+        {/* <label htmlFor="name-filter">Filter: </label> */}
         <input
           id="name-filter"
           value={nameFilter}

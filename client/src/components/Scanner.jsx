@@ -1,4 +1,4 @@
-import React, { useRef, useState, } from "react";
+import React, { useRef, useState } from "react";
 
 import axios from "axios";
 import QrScanner from "qr-scanner";
@@ -47,19 +47,17 @@ const Scanner = (props) => {
       })
       .then((response) => {
         console.log("Success!");
-          console.log("post response", response.data);
-          setCardAmt(null);
-          setError(null);
-          setTransAmt("");
-          setCardID(null);
-          const time = new Date(response.data.created_at); 
-          setDay(time.toLocaleString());
-          setTransaction(response.data);
-        });
-      };
-      // console.log("transaction", transaction);
- 
-  
+        console.log("post response", response.data);
+        setCardAmt(null);
+        setError(null);
+        setTransAmt("");
+        setCardID(null);
+        const time = new Date(response.data.created_at);
+        setDay(time.toDateString());
+        setTransaction(response.data);
+      });
+  };
+
   return (
     <div className="scanner">
       <h2>Redeem from Gift Card</h2>
@@ -80,24 +78,25 @@ const Scanner = (props) => {
       )}
       {error && <p>{error}</p>}
       <video ref={previewEl}></video>
-       {transaction && <div className="transaction-container">
-        <h3>Transaction Details</h3>
+      {transaction && (
+        <div className="transaction-container">
+          <h3>Transaction Details</h3>
           <div className="transaction-details">
             <table>
               <tr>
-                  <th>Transaction #</th> 
-                  <th>Date</th> 
-                  <th>Amount</th>
-              </tr>  
+                <th>Transaction #</th>
+                <th>Date</th>
+                <th>Amount</th>
+              </tr>
               <tr>
-              <td>{transaction.id}</td>  
-              <td>{day}</td>  
-              <td>{transaction.amount /100 * -1}</td>  
-              </tr>   
+                <td>{transaction.id}</td>
+                <td>{day}</td>
+                <td>${(transaction.amount / 100) * -1}</td>
+              </tr>
             </table>
-            
           </div>
-       </div>}
+        </div>
+      )}
     </div>
   );
 };
