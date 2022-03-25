@@ -1,23 +1,14 @@
 .stores-list {
   display: flex;
   flex-direction: column;
-  padding-top: 5em;
-}
-
-.filter-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  font-size: xx-large;
+  gap: 2rem;
 }
 
 .store-list-img {
-  width: 90%;
   max-width: 600px;
   border-radius: 1.2em;
   border: 1px solid hsl(0, 4%, 71%);
-  margin: 2em 5%;
+  /* margin: 0 auto; */
 }
 .store-list-img:hover {
   cursor: pointer;
@@ -88,11 +79,11 @@
     margin-bottom: 5em;
     font-size: larger;
   }
-  .stores-list {
+  /* .stores-list {
     width: 95%;
     margin: 1em;
     align-items: center;
-  }
+  } */
 }
 
 /* ------------------only the single store detail page styles */
