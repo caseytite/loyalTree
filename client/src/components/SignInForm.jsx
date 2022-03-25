@@ -6,8 +6,6 @@ import "./SignInForm.css";
 import Cookies from "universal-cookie";
 import LoggedInUser from "../context/AuthContext";
 
-//react cookies wont work when the fucntion is declared everything crashses
-
 const SignInForm = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -38,7 +36,7 @@ const SignInForm = (props) => {
 
   return (
     <div className="form-container">
-        <form action="" onSubmit={onFormSubmission}>
+      <form action="" onSubmit={onFormSubmission}>
         <label htmlFor="email">email</label>
         <input
           value={email}
@@ -52,8 +50,8 @@ const SignInForm = (props) => {
           type="password"
         />
         <Button onClick={(e) => onFormSubmission(e)}>Sign in</Button>
-    </form>
-      </div>
+      </form>
+    </div>
   );
 };
 

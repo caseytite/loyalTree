@@ -6,7 +6,6 @@
   margin-bottom: 5em;
   margin: 1rem 2rem;
   justify-content: space-between;
-  /* align-items: unset; */
 }
 .single-card-content {
   display: flex;
@@ -35,7 +34,6 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  /* background-color: var(--jet); */
   background-size: cover;
   color: var(--bud-green);
 }
@@ -51,7 +49,6 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  /* padding: 0.5rem; */
 }
 
 .gift-card header .points {
