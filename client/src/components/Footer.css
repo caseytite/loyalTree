@@ -9,9 +9,13 @@
 }
 #main-footer h2 {
   font-size: 0.9rem;
+  padding-bottom: 0.25rem;
 }
-#main-footer p {
+#main-footer a,p {
   font-size: 0.5rem;
+  display: block;
+  color: var(--gainsboro);
+  text-decoration: none;
 }
 
 .footer-links {
@@ -24,11 +28,25 @@
 
 .footer-column {
   min-width: 10ch;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
 }
 
 .thank-you {
   margin: 0;
   max-width: 275px;
+  transition: all 200ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  padding: 1rem;
+}
+
+.thank-you:hover {
+  transform: scale(1.5);
+  transform-origin: 50% 100%;
+  background-color: var(--rust);
+  box-shadow: 0 0 40px var(--gainsboro);
+  border-radius: 1rem;
+  opacity: 0.9;
 }
 
 @media (max-width: 600px) {
