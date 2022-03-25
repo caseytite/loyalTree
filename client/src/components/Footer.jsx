@@ -3,11 +3,35 @@ import "./Footer.css";
 
 const Footer = (props) => {
   return (
-    <div className="footer">
-      <div></div>
-      <div>LoyalTree</div>
-      <div>Back To Top</div>
-    </div>
+    <footer id="main-footer">
+      <div className="footer-links">
+        <div className="footer-column">
+          <h2>Social</h2>
+          <p>Twitter</p>
+          <p>Facebook</p>
+          <p>Instagram</p>
+        </div>
+        <div className="footer-column">
+          <h2>About Us</h2>
+          <p>Who we are</p>
+          <p>Program Info</p>
+        </div>
+        <div className="footer-column">
+          <h2>Creators</h2>
+          <p>Casey Tite</p>
+          <p>Chris Bell</p>
+          <p>Logan Woolf</p>
+        </div>
+      </div>
+      <p className="thank-you">
+        A very special thank you to our families who supported us all the way
+        through and helped with ideas and graphics for this project.
+      </p>
+      <p className="thank-you">
+        Another special thanks to all of the instructors, mentors, and staff at
+        Lighthouse Labs! You are amazing and have changed our lives!
+      </p>
+    </footer>
   );
 };
 

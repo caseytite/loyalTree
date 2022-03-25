@@ -25,13 +25,13 @@ export default function Sidebar(props) {
       {!props.user && <Link to="/signin">Login</Link>}
       {props.user && (
         <Link to="/" onClick={props.handleLogout}>
-          Logout link
+          Logout
         </Link>
       )}
       {!props.user && <Link to="/register">Register</Link>}
       {props.user && <Link to="/cards">My Cards</Link>}
       <Link to="/stores">Stores</Link>
-      {user.isstoreowner && <Link to="/dashboard">Dashboard</Link>}
+      {props.user && <Link to="/dashboard">Dashboard</Link>}
       <span className="fake-link">About Us</span>
       <span className="fake-link">Contact Us</span>
       <span className="fake-link">Careers</span>

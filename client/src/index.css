@@ -7,20 +7,21 @@
   --fern-green: hsla(115, 24%, 38%, 1);
 
   /* CSS HSL */
---jet: hsla(330, 2%, 21%, 1);
---beaver: hsla(26, 26%, 56%, 1);
---antique-bronze: hsla(53, 33%, 33%, 1);
---battleship-grey: hsla(97, 3%, 53%, 1);
---gainsboro: hsla(213, 26%, 86%, 1);
---rust: hsla(19, 57%, 44%, 1);
+  --jet: hsla(330, 2%, 21%, 1);
+  --beaver: hsla(26, 26%, 56%, 1);
+  --antique-bronze: hsla(53, 33%, 33%, 1);
+  --battleship-grey: hsla(97, 3%, 53%, 1);
+  --gainsboro: hsla(213, 26%, 86%, 1);
+  --rust: hsla(19, 57%, 44%, 1);
 
   font-size: 16px;
 }
 
 body {
   margin: 0 auto;
+  min-height: 100vh;
   /* max-width: 960px; */
-  font-family: "Roboto";
+  font-family: "Open Sans";
   background-image: url("../public/bedge-grunge.png");
 }
 
@@ -33,6 +34,14 @@ body::-webkit-scrollbar {
 }
 
 #page-wrap {
-  max-width: 960px;
   margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+#page-wrap > div {
+  max-width: 960px;
+  margin: 0 auto 1.5rem;
 }
