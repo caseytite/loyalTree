@@ -16,7 +16,7 @@ function StoreListItem(props) {
 
   const { storeID, storeName, description, address, category, photo, detail } =
     props;
-  console.log(detail);
+
   const [card, setCard] = useState(false);
   const [text, setText] = useState("Place Order");
   const [redeem, setRedeem] = useState(false);

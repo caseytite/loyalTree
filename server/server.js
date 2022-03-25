@@ -388,7 +388,6 @@ app.get("/dashboard/redeem", (req, res) => {
 // redeem points for a gift card
 
 app.post("/redeem/points", (req, res) => {
-  console.log("req body:", req.body, "params:", req.params);
   db.query(
     `UPDATE users
   SET points = points - $1

@@ -5,7 +5,6 @@ import "./CardTransactions.css";
 
 const CardTransactions = (props) => {
   const [transactions, setTransactions] = useState([]);
-  console.log({ transactions });
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
