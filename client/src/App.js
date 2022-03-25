@@ -51,6 +51,9 @@ function App() {
         />
 
         <div id="page-wrap">
+          <header>
+            <img src="loyaltree-large.svg" alt="loyaltree logo" />
+          </header>
           <Outlet />
         </div>
       </LoggedInUser.Provider>
