@@ -28,6 +28,13 @@
   opacity: 0.8;
 }
 
+.image-group article h2 {
+  font-size: 1.2rem;
+}
+.image-group article p {
+  font-size: 0.9rem;
+}
+
 .article-color-1 {
   background-color: var(--beaver);
   color: var(--cultured);
