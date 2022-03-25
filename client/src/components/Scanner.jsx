@@ -53,7 +53,7 @@ const Scanner = (props) => {
         setTransAmt("");
         setCardID(null);
         const time = new Date(response.data.created_at);
-        setDay(time.toLocaleString());
+        setDay(time.toDateString());
         setTransaction(response.data);
       });
   };
@@ -91,7 +91,7 @@ const Scanner = (props) => {
               <tr>
                 <td>{transaction.id}</td>
                 <td>{day}</td>
-                <td>{(transaction.amount / 100) * -1}</td>
+                <td>${(transaction.amount / 100) * -1}</td>
               </tr>
             </table>
           </div>

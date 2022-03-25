@@ -39,6 +39,11 @@
   width: 33%;
 }
 
+.transaction-details td {
+  text-align: center;
+  background-color: #ccc;
+}
+
 #redeem-amount {
   padding: 8px;
   width: 45%;
@@ -46,10 +51,9 @@
   text-align: center;
   border-radius: 20px;
 }
-/* border: 2px solid var(--jet); */
-/* padding: 1rem; */
-/* margin: 1rem; */
-/* border-radius: 0.5rem; */
-/* background-color: var(--cultured); */
-/* opacity: 0.7; */
-/* box-shadow: 0 0 5px var(--jet); */
+
+@media screen and (min-width: 768px) {
+  .transaction-container {
+    width: 80vw;
+  }
+}
