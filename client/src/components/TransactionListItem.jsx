@@ -4,7 +4,7 @@ function TransactionListItem(props) {
   const { amount, date, storeId, id } = props;
   // console.log(date.getUTCFullYear());
   const day = new Date(date);
-  const tdate = day.toLocaleDateString();
+  const tdate = day.toLocaleString();
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
