@@ -1,7 +1,7 @@
 .stores-list {
   display: flex;
   flex-direction: column;
-  padding-top: 10em;
+  padding-top: 5em;
 }
 
 .filter-text {
@@ -45,16 +45,12 @@
     flex-direction: column;
     align-items: center;
   }
-  .store-list-img {
-    margin: 5% 1em;
-  }
 
   .text-container {
     position: relative;
     width: 100%;
   }
   #name-filter {
-    /* width: 90%; */
     min-width: 270px;
     align-self: center;
     padding: 8px;
