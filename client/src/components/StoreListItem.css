@@ -10,6 +10,7 @@
   max-width: 600px;
   border-radius: 1.2em;
   border: 1px solid hsl(0, 4%, 71%);
+  aspect-ratio: 20.9/12;
 }
 .store-list-img:hover {
   cursor: pointer;
