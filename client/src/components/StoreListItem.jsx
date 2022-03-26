@@ -120,7 +120,18 @@ function StoreListItem(props) {
           <div className="store-description">
             <div className="about-header">
               <h2>About {storeName}</h2>
-              <ReactStars value={rating} onChange={(e) => rateStore(e)} />
+              <ReactStars
+                value={rating}
+                onChange={(e) => rateStore(e)}
+                size={20}
+                isHalf={true}
+                emptyIcon={<FontAwesomeIcon icon="fa-regular fa-star" />}
+                halfIcon={
+                  <FontAwesomeIcon icon="fa-solid fa-star-half-stroke" />
+                }
+                fullIcon={<FontAwesomeIcon icon="fa-solid fa-star" />}
+                activeColor="#ffd700"
+              />
             </div>
             <hr></hr>
             <h3>
