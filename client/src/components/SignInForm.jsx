@@ -24,6 +24,8 @@ const SignInForm = (props) => {
           context.user = res.data.user;
           context.userID = res.data.user.id;
           context.user = res.data.user;
+          localStorage.setItem("userName", res.data.user.first_name);
+          localStorage.setItem("userEmail", res.data.user.email);
         })
         .then((response) => {
           console.log(context.user);
