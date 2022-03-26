@@ -64,10 +64,10 @@ export default function Sidebar(props) {
         </span>
       )}
       <span onClick={closeMenu}>
-        <a href="/">
+        <Link to="/">
           <FontAwesomeIcon icon="fa-solid fa-house" />
           {" Home"}
-        </a>
+        </Link>
       </span>
 
       {!props.user && (
