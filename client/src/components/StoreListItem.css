@@ -109,6 +109,11 @@
   width: 90%;
   margin: 2em 5%;
 }
+
+.store-description p {
+  white-space: pre-line;
+}
+
 h2 {
   font-size: xx-large;
   margin-top: 0;

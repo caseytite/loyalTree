@@ -115,18 +115,7 @@ function StoreListItem(props) {
             <h2>About {storeName}</h2>
             <hr></hr>
             <h3>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{description}. Lorem ipsum dolor
-              sitamet consectetur adipisicing elit. Incidunt laboriosam saepe
-              illo temporibus, iusto amet voluptates, accusamus delectus
-              laudantium at quo fuga non numquam. Voluptas aliquam ipsa dolores
-              incidunt aspernatur. Eius aliquam ab, animi voluptas, quis iusto,
-              mollitia repellendus cumque praesentium dolores fugiat eum commodi
-              similique placeat illum. Velit eum nam quas. Dignissimos odio
-              aperiam praesentium modi iusto ab provident. Nulla, nostrum?
-              Repellendus ex dolores deserunt autem adipisci obcaecati
-              exercitationem quisquam ab, dolorum deleniti hic delectus unde
-              odit mollitia quia ea iure inventore pariatur neque natus, fugiat
-              in voluptatum.
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p>{description}</p>
             </h3>
             <div className="socials">
               <p className="icon">

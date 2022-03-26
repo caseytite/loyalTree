@@ -6,7 +6,7 @@ import X from "./X";
 
 const Checkout = (props) => {
 
-  const { closeCard, onPay, text } = props;
+  const { closeCard, onPay, text, header } = props;
   const firstName = localStorage.getItem("userName");
   const userEmail = localStorage.getItem("userEmail");
   const [name, setName] = useState(firstName);
