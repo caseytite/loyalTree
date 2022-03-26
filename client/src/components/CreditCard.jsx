@@ -12,7 +12,6 @@ const Checkout = (props) => {
   const [amount, setAmount] = useState("100");
   const [exp, setExp] = useState("");
   const [cvv, setCvv] = useState("123");
-  // const [receiver, setReceiver] = useState("Select Payment");
 
    console.log("super",props)
   return (
@@ -24,9 +23,6 @@ const Checkout = (props) => {
               <X />
             </button>
             <h3>{header}</h3> 
-              {/* {className === "purchase-card" && <h3 className="heading-3">Purchase for you or a friend</h3>}
-              {className === "transfer-card-balance" && <h3 className="heading-3">Transfer Balance</h3>}
-              {props.className === "single-card-checkout" && <h3 className="heading-3">Purchase for you</h3>} */}
             <Input
               value={name}
               setValue={setName}
