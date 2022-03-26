@@ -68,20 +68,17 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 /* Individual item */
-.bm-item {
+.bm-item, .bm-item a {
   display: inline-block;
 
   color: #d1d1d1;
-  margin-bottom: 10px;
+  margin-bottom: 0.7rem;
   text-align: left;
   text-decoration: none;
   transition: color 0.2s;
-}
-
-.bm-item:hover {
-  color: #ffffff;
-}
-
-.fake-link {
   cursor: pointer;
+}
+
+.bm-item:hover,.bm-item a:hover {
+  color: #ffffff;
 }
