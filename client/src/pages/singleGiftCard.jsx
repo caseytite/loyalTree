@@ -81,17 +81,16 @@ const SingleGiftCard = (props) => {
         <div>
           <p className="store-name">{name}</p>
           <div className="stores-list">
-          <GiftCardListItem
-            photo_url={photo_url}
-            address={address}
-            balance={balance}
-            city={city}
-            redeem_at={redeem_at}
-            point_balance={point_balance}
-            name={name}
-          />
-          
-        </div>
+            <GiftCardListItem
+              photo_url={photo_url}
+              address={address}
+              balance={balance}
+              city={city}
+              redeem_at={redeem_at}
+              point_balance={point_balance}
+              name={name}
+            />
+          </div>
         </div>
       )}
       {qrCode && (
@@ -104,7 +103,11 @@ const SingleGiftCard = (props) => {
       {!qrCode && (
         <Button onClick={() => setQrCode(!qrCode)}>See QR Code</Button>
       )}
-      <Button onClick={() => showTransferForm(!transferForm)}>Transfer</Button>
+      {!qrCode && (
+        <Button onClick={() => showTransferForm(!transferForm)}>
+          Transfer
+        </Button>
+      )}
       {!qrCode && <Button onClick={() => setCard(!card)}>Top up</Button>}
       {transferForm && (
         <CreditCard
@@ -125,7 +128,7 @@ const SingleGiftCard = (props) => {
           onPay={onPay}
         />
       )}
-      <CardTransactions key={params.id} cardID={params.id} />
+      {!qrCode && <CardTransactions key={params.id} cardID={params.id} />}
     </div>
   );
 };
