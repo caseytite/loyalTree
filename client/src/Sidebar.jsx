@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { bubble as Menu } from "react-burger-menu";
 import { Link } from "react-router-dom";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import "./Sidebar.css";
 
 export default function Sidebar(props) {
@@ -32,14 +34,41 @@ export default function Sidebar(props) {
       onStateChange={(state) => handleStateChange(state)}
       right
     >
-      {props.user && <span>Hello, {user.first_name}</span>}
-      {props.user && <span>LoyalTree Points: {user.points}</span>}
-
-      {!props.user && (
-        <span onClick={closeMenu}>
-          <Link to="/signin">Login</Link>
+      {props.user && (
+        <span>
+          <p>
+            Hello, {user.first_name}!{" "}
+            <FontAwesomeIcon icon="fa-solid fa-coins" /> {user.points}
+          </p>
         </span>
       )}
+      {props.user && (
+        <span>
+          <p></p>
+        </span>
+      )}
+
+      {props.user ? (
+        <span onClick={closeMenu}>
+          <Link to="/" onClick={props.handleLogout}>
+            <FontAwesomeIcon icon="fa-solid fa-arrow-right-from-bracket" />
+            {" Logout"}
+          </Link>
+        </span>
+      ) : (
+        <span onClick={closeMenu}>
+          <Link to="/signin">
+            <FontAwesomeIcon icon="fa-solid fa-arrow-right-to-bracket" />
+            {" Login"}
+          </Link>
+        </span>
+      )}
+      <span onClick={closeMenu}>
+        <a href="/">
+          <FontAwesomeIcon icon="fa-solid fa-house" />
+          {" Home"}
+        </a>
+      </span>
 
       {!props.user && (
         <span onClick={closeMenu}>
@@ -47,43 +76,63 @@ export default function Sidebar(props) {
         </span>
       )}
       <span onClick={closeMenu}>
-        <Link to="/stores">Stores</Link>
+        <Link to="/stores">
+          <FontAwesomeIcon icon="fa-solid fa-shop" />
+          {" Browse Stores"}
+        </Link>
       </span>
       {props.user && (
         <span onClick={closeMenu}>
-          <Link to="/cards">My Cards</Link>
-        </span>
-      )}
-      {props.user && (
-        <span onClick={closeMenu}>
-          <Link to="/dashboard">Dashboard</Link>
-        </span>
-      )}
-      <span onClick={closeMenu}>
-        <a href="#">About Us</a>
-      </span>
-      <span onClick={closeMenu}>
-        <a href="#">Contact Us</a>
-      </span>
-      <span onClick={closeMenu}>
-        <a href="#">Careers</a>
-      </span>
-      <span onClick={closeMenu}>
-        <a href="#">Join our Community</a>
-      </span>
-      <span onClick={closeMenu}>
-        <a href="#">Investor Experience</a>
-      </span>
-      <span onClick={closeMenu}>
-        <a href="#">Nasdaq Ticker LYLT</a>
-      </span>
-      {props.user && (
-        <span onClick={closeMenu}>
-          <Link to="/" onClick={props.handleLogout}>
-            Logout
+          <Link to="/cards">
+            <FontAwesomeIcon icon="fa-solid fa-credit-card" />
+            {" My Cards"}
           </Link>
         </span>
       )}
+      {props.user && (
+        <span onClick={closeMenu}>
+          <Link to="/dashboard">
+            <FontAwesomeIcon icon="fa-solid fa-cash-register" />
+            {" My Business"}
+          </Link>
+        </span>
+      )}
+      <span onClick={closeMenu}>
+        <a href="/">
+          <FontAwesomeIcon icon="fa-solid fa-circle-info" />
+          {" About Us"}
+        </a>
+      </span>
+      <span onClick={closeMenu}>
+        <a href="/">
+          <FontAwesomeIcon icon="fa-solid fa-at" />
+          {" Contact Us"}
+        </a>
+      </span>
+      <span onClick={closeMenu}>
+        <a href="/">
+          <FontAwesomeIcon icon="fa-solid fa-briefcase" />
+          {" Careers"}
+        </a>
+      </span>
+      <span onClick={closeMenu}>
+        <a href="/">
+          <FontAwesomeIcon icon="fa-solid fa-people-roof" />
+          {" Join our Community"}
+        </a>
+      </span>
+      <span onClick={closeMenu}>
+        <a href="/">
+          <FontAwesomeIcon icon="fa-solid fa-champagne-glasses" />
+          {" Investor Experience"}
+        </a>
+      </span>
+      <span onClick={closeMenu}>
+        <a href="/">
+          <FontAwesomeIcon icon="fa-solid fa-arrow-trend-up" />
+          {" Nasdaq Ticker LYLT"}
+        </a>
+      </span>
     </Menu>
   );
 }
