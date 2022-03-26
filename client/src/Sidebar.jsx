@@ -42,25 +42,7 @@ export default function Sidebar(props) {
           </p>
         </span>
       )}
-
-      {props.user && (
-        <span onClick={closeMenu}>
-          <Link to="/" onClick={props.handleLogout}>
-            <FontAwesomeIcon icon="fa-solid fa-arrow-right-from-bracket" />
-            {" Logout"}
-          </Link>
-        </span>
-      )}
-
-      {!props.user && (
-        <span onClick={closeMenu}>
-          <Link to="/signin">
-            <FontAwesomeIcon icon="fa-solid fa-arrow-right-to-bracket" />
-            {" Login"}
-          </Link>
-        </span>
-      )}
-
+      <hr />
       {!props.user && (
         <span onClick={closeMenu}>
           <Link to="/register">
@@ -101,11 +83,26 @@ export default function Sidebar(props) {
           </Link>
         </span>
       )}
+      <hr />
 
       <span onClick={closeMenu}>
         <a href="/">
-          <FontAwesomeIcon icon="fa-solid fa-circle-info" />
-          {" About Us"}
+          <FontAwesomeIcon icon="fa-solid fa-champagne-glasses" />
+          {" Investor Experience"}
+        </a>
+      </span>
+
+      <span onClick={closeMenu}>
+        <a href="/">
+          <FontAwesomeIcon icon="fa-solid fa-arrow-trend-up" />
+          {" Nasdaq Ticker LYLT"}
+        </a>
+      </span>
+      <hr />
+      <span onClick={closeMenu}>
+        <a href="/">
+          <FontAwesomeIcon icon="fa-solid fa-briefcase" />
+          {" Careers"}
         </a>
       </span>
 
@@ -118,8 +115,8 @@ export default function Sidebar(props) {
 
       <span onClick={closeMenu}>
         <a href="/">
-          <FontAwesomeIcon icon="fa-solid fa-briefcase" />
-          {" Careers"}
+          <FontAwesomeIcon icon="fa-solid fa-circle-info" />
+          {" About Us"}
         </a>
       </span>
 
@@ -129,20 +126,24 @@ export default function Sidebar(props) {
           {" Join our Community"}
         </a>
       </span>
+      <hr />
+      {props.user && (
+        <span onClick={closeMenu}>
+          <Link to="/" onClick={props.handleLogout}>
+            <FontAwesomeIcon icon="fa-solid fa-arrow-right-from-bracket" />
+            {" Logout"}
+          </Link>
+        </span>
+      )}
 
-      <span onClick={closeMenu}>
-        <a href="/">
-          <FontAwesomeIcon icon="fa-solid fa-champagne-glasses" />
-          {" Investor Experience"}
-        </a>
-      </span>
-      
-      <span onClick={closeMenu}>
-        <a href="/">
-          <FontAwesomeIcon icon="fa-solid fa-arrow-trend-up" />
-          {" Nasdaq Ticker LYLT"}
-        </a>
-      </span>
+      {!props.user && (
+        <span onClick={closeMenu}>
+          <Link to="/signin">
+            <FontAwesomeIcon icon="fa-solid fa-arrow-right-to-bracket" />
+            {" Login"}
+          </Link>
+        </span>
+      )}
     </Menu>
   );
 }
