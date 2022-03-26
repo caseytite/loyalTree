@@ -21,7 +21,6 @@ function StoreListItem(props) {
   const [text, setText] = useState("Place Order");
   const [redeem, setRedeem] = useState(false);
   const [rating, setRating] = useState(Math.ceil(Math.random() * 3 + 2));
-  console.log(rating);
 
   const articleClass = classNames("store-list-item", {
     "store-list-item--detail": detail,
