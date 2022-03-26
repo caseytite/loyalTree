@@ -106,10 +106,8 @@ We are committed to providing you with top-quality goods that will make you feel
 
 Looking for women''s clothing? You''ve come to the right place.', 'https://imgur.com/0bgXNH9.gif' , '2342 5th street', default,default),
 
-
-
 (10, 'Lighthouse Labs', 'service education coding programming', 'Lighthouse Labs is a coding bootcamp that teaches students how to code. We offer free tutoring and on-site assistance with a variety of programming languages. Our students are also eligible for a free upgrade to a full-time job after graduation.', 'https://imgur.com/2hixaIA.gif', '9213 Main st', default, default),
 
-(10, 'Loyaltree', 'service gift cards ecommerce', 'Loyaltree was built to help merchants grow their business. We help you create customer loyalty programs that keep customers coming back for more. The Loyaltree app makes it easy for your customers to engage with your brand. They can scan a QR code, purchase gift cards, track their points, and claim great rewards - all in one place.', 'https://imgur.com/6ZAWAgA', '1530 West Broadway', default, default);
+(10, 'Loyaltree', 'service gift cards ecommerce', 'Loyaltree was built to help merchants grow their business. We help you create customer loyalty programs that keep customers coming back for more. The Loyaltree app makes it easy for your customers to engage with your brand. They can scan a QR code, purchase gift cards, track their points, and claim great rewards - all in one place.', 'https://i.imgur.com/6ZAWAgA.gif', '1530 West Broadway', default, default);
 
 
