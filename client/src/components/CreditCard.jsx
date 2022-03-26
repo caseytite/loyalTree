@@ -13,7 +13,6 @@ const Checkout = (props) => {
   const [exp, setExp] = useState("");
   const [cvv, setCvv] = useState("123");
 
-   console.log("super",props)
   return (
     <div className="modal">
       <div className="modal-content">
@@ -89,7 +88,7 @@ const Input = (props) => {
           type={props.type}
           name={props.name}
         />
-        <img src={props.imgSrc} />
+        <img src={props.imgSrc} alt="" />
       </div>
     </div>
   );
