@@ -72,7 +72,6 @@
     width: 100%;
   }
   #name-filter {
-    /* min-width: 270px; */
     align-self: center;
     padding: 8px;
     margin-bottom: 5em;
@@ -95,7 +94,6 @@
 
 @media (max-width: 480px) {
   #name-filter {
-    /* width: 70%; */
     min-width: 270px;
     align-self: center;
     padding: 8px;
