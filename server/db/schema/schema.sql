@@ -22,7 +22,7 @@ CREATE TABLE stores (
   owner_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   name VARCHAR(255) NOT NULL,
   category VARCHAR NOT NULL,
-  description VARCHAR(255),
+  description VARCHAR,
   photo_url VARCHAR,
   address VARCHAR ,
   created_at TIMESTAMP DEFAULT NOW(),
