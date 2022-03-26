@@ -8,10 +8,11 @@
 .form-container input {
   height: 24px;
   width: 100%;
-  padding: 12px;
+  padding: 15px;
   margin: 0.5rem 0;
   border: 1px solid var(--jet);
   border-radius: 2rem;
+  font-size: large;
 }
 
 Button {

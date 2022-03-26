@@ -16,6 +16,9 @@
 
   font-size: 16px;
 }
+input:focus {
+  outline: none;
+}
 
 body {
   margin: 0 auto;

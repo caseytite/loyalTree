@@ -39,13 +39,13 @@ const SignInForm = (props) => {
   return (
     <div className="form-container">
       <form action="" onSubmit={onFormSubmission}>
-        <label htmlFor="email">email</label>
+        <label htmlFor="email">Email</label>
         <input
           value={email}
           type="text"
           onChange={(e) => setEmail(e.target.value)}
         />
-        <label htmlFor="password">password</label>
+        <label htmlFor="password">Password</label>
         <input
           value={password}
           onChange={(e) => setPassword(e.target.value)}
