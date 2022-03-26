@@ -8,6 +8,7 @@ import LoggedInUser from "../context/AuthContext";
 import { useParams, Link } from "react-router-dom";
 import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ReactStars from "react-rating-stars-component";
 
 function StoreListItem(props) {
   let navigate = useNavigate();
@@ -19,6 +20,7 @@ function StoreListItem(props) {
   const [card, setCard] = useState(false);
   const [text, setText] = useState("Place Order");
   const [redeem, setRedeem] = useState(false);
+  const [rating, setRating] = useState(Math.ceil(Math.random() * 3 + 2));
 
   const articleClass = classNames("store-list-item", {
     "store-list-item--detail": detail,
@@ -64,6 +66,10 @@ function StoreListItem(props) {
         }, 2000);
       })
       .catch((err) => console.log(err.message));
+  };
+
+  const rateStore = (e) => {
+    setRating(e);
   };
 
   return (
@@ -112,7 +118,21 @@ function StoreListItem(props) {
       {detail && (
         <div className="detail-page-about">
           <div className="store-description">
-            <h2>About {storeName}</h2>
+            <div className="about-header">
+              <h2>About {storeName}</h2>
+              <ReactStars
+                value={rating}
+                onChange={(e) => rateStore(e)}
+                size={20}
+                isHalf={true}
+                emptyIcon={<FontAwesomeIcon icon="fa-regular fa-star" />}
+                halfIcon={
+                  <FontAwesomeIcon icon="fa-solid fa-star-half-stroke" />
+                }
+                fullIcon={<FontAwesomeIcon icon="fa-solid fa-star" />}
+                activeColor="#ffd700"
+              />
+            </div>
             <hr></hr>
             <h3>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{description}. Lorem ipsum dolor
