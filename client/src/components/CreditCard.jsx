@@ -5,14 +5,16 @@ import X from "./X";
 //*****//    Design by: http://collectui.com/designers/pattiewaffle/checkout */
 
 const Checkout = (props) => {
-  const { closeCard, onPay, text } = props;
+  const { closeCard, onPay, text, header } = props;
   const [name, setName] = useState("Casey");
   const [card, setCard] = useState("4111111111111111");
   const [email, setEmail] = useState("");
   const [amount, setAmount] = useState("100");
   const [exp, setExp] = useState("");
   const [cvv, setCvv] = useState("123");
+  // const [receiver, setReceiver] = useState("Select Payment");
 
+   console.log("super",props)
   return (
     <div className="modal">
       <div className="modal-content">
@@ -21,7 +23,10 @@ const Checkout = (props) => {
             <button className="close-btn" onClick={() => closeCard(!card)}>
               <X />
             </button>
-            <h3 className="heading-3">Select Payment</h3>
+            <h3>{header}</h3> 
+              {/* {className === "purchase-card" && <h3 className="heading-3">Purchase for you or a friend</h3>}
+              {className === "transfer-card-balance" && <h3 className="heading-3">Transfer Balance</h3>}
+              {props.className === "single-card-checkout" && <h3 className="heading-3">Purchase for you</h3>} */}
             <Input
               value={name}
               setValue={setName}
@@ -94,10 +99,12 @@ const Input = (props) => {
   );
 };
 
-const Button = (props) => (
+const Button = (props) => {
+  return (
   <button onClick={props.onClick} className="checkout-btn" type="button">
     {props.text}
   </button>
-);
+  )
+};
 
 export default Checkout;
