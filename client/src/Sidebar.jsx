@@ -42,20 +42,17 @@ export default function Sidebar(props) {
           </p>
         </span>
       )}
-      {props.user && (
-        <span>
-          <p></p>
-        </span>
-      )}
 
-      {props.user ? (
+      {props.user && (
         <span onClick={closeMenu}>
           <Link to="/" onClick={props.handleLogout}>
             <FontAwesomeIcon icon="fa-solid fa-arrow-right-from-bracket" />
             {" Logout"}
           </Link>
         </span>
-      ) : (
+      )}
+
+      {!props.user && (
         <span onClick={closeMenu}>
           <Link to="/signin">
             <FontAwesomeIcon icon="fa-solid fa-arrow-right-to-bracket" />
@@ -63,6 +60,16 @@ export default function Sidebar(props) {
           </Link>
         </span>
       )}
+
+      {!props.user && (
+        <span onClick={closeMenu}>
+          <Link to="/register">
+            <FontAwesomeIcon icon="fa-solid fa-clipboard-user" />
+            {" Register"}
+          </Link>
+        </span>
+      )}
+
       <span onClick={closeMenu}>
         <Link to="/">
           <FontAwesomeIcon icon="fa-solid fa-house" />
@@ -70,17 +77,13 @@ export default function Sidebar(props) {
         </Link>
       </span>
 
-      {!props.user && (
-        <span onClick={closeMenu}>
-          <Link to="/register">Register</Link>
-        </span>
-      )}
       <span onClick={closeMenu}>
         <Link to="/stores">
           <FontAwesomeIcon icon="fa-solid fa-shop" />
           {" Browse Stores"}
         </Link>
       </span>
+
       {props.user && (
         <span onClick={closeMenu}>
           <Link to="/cards">
@@ -89,6 +92,7 @@ export default function Sidebar(props) {
           </Link>
         </span>
       )}
+
       {props.user && (
         <span onClick={closeMenu}>
           <Link to="/dashboard">
@@ -97,36 +101,42 @@ export default function Sidebar(props) {
           </Link>
         </span>
       )}
+
       <span onClick={closeMenu}>
         <a href="/">
           <FontAwesomeIcon icon="fa-solid fa-circle-info" />
           {" About Us"}
         </a>
       </span>
+
       <span onClick={closeMenu}>
         <a href="/">
           <FontAwesomeIcon icon="fa-solid fa-at" />
           {" Contact Us"}
         </a>
       </span>
+
       <span onClick={closeMenu}>
         <a href="/">
           <FontAwesomeIcon icon="fa-solid fa-briefcase" />
           {" Careers"}
         </a>
       </span>
+
       <span onClick={closeMenu}>
         <a href="/">
           <FontAwesomeIcon icon="fa-solid fa-people-roof" />
           {" Join our Community"}
         </a>
       </span>
+
       <span onClick={closeMenu}>
         <a href="/">
           <FontAwesomeIcon icon="fa-solid fa-champagne-glasses" />
           {" Investor Experience"}
         </a>
       </span>
+      
       <span onClick={closeMenu}>
         <a href="/">
           <FontAwesomeIcon icon="fa-solid fa-arrow-trend-up" />
