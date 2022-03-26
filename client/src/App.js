@@ -13,9 +13,10 @@ import "./App.css";
 // fontawesome
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
+import { fas } from '@fortawesome/free-solid-svg-icons'
 // import the next line into each file fontawesome is needed
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-library.add(fab);
+library.add(fab, fas);
 
 function App() {
   const context = useContext(LoggedInUser);
