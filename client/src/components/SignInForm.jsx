@@ -28,7 +28,6 @@ const SignInForm = (props) => {
           localStorage.setItem("userEmail", res.data.user.email);
         })
         .then((response) => {
-          console.log(context.user);
           navigate("/stores");
         })
         .catch((err) => console.log("Login Error:", err.message));
@@ -44,12 +43,14 @@ const SignInForm = (props) => {
           value={email}
           type="text"
           onChange={(e) => setEmail(e.target.value)}
+          autoComplete="on"
         />
         <label htmlFor="password">Password</label>
         <input
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           type="password"
+          autoComplete="on"
         />
         <Button onClick={(e) => onFormSubmission(e)}>Sign in</Button>
       </form>
