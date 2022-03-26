@@ -20,7 +20,8 @@ function StoreListItem(props) {
   const [card, setCard] = useState(false);
   const [text, setText] = useState("Place Order");
   const [redeem, setRedeem] = useState(false);
-  const [rating, setRating] = useState(3);
+  const [rating, setRating] = useState(Math.ceil(Math.random() * 3 + 2));
+  console.log(rating);
 
   const articleClass = classNames("store-list-item", {
     "store-list-item--detail": detail,
