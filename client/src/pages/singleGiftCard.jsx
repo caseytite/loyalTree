@@ -108,6 +108,7 @@ const SingleGiftCard = (props) => {
       {!qrCode && <Button onClick={() => setCard(!card)}>Top up</Button>}
       {transferForm && (
         <CreditCard
+          header="Transfer your balance to a friend"
           closeCard={showTransferForm}
           onPay={onTransfer}
           text={text}
@@ -116,7 +117,7 @@ const SingleGiftCard = (props) => {
       )}
       {card && (
         <CreditCard
-          className="single-card-checkout"
+          header="Add to your balance"
           text={text}
           setText={setText}
           closeCard={setCard}

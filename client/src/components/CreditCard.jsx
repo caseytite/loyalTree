@@ -5,10 +5,10 @@ import X from "./X";
 //*****//    Design by: http://collectui.com/designers/pattiewaffle/checkout */
 
 const Checkout = (props) => {
+
   const { closeCard, onPay, text } = props;
   const firstName = localStorage.getItem("userName");
   const userEmail = localStorage.getItem("userEmail");
-
   const [name, setName] = useState(firstName);
   const [card, setCard] = useState("4111111111111111");
   const [email, setEmail] = useState(userEmail);
@@ -24,7 +24,7 @@ const Checkout = (props) => {
             <button className="close-btn" onClick={() => closeCard(!card)}>
               <X />
             </button>
-            <h3 className="heading-3">Select Payment</h3>
+            <h3>{header}</h3> 
             <Input
               value={name}
               setValue={setName}
@@ -91,16 +91,18 @@ const Input = (props) => {
           type={props.type}
           name={props.name}
         />
-        <img src={props.imgSrc} />
+        <img src={props.imgSrc} alt="" />
       </div>
     </div>
   );
 };
 
-const Button = (props) => (
+const Button = (props) => {
+  return (
   <button onClick={props.onClick} className="checkout-btn" type="button">
     {props.text}
   </button>
-);
+  )
+};
 
 export default Checkout;

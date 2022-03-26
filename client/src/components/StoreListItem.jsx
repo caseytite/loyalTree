@@ -13,7 +13,6 @@ function StoreListItem(props) {
   let navigate = useNavigate();
   const context = useContext(LoggedInUser);
   const params = useParams();
-
   const { storeID, storeName, description, address, category, photo, detail } =
     props;
 
@@ -80,6 +79,7 @@ function StoreListItem(props) {
 
       {card && (
         <CreditCard
+          header="For you or a friend"
           text={text}
           setText={setText}
           open={card}
@@ -89,6 +89,7 @@ function StoreListItem(props) {
       )}
       {redeem && (
         <CreditCard
+          header="Redeem your points"
           text={text}
           setText={setText}
           open={redeem}
