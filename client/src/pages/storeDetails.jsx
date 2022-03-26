@@ -23,8 +23,6 @@ const StoreDetails = (props) => {
       photo={store.photo_url}
       description={store.description}
       category={store.category}
-      // setAmount={setAmount}
-      // showDetail={showDetail}
       detail={true}
     />
   );

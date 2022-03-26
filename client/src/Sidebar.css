@@ -37,23 +37,26 @@ Note: Beware of modifying this element as it can break the animations - you shou
   /* float: right; */
   height: 100%;
 }
+.bm-menu-wrap a {
+  padding: 0.7rem ;
+}
 
 /* General sidebar styles */
 .bm-menu {
-  background: #373a47;
-  padding: 2.5em 1.5em 0;
+  background: var(--jet);
+  padding: 2.5em 0 0 0;
   font-size: 1.15em;
 }
 
 /* Morph shape necessary with bubble or elastic */
 .bm-morph-shape {
-  fill: #373a47;
+  fill: var(--jet);
   left: 0;
 }
 
 /* Wrapper for item list */
 .bm-item-list {
-  color: #b8b7ad;
+  color: var(--gainsboro);
   padding: 0.8em;
 }
 
@@ -68,20 +71,21 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 /* Individual item */
-.bm-item {
+.bm-item, .bm-item a {
   display: inline-block;
-
-  color: #d1d1d1;
-  margin-bottom: 10px;
+  color: var(--gainsboro);
   text-align: left;
   text-decoration: none;
   transition: color 0.2s;
-}
-
-.bm-item:hover {
-  color: #ffffff;
-}
-
-.fake-link {
   cursor: pointer;
+  transition: all 250ms ease-in-out;
+}
+
+.bm-item svg {
+  width: 2.5rem;
+}
+
+.bm-item:hover,.bm-item a:hover {
+  color: #ffffff;
+  transform: translateX(0.7rem);
 }
