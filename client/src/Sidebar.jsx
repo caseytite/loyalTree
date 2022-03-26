@@ -7,6 +7,15 @@ import "./Sidebar.css";
 
 export default function Sidebar(props) {
   const [user, setUser] = useState([]);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
+  const handleStateChange = (menuState) => {
+    setMenuOpen(menuState.isOpen);
+  };
 
   useEffect(() => {
     if (props.user) {
@@ -15,28 +24,65 @@ export default function Sidebar(props) {
         setUser(...currentUser);
       });
     }
-  }, []);
+  }, [props.user]);
 
   return (
-    <Menu right>
-      {props.user && <h3>Hello, {user.first_name}</h3>}
-      {props.user && <h4>LoyalTree Points: {user.points}</h4>}
-      <Link to="/"></Link>
-      {!props.user && <Link to="/signin">Login</Link>}
-      {!props.user && <Link to="/register">Register</Link>}
-      {props.user && <Link to="/cards">My Cards</Link>}
-      <Link to="/stores">Stores</Link>
-      {props.user && <Link to="/dashboard">Dashboard</Link>}
-      <span className="fake-link">About Us</span>
-      <span className="fake-link">Contact Us</span>
-      <span className="fake-link">Careers</span>
-      <span className="fake-link">Join our Community</span>
-      <span className="fake-link">Investor Experience</span>
-      <span className="fake-link">Nasdaq Ticker LYLT</span>
+    <Menu
+      isOpen={menuOpen}
+      onStateChange={(state) => handleStateChange(state)}
+      right
+    >
+      {props.user && <span>Hello, {user.first_name}</span>}
+      {props.user && <span>LoyalTree Points: {user.points}</span>}
+
+      {!props.user && (
+        <span onClick={closeMenu}>
+          <Link to="/signin">Login</Link>
+        </span>
+      )}
+
+      {!props.user && (
+        <span onClick={closeMenu}>
+          <Link to="/register">Register</Link>
+        </span>
+      )}
+      <span onClick={closeMenu}>
+        <Link to="/stores">Stores</Link>
+      </span>
       {props.user && (
-        <Link to="/" onClick={props.handleLogout}>
-          Logout
-        </Link>
+        <span onClick={closeMenu}>
+          <Link to="/cards">My Cards</Link>
+        </span>
+      )}
+      {props.user && (
+        <span onClick={closeMenu}>
+          <Link to="/dashboard">Dashboard</Link>
+        </span>
+      )}
+      <span onClick={closeMenu}>
+        <a href="#">About Us</a>
+      </span>
+      <span onClick={closeMenu}>
+        <a href="#">Contact Us</a>
+      </span>
+      <span onClick={closeMenu}>
+        <a href="#">Careers</a>
+      </span>
+      <span onClick={closeMenu}>
+        <a href="#">Join our Community</a>
+      </span>
+      <span onClick={closeMenu}>
+        <a href="#">Investor Experience</a>
+      </span>
+      <span onClick={closeMenu}>
+        <a href="#">Nasdaq Ticker LYLT</a>
+      </span>
+      {props.user && (
+        <span onClick={closeMenu}>
+          <Link to="/" onClick={props.handleLogout}>
+            Logout
+          </Link>
+        </span>
       )}
     </Menu>
   );
