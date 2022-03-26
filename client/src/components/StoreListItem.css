@@ -58,7 +58,12 @@
   justify-content: space-between;
   align-items: flex-end;
 }
-
+.react-stars {
+  z-index: -26;
+}
+.stars {
+  z-index: 0;
+}
 /* ------------------------- */
 
 @media (max-width: 768px) {
