@@ -26,7 +26,7 @@ const CardTransactions = (props) => {
       </tr>
     );
   });
-
+  console.log("kjshdfsd", transactionTable);
   return (
     <div className="transaction-list">
       <h2>Transaction History</h2>
