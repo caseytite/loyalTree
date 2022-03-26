@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 import axios from "axios";
 import QrScanner from "qr-scanner";
@@ -8,24 +8,21 @@ import "./Scanner.css";
 const Scanner = (props) => {
   const previewEl = useRef(null);
   const outputEl = useRef(null);
+  const qrScanner = useRef(null);
   const [cardAmt, setCardAmt] = useState(null);
   const [error, setError] = useState(null);
   const [transAmt, setTransAmt] = useState("");
   const [cardID, setCardID] = useState(null);
   const [transaction, setTransaction] = useState();
   const [day, setDay] = useState();
+  const [scanBtnText, setScanBtnText] = useState("Click to Scan");
+  const [isScanning, setIsScanning] = useState(false);
 
-  let qrScanner;
-
-  const scanCode = () => {
-    setError(null);
-    setCardAmt(null);
-    qrScanner = new QrScanner(previewEl.current, (result) => {
+  useEffect(() => {
+    qrScanner.current = new QrScanner(previewEl.current, (result) => {
       console.log("decoded qr code:", result);
-      qrScanner.destroy();
-      qrScanner = null;
+      qrScanner.stop();
       setCardID(result);
-      // make select query
       axios
         .get("/dashboard/redeem", { params: { cardID: result } })
         .then((response) => {
@@ -35,7 +32,24 @@ const Scanner = (props) => {
             : setCardAmt(response.data.balance);
         });
     });
-    qrScanner.start();
+  }, []);
+
+  const scanButtonFunction = () => {
+    const cancelScan = () => {
+      qrScanner.current.stop();
+      setIsScanning(false);
+      setScanBtnText("Click to Scan");
+    };
+
+    const startScan = () => {
+      setScanBtnText("Cancel Scan");
+      setIsScanning(true);
+      setError(null);
+      setCardAmt(null);
+      qrScanner.current.start();
+    };
+
+    isScanning ? cancelScan() : startScan();
   };
 
   const acceptTransaction = () => {
@@ -46,8 +60,7 @@ const Scanner = (props) => {
         cardAmt,
       })
       .then((response) => {
-        console.log("Success!");
-        console.log("post response", response.data);
+        console.log("Success! Axios response:", response.data);
         setCardAmt(null);
         setError(null);
         setTransAmt("");
@@ -72,7 +85,7 @@ const Scanner = (props) => {
       <p ref={outputEl} id="card-amount">{`Card Amount: $${
         cardAmt / 100 || "--"
       }`}</p>
-      <Button onClick={scanCode} children={"Click to scan"} />
+      <Button onClick={scanButtonFunction} children={scanBtnText} />
       {cardAmt && (
         <Button onClick={acceptTransaction} children={"Accept transaction"} />
       )}
