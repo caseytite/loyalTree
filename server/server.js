@@ -30,6 +30,13 @@ app.use(
   })
 );
 
+const cardRoutes = require("./routes/cards")
+app.use('/cards', cardRoutes(db))
+const dashboardRoutes = require("./routes/dashboard")
+app.use('/dashboard', dashboardRoutes(db))
+const storeRoutes = require("./routes/stores")
+app.use('/stores', storeRoutes(db))
+
 const {
   USER,
   USERS,
