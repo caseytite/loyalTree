@@ -26,7 +26,6 @@ const Scanner = (props) => {
       axios
         .get("/dashboard/redeem", { params: { cardID: result } })
         .then((response) => {
-          console.log(response.data);
           return response.data.error
             ? setError(response.data.error)
             : setCardAmt(response.data.balance);

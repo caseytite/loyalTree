@@ -4,7 +4,6 @@ import "./StoreRegistration.css";
 
 function StoreRegistration(props) {
   const onFormSubmission = (e) => {
-    console.log(e.target.value);
   };
 
   return (
