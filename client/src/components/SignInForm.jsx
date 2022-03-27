@@ -20,10 +20,10 @@ const SignInForm = (props) => {
       axios
         .post("/login", { email, password })
         .then((res) => {
+          console.log(res)
           cookies.set("id", res.data.user.id, { path: "/" });
           context.user = res.data.user;
           context.userID = res.data.user.id;
-          context.user = res.data.user;
           localStorage.setItem("userName", res.data.user.first_name);
           localStorage.setItem("userEmail", res.data.user.email);
         })
