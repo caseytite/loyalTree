@@ -1,4 +1,5 @@
 .scanner {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,9 +45,16 @@
 }
 
 .scanner video {
-  max-width: 500px;
-  width: 100%;
-  padding: 1rem;
+  background-color: var(--jet);
+  position: absolute;
+  top: -28.5rem;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  max-width: 600px;
+  width: calc(100% - 1rem);
+  border-radius: 200rem;
+  opacity: 0.95;
+  box-shadow: 0 0 10rem var(--cultured);
 }
 
 .transaction-container {
