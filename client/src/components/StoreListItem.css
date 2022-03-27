@@ -10,6 +10,7 @@
   max-width: 600px;
   border-radius: 1.2em;
   border: 1px solid hsl(0, 4%, 71%);
+  aspect-ratio: 20.9/12;
 }
 .store-list-img:hover {
   cursor: pointer;
@@ -57,7 +58,12 @@
   justify-content: space-between;
   align-items: flex-end;
 }
-
+.react-stars {
+  z-index: -26;
+}
+.stars {
+  z-index: 0;
+}
 /* ------------------------- */
 
 @media (max-width: 768px) {
@@ -72,7 +78,6 @@
     width: 100%;
   }
   #name-filter {
-    /* min-width: 270px; */
     align-self: center;
     padding: 8px;
     margin-bottom: 5em;
@@ -95,7 +100,6 @@
 
 @media (max-width: 480px) {
   #name-filter {
-    /* width: 70%; */
     min-width: 270px;
     align-self: center;
     padding: 8px;

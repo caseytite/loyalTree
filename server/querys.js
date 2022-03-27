@@ -31,7 +31,6 @@ const ADD_USER = (params) => {
 const STORES = "SELECT * FROM stores";
 
 const STORE_DETAIL = (params) => {
-  // [`%${params.category.toLowerCase().slice(1)}%`]
   console.log("params in query", params);
   return [
     `
