@@ -98,7 +98,7 @@ Meet Cool Beans, your new favorite coffee shop. We specialize in espresso, latte
 
 We offer a variety of pet toys, food, and accessories. Our staff is trained to assist you with any questions you have regarding the care of your pets. We also offer treats for you! Stop by our cafe to buy yourself a coffee or sandwich, and receive 10% off all store purchases that day! Come see us at Petrakis today!', 'https://imgur.com/C7Cbxl8.gif' , '3452 Mountain ave',default, default),
 
-(10, 'Camila Johnson' ,'retail clothes', 'Avid shopper, fashionista and lover of all things beautiful? Then you''ve come to the right place!
+(3, 'Camila Johnson' ,'retail clothes', 'Avid shopper, fashionista and lover of all things beautiful? Then you''ve come to the right place!
 
 Camilla Johnson is your go-to for all the best pieces for women. From blouses to tanks, dresses to shoes, and everything in between, we have everything you need to feel like the best version of yourself. Spice up your jewelry collection with a new necklace, or change up your look with a brand-new blazer—whatever you choose, we guarantee our wide selection will have exactly what you''re looking for.
 
