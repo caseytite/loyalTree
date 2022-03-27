@@ -27,13 +27,13 @@ function StoreListItem(props) {
   });
 
   const onPay = (email, amount) => {
-    const id = context.userID;
+    // const id = context.userID;
     axios
-      .post(`/cards/${id}`, {
+      .post(`/cards/${params.id}`, {
         email,
         amount: amount,
-        user_id: id,
-        store_id: params.id,
+        // user_id: ${id,
+        // store_id: params.id,
       })
       .then((res) => {
         setText("Processing");
@@ -50,13 +50,15 @@ function StoreListItem(props) {
   const onRedeem = (email, amount) => {
     const id = context.userID;
     axios
-      .post(`/redeem/points`, {
+      .post(`/stores/${params.id}/redeem/`, {
+        
         email,
         amount: amount,
         user_id: id,
         store_id: params.id,
       })
       .then((res) => {
+        console.log(res.data.data)
         setText("Processing");
         setTimeout(() => {
           setText("Thanks KV!!!");
