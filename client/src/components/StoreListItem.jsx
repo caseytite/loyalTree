@@ -70,7 +70,6 @@ function StoreListItem(props) {
   };
 
   const rateStore = (e) => {
-    console.log("rate");
     setRating(e);
   };
 
@@ -129,7 +128,6 @@ function StoreListItem(props) {
                     ? 5
                     : rating
                 }
-                onClick={(e) => console.log("click")}
                 onChange={(e) => rateStore(e)}
                 size={20}
                 isHalf={true}
