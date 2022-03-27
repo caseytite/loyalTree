@@ -121,7 +121,6 @@ function StoreListItem(props) {
             <div className="about-header">
               <h2>About {storeName}</h2>
               <ReactStars
-                className="stars"
                 value={
                   storeName === "Lighthouse Labs" || storeName === "Loyaltree"
                     ? 5

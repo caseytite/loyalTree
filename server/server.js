@@ -29,7 +29,27 @@ app.use(
     keys: ["chicken", "horse", "cat"],
   })
 );
+//web socket--------------------------------
 
+const http = require("http");
+const { Server } = require("socket.io");
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST", "PUT"],
+  },
+});
+
+io.on("connection", (socket) => {
+  console.log("socket id:", socket.id);
+
+  socket.on("disconnect", () => {
+    console.log("closed");
+  });
+});
+
+//---------------------------------------
 const {
   USER,
   USERS,
@@ -490,6 +510,10 @@ app.get("/dashboard/transactions", (req, res) => {
 });
 
 // to run use npx nodemon
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}!`);
+// app.listen(PORT, () => {
+//   console.log(`Server listening on port ${PORT}!`);
+// });
+
+server.listen(PORT, () => {
+  console.log(`HTTP Server Running on PORT: ${PORT}`);
 });

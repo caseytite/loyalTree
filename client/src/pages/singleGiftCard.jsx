@@ -11,6 +11,9 @@ import GiftCardListItem from "../components/GiftCardListItem";
 
 import CardTransactions from "../components/CardTransactions";
 
+import io from "socket.io-client";
+const socket = io.connect("http://localhost:3009");
+
 const SingleGiftCard = (props) => {
   let params = useParams();
 
@@ -33,11 +36,6 @@ const SingleGiftCard = (props) => {
   const [transferForm, showTransferForm] = useState();
   const context = useContext(LoggedInUser);
   let navigate = useNavigate();
-
-  // const formatter = new Intl.NumberFormat("en-US", {
-  //   style: "currency",
-  //   currency: "USD",
-  // });
 
   const onPay = (email, amount) => {
     const id = params.id;
