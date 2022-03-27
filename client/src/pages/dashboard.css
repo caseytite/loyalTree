@@ -1,3 +1,16 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.dashboard h2 {
+  margin: 0;
+  padding: 1.2rem;
+  font-size: 1.2rem;
+}
+
 .transactions-table {
   display: flex;
   flex-direction: column;
@@ -20,12 +33,6 @@
   background-color: var(--cultured);
   color: var(--jet);
   font-weight: bold;
-}
-
-.dashboard h2 {
-  margin: 0;
-  padding: 20px;
-  font-size: 20px;
 }
 
 .transactions-table tr:nth-child(odd) {
