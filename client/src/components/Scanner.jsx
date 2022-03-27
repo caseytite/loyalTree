@@ -76,7 +76,7 @@ const Scanner = (props) => {
   return (
     <div className="scanner">
       <p>Enter the total from the sale, then scan the customer's card.</p>
-      <div>
+      <div className="amounts" >
         <p>Sale Amount</p>
         <label htmlFor="redeem-amount">{transAmt || "--"}</label>
         <input
