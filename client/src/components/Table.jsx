@@ -2,7 +2,12 @@ import TransactionListItem from "./TransactionListItem";
 
 const Table = (props) => {
   const rows = props.tableData.map((item) => {
-    <TransactionListItem />;
+    return <TransactionListItem
+      key={item.id}
+      amount={item.amount}
+      date={item.created_at}
+      id={item.id}
+    />;
   });
 
   return (
@@ -14,7 +19,7 @@ const Table = (props) => {
           <th>Time</th>
         </tr>
       </thead>
-      <tbody></tbody>
+      <tbody>{rows}</tbody>
     </table>
   );
 };
