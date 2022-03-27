@@ -15,10 +15,9 @@ const Dashboard = (props) => {
       setStoreInfo(values[0].data);
       setTransactions(values[1].data.data);
     });
-    console.log(storeInfo);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  console.log(storeInfo.photo_url )
   console.log(transactions);
   // while building dashboard
   // console.log(storeInfo);
@@ -27,13 +26,13 @@ const Dashboard = (props) => {
     <div className="dashboard">
       <h2>{`Dashboard » ${storeInfo.name}`}</h2>
       <Scanner />
-      {transactions.length > 1 ? (
+      {transactions.length ? (
         <section className="transactions-table">
           <h2>Transaction History</h2>
           <table>
             <thead>
               <tr>
-                <th>Transaction Number</th>
+                <th>ID</th>
                 <th>Amount</th>
                 <th>Date</th>
               </tr>
