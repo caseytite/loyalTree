@@ -21,7 +21,7 @@ const Scanner = (props) => {
   useEffect(() => {
     qrScanner.current = new QrScanner(previewEl.current, (result) => {
       console.log("decoded qr code:", result);
-      cancelScan()
+      cancelScan();
       setCardID(result);
       axios
         .get("/dashboard/redeem", { params: { cardID: result } })
@@ -76,17 +76,18 @@ const Scanner = (props) => {
   return (
     <div className="scanner">
       <p>Enter the total from the sale, then scan the customer's card.</p>
-      <label htmlFor="redeem-amount">
-        {"Sale: "}
+      <div>
+        <p>Sale Amount</p>
+        <label htmlFor="redeem-amount">{transAmt || "--"}</label>
         <input
           value={transAmt}
           onChange={(e) => setTransAmt(e.target.value)}
           id="redeem-amount"
         />
-      </label>
-      <p ref={outputEl} id="card-amount">{`Card Amount: $${
-        cardAmt / 100 || "--"
-      }`}</p>
+        <p>Card Balance</p>
+        <p ref={outputEl}>{cardAmt / 100 || "--"}</p>
+      </div>
+
       <Button onClick={scanButtonFunction} children={scanBtnText} />
       {cardAmt && (
         <Button onClick={acceptTransaction} children={"Accept transaction"} />
