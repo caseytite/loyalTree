@@ -88,11 +88,11 @@ const Scanner = (props) => {
         <p ref={outputEl}>{cardAmt / 100 || "--"}</p>
       </div>
 
+      {error && <p>{error}</p>}
       <Button onClick={scanButtonFunction} children={scanBtnText} />
       {cardAmt && (
         <Button onClick={acceptTransaction} children={"Accept transaction"} />
       )}
-      {error && <p>{error}</p>}
       <video
         className={"" + (isScanning ? "" : "hide")}
         ref={previewEl}
