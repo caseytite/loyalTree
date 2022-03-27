@@ -90,7 +90,7 @@ const Scanner = (props) => {
         <Button onClick={acceptTransaction} children={"Accept transaction"} />
       )}
       {error && <p>{error}</p>}
-      <video ref={previewEl}></video>
+      <video className={"" + (isScanning ? "" : "hide")} ref={previewEl}></video>
       {transaction && (
         <div className="transaction-container">
           <h3>Transaction Details</h3>
