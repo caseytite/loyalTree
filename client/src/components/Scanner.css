@@ -50,7 +50,7 @@
 }
 
 .transaction-container {
-  width: 80%;
+  width: 80vw;
   background-color: var(--cultured);
   text-align: center;
   align-items: center;
