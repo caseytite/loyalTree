@@ -96,16 +96,20 @@ const Scanner = (props) => {
           <h3>Transaction Details</h3>
           <div className="transaction-details">
             <table>
-              <tr>
-                <th>Transaction #</th>
-                <th>Date</th>
-                <th>Amount</th>
-              </tr>
-              <tr>
-                <td>{transaction.id}</td>
-                <td>{day}</td>
-                <td>${(transaction.amount / 100) * -1}</td>
-              </tr>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Amount</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{transaction.id}</td>
+                  <td>${(transaction.amount / 100) * -1}</td>
+                  <td>{day}</td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
