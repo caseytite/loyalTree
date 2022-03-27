@@ -51,14 +51,13 @@ function StoreListItem(props) {
     const id = context.userID;
     axios
       .post(`/stores/${params.id}/redeem/`, {
-        
         email,
         amount: amount,
         user_id: id,
         store_id: params.id,
       })
       .then((res) => {
-        console.log(res.data.data)
+        console.log(res.data.data);
         setText("Processing");
         setTimeout(() => {
           setText("Thanks KV!!!");
@@ -71,6 +70,7 @@ function StoreListItem(props) {
   };
 
   const rateStore = (e) => {
+    console.log("rate");
     setRating(e);
   };
 
@@ -129,6 +129,7 @@ function StoreListItem(props) {
                     ? 5
                     : rating
                 }
+                onClick={(e) => console.log("click")}
                 onChange={(e) => rateStore(e)}
                 size={20}
                 isHalf={true}
