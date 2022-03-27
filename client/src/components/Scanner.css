@@ -33,6 +33,11 @@
   top: -5rem; /* moves the input off the top of the screen */
   grid-column: span 2;
 }
+.scanner > p:nth-child(3) {
+  font-size: 1.2rem;
+  color: var(--rust);
+  padding: 0.3rem 1.5rem;
+}
 
 .scanner video {
   max-width: 500px;
