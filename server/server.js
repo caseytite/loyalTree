@@ -377,7 +377,7 @@ app.get("/dashboard/redeem", (req, res) => {
       return results.balance ? res.json(data.rows[0]) : undefined;
     })
     .catch((err) => {
-      res.json({ error: "Card not valid" });
+      res.json({ error: "This card is not valid. Make sure to use the correct card." });
     });
 });
 

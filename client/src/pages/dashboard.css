@@ -1,3 +1,17 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+}
+
+.dashboard h2 {
+  margin: 0;
+  padding: 1.2rem;
+  font-size: 1.2rem;
+}
+
 .transactions-table {
   display: flex;
   flex-direction: column;
@@ -22,17 +36,11 @@
   font-weight: bold;
 }
 
-.dashboard h2 {
-  margin: 0;
-  padding: 20px;
-  font-size: 20px;
-}
-
 .transactions-table tr:nth-child(odd) {
   background-color: #ccc;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 500px) {
   .dashboard h2 {
     font-size: 24px;
   }
