@@ -121,7 +121,12 @@ function StoreListItem(props) {
             <div className="about-header">
               <h2>About {storeName}</h2>
               <ReactStars
-                value={rating}
+                className="stars"
+                value={
+                  storeName === "Lighthouse Labs" || storeName === "Loyaltree"
+                    ? 5
+                    : rating
+                }
                 onChange={(e) => rateStore(e)}
                 size={20}
                 isHalf={true}

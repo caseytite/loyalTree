@@ -35,13 +35,9 @@ const {
   USERS,
   STORES,
   ADD_USER,
-  GIFT_CARDS,
-  STORE_DETAIL,
   TRANSACTIONS,
   USERS_STORES, // most likely not needed
-  USERS_GIFT_CARDS,
   STORE_TRANSACTIONS,
-  GIFT_CARDS_BY_STORE,
 } = require("./querys");
 // const { query } = require('express')
 
