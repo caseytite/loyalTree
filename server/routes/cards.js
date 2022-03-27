@@ -142,6 +142,7 @@ module.exports = (db) => {
   });
 
   //----cards post by user id, creates new transaction record
+  // params not actually being used.  It's being done automagically
   router.post("/:id", (req, res) => {
     // if buying for self;
     let user = req.body;
@@ -149,7 +150,7 @@ module.exports = (db) => {
       db.query(
         `INSERT INTO gift_cards(user_id, balance, store_id) 
       VALUES($1, $2, $3 ) RETURNING *;`,
-        [req.body.user_id, req.body.amount * 100, req.body.store_id]
+        [req.session.id, req.body.amount * 100, req.params.id]
       )
         .then((data) => {
           db.query(
@@ -189,7 +190,7 @@ module.exports = (db) => {
           db.query(
             `INSERT INTO gift_cards(user_id, balance, store_id) 
           VALUES($1, $2, $3 ) RETURNING *;`,
-            [data.id, req.body.amount * 100, req.body.store_id]
+            [data.id, req.body.amount * 100, req.params.id]
           )
             .then((data) =>
               db.query(
