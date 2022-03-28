@@ -19,7 +19,6 @@ module.exports = (db) => {
   router.get("/redeem", (req, res) => {
     const cardID = +req.query.cardID;
     const storeID = req.session.store_id;
-    console.log({ card: cardID, store: storeID });
 
     db.query(
       `

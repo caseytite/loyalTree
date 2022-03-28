@@ -85,7 +85,6 @@ module.exports = (db) => {
         `,
           [sendingAmount, req.params.id]
         );
-        console.log("originCard", originCard);
         return (receivingCard = {
           sendingCardID: originCard.id, // piggybacking data entry
           store_id: originCard.store_id,
@@ -94,7 +93,6 @@ module.exports = (db) => {
       })
       .then((receivingCard) => {
         // here we will commit the receiving card to DB
-        console.log("second", receivingCard);
         db.query(
           `
           INSERT INTO gift_cards (user_id, balance, store_id )
