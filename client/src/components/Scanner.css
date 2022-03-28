@@ -28,7 +28,7 @@
   cursor: text;
 }
 .scanner > .amounts > *:nth-child(3n-1)::before {
-  content: '$  ';
+  content: "$  ";
   vertical-align: top;
   font-size: 1.3rem;
 }
@@ -57,7 +57,7 @@
   box-shadow: 0 0 10rem var(--cultured);
 }
 
-.transaction-container {
+/* .transaction-container {
   width: 80vw;
   background-color: var(--cultured);
   text-align: center;
@@ -90,4 +90,4 @@
   .transaction-container {
     width: 80vw;
   }
-}
+} */

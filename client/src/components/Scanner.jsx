@@ -5,6 +5,7 @@ import QrScanner from "qr-scanner";
 import Button from "./Button";
 import "./Scanner.css";
 import Table from "./Table";
+import "./Table.css"
 
 const Scanner = (props) => {
   const previewEl = useRef(null);
@@ -99,13 +100,13 @@ const Scanner = (props) => {
         ref={previewEl}
       ></video>
       {transaction && (
-        <div className="transaction-container">
-          <h3>Transaction Details</h3>
+        <section className="transaction-container">
+          <h2>Transaction Details</h2>
           
             <Table tableData={transaction}/>
           
          
-        </div>
+        </section>
       )}
     </div>
   );

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Table from "./Table";
+import "./Table.css";
 
 import "./CardTransactions.css";
 
@@ -29,10 +30,10 @@ const CardTransactions = (props) => {
     );
   });
   return (
-    <div className="transaction-list">
+    <section className="transaction-container">
       <h2>Transaction History</h2>
       <Table tableData={transactions}/>
-    </div>
+    </section>
   );
 };
 

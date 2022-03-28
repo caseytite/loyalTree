@@ -5,6 +5,7 @@ import Scanner from "../components/Scanner";
 import "./dashboard.css";
 import Button from "../components/Button";
 import Table from "../components/Table";
+import "../components/Table.css";
 
 const Dashboard = (props) => {
   const [storeInfo, setStoreInfo] = useState({});
@@ -45,7 +46,7 @@ console.log(transactions)
       <Button onClick={toggleView} children="View Transaction History" />
 
       {view.transactions ? transactions.length ? (
-        <section className="transactions-container">
+        <section className="transaction-container">
           <h2>Transaction History</h2>
           <Table tableData={transactions} />
           {/* <table>
