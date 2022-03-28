@@ -1,19 +1,16 @@
 .button-confirm {
   background-color: var(--jet);
-  padding: 0.8rem 1.5rem;
-  color: #fff;
+  padding: 1rem 3rem;
+  color: var(--cultured);
+  font-size: 1rem;
   font-weight: bold;
   border-radius: 2rem;
-  border: 1px solid var(--jet);
-  width: 50%;
+  border: unset;
+  min-width: 16rem;
+  transition: all 200ms ease-in-out;
 }
 
 .button-confirm:hover {
+  transform: scale(1.05);
   cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  .button-confirm {
-    width: 80%;
-  }
 }

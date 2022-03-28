@@ -1,22 +1,64 @@
 .scanner {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  margin: 0;
+  padding: 1rem 0;
+  max-width: 20rem;
 }
-
-.scanner {
+.scanner > p {
   margin: 0;
   padding: 0;
 }
+.scanner > .amounts {
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+  align-items: center;
+  column-gap: 1rem;
+}
+.scanner > .amounts > *:nth-child(3n-1) {
+  text-align: left;
+  font-size: 2rem;
+  background-color: white;
+  padding: 0 1rem;
+  margin: 0;
+  border-radius: 2rem;
+  cursor: text;
+}
+.scanner > .amounts > *:nth-child(3n-1)::before {
+  content: '$  ';
+  vertical-align: top;
+  font-size: 1.3rem;
+}
+
+#redeem-amount {
+  position: fixed;
+  top: -5rem; /* moves the input off the top of the screen */
+  grid-column: span 2;
+}
+.scanner > p:nth-child(3) {
+  font-size: 1.2rem;
+  color: var(--rust);
+  padding: 0.3rem 1.5rem;
+}
 
 .scanner video {
-  max-width: 450px;
-  width: 100%;
+  background-color: var(--jet);
+  position: absolute;
+  top: -28.5rem;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  max-width: 600px;
+  width: calc(100% - 1rem);
+  border-radius: 200rem;
+  opacity: 0.95;
+  box-shadow: 0 0 10rem var(--cultured);
 }
 
 .transaction-container {
-  width: 80%;
+  width: 80vw;
   background-color: var(--cultured);
   text-align: center;
   align-items: center;
@@ -42,14 +84,6 @@
 .transaction-details td {
   text-align: center;
   background-color: #ccc;
-}
-
-#redeem-amount {
-  padding: 8px;
-  width: 45%;
-  border: 1px solid hsl(0, 4%, 71%);
-  text-align: center;
-  border-radius: 20px;
 }
 
 @media screen and (min-width: 768px) {

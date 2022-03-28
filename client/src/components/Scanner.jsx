@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 import axios from "axios";
 import QrScanner from "qr-scanner";
@@ -8,24 +8,21 @@ import "./Scanner.css";
 const Scanner = (props) => {
   const previewEl = useRef(null);
   const outputEl = useRef(null);
+  const qrScanner = useRef(null);
   const [cardAmt, setCardAmt] = useState(null);
   const [error, setError] = useState(null);
   const [transAmt, setTransAmt] = useState("");
   const [cardID, setCardID] = useState(null);
   const [transaction, setTransaction] = useState();
   const [day, setDay] = useState();
+  const [scanBtnText, setScanBtnText] = useState("Click to Scan");
+  const [isScanning, setIsScanning] = useState(false);
 
-  let qrScanner;
-
-  const scanCode = () => {
-    setError(null);
-    setCardAmt(null);
-    qrScanner = new QrScanner(previewEl.current, (result) => {
+  useEffect(() => {
+    qrScanner.current = new QrScanner(previewEl.current, (result) => {
       console.log("decoded qr code:", result);
-      qrScanner.destroy();
-      qrScanner = null;
+      cancelScan();
       setCardID(result);
-      // make select query
       axios
         .get("/dashboard/redeem", { params: { cardID: result } })
         .then((response) => {
@@ -35,7 +32,24 @@ const Scanner = (props) => {
             : setCardAmt(response.data.balance);
         });
     });
-    qrScanner.start();
+  }, []);
+
+  const cancelScan = () => {
+    qrScanner.current.stop();
+    setIsScanning(false);
+    setScanBtnText("Click to Scan");
+  };
+
+  const startScan = () => {
+    setScanBtnText("Cancel Scan");
+    setIsScanning(true);
+    setError(null);
+    setCardAmt(null);
+    qrScanner.current.start();
+  };
+
+  const scanButtonFunction = () => {
+    isScanning ? cancelScan() : startScan();
   };
 
   const acceptTransaction = () => {
@@ -46,8 +60,7 @@ const Scanner = (props) => {
         cardAmt,
       })
       .then((response) => {
-        console.log("Success!");
-        console.log("post response", response.data);
+        console.log("Success! Axios response:", response.data);
         setCardAmt(null);
         setError(null);
         setTransAmt("");
@@ -56,43 +69,53 @@ const Scanner = (props) => {
         setDay(time.toDateString());
         setTransaction(response.data);
       });
+    setIsScanning(false);
+    setScanBtnText("Click to Scan");
   };
 
   return (
     <div className="scanner">
-      <h2>Redeem from Gift Card</h2>
-      <label htmlFor="redeem-amount">
-        Transaction Amount:{" "}
+      <p>Enter the total from the sale, then scan the customer's card.</p>
+      <div className="amounts" >
+        <p>Sale Amount</p>
+        <label htmlFor="redeem-amount">{transAmt || "--"}</label>
         <input
           value={transAmt}
           onChange={(e) => setTransAmt(e.target.value)}
           id="redeem-amount"
         />
-      </label>
-      <p ref={outputEl} id="card-amount">{`Card Amount: $${
-        cardAmt / 100 || "--"
-      }`}</p>
-      <Button onClick={scanCode} children={"Click to scan"} />
+        <p>Card Balance</p>
+        <p ref={outputEl}>{cardAmt / 100 || "--"}</p>
+      </div>
+
+      {error && <p>{error}</p>}
+      <Button onClick={scanButtonFunction} children={scanBtnText} />
       {cardAmt && (
         <Button onClick={acceptTransaction} children={"Accept transaction"} />
       )}
-      {error && <p>{error}</p>}
-      <video ref={previewEl}></video>
+      <video
+        className={"" + (isScanning ? "" : "hide")}
+        ref={previewEl}
+      ></video>
       {transaction && (
         <div className="transaction-container">
           <h3>Transaction Details</h3>
           <div className="transaction-details">
             <table>
-              <tr>
-                <th>Transaction #</th>
-                <th>Date</th>
-                <th>Amount</th>
-              </tr>
-              <tr>
-                <td>{transaction.id}</td>
-                <td>{day}</td>
-                <td>${(transaction.amount / 100) * -1}</td>
-              </tr>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Amount</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{transaction.id}</td>
+                  <td>${(transaction.amount / 100) * -1}</td>
+                  <td>{day}</td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
