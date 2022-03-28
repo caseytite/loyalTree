@@ -48,27 +48,7 @@ const Dashboard = (props) => {
         <section className="transaction-container">
           <h2>Transaction History</h2>
           <Table tableData={transactions} />
-          {/* <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Amount</th>
-                <th>Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              {transactions.map((transaction) => (
-                <TransactionListItem
-                  key={transaction.id}
-                  id={transaction.id}
-                  amount={Math.abs(transaction.amount)}
-                  storeId={transaction.store_id}
-                  date={transaction.created_at}
-                />
-              ))}
-            </tbody>
-          </table> */}
-        </section>
+         </section>
       ) : (
         <h2>No transaction history</h2>
       ) : undefined}
