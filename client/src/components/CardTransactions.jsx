@@ -21,17 +21,19 @@ const CardTransactions = (props) => {
   const transactionTable = transactions.map((data) => {
     const formattedDate = new Date(data.created_at);
     return (
+      
       <tr key={data.id}> 
         <td>{data.id}</td>
         <td>{formatter.format(data.amount / 100)}</td>
         <td>{formattedDate.toDateString()}</td>
       </tr>
     );
+    
   });
   return (
     <section className="transaction-container">
       <h2>Transaction History</h2>
-      <Table tableData={transactionTable}/>
+      <Table tableData={transactions}/>
     </section>
   );
 };
