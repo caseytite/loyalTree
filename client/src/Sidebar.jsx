@@ -75,7 +75,7 @@ export default function Sidebar(props) {
         </span>
       )}
 
-      {props.user && (
+      {user.isstoreowner === true && (
         <span onClick={closeMenu}>
           <Link to="/dashboard">
             <FontAwesomeIcon icon="fa-solid fa-cash-register" />
