@@ -14,8 +14,7 @@ function StoreListItem(props) {
   let navigate = useNavigate();
   const context = useContext(LoggedInUser);
   const params = useParams();
-  const { storeID, storeName, description, address, category, photo, detail } =
-    props;
+  const { storeID, storeName, description, category, photo, detail } = props;
 
   const [card, setCard] = useState(false);
   const [text, setText] = useState("Place Order");
@@ -27,13 +26,10 @@ function StoreListItem(props) {
   });
 
   const onPay = (email, amount) => {
-    // const id = context.userID;
     axios
       .post(`/cards/${params.id}`, {
         email,
         amount: amount,
-        // user_id: ${id,
-        // store_id: params.id,
       })
       .then((res) => {
         setText("Processing");
