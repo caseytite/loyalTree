@@ -103,10 +103,7 @@ const Scanner = (props) => {
       {transaction && (
         <section className="transaction-container">
           <h2>Transaction Details</h2>
-          
             <Table tableData={transaction}/>
-          
-         
         </section>
       )}
     </>
