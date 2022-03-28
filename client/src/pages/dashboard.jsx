@@ -35,7 +35,6 @@ const Dashboard = (props) => {
     }
   };
  
-console.log(transactions)
 
   return (
     <div className="dashboard">

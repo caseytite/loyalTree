@@ -10,7 +10,6 @@ module.exports = (db) => {
     db.query(query, params)
       .then((data) => {
         req.session.store_id = data.rows[0].store_id;
-        console.log(data.rows[0]);
         res.json(data.rows[0]);
       })
       .catch((err) => res.json({ error: err.message }));
@@ -33,7 +32,6 @@ module.exports = (db) => {
       .then((data) => {
         const results = data.rows[0];
         // check if balance is missing
-        console.log(data.rows[0]);
         return results.balance ? res.json(data.rows[0]) : undefined;
       })
       .catch((err) => {
@@ -64,7 +62,6 @@ module.exports = (db) => {
     )
       .then((data) => {
         // create transaction record
-        console.log("first data =", data.rows[0]);
         console.log("attempting to create record");
         return db.query(
           `
@@ -79,14 +76,12 @@ module.exports = (db) => {
       })
       .then((data) => {
         // return transaction record
-        console.log("second data =", data.rows[0]);
         return res.json(data.rows[0]);
       });
   });
 
   //get transactions for store by owner
   router.get("/transactions", (req, res) => {
-    console.log(req);
     db.query(
       `
     SELECT *, transactions.id FROM transactions

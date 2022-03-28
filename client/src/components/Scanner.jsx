@@ -28,7 +28,6 @@ const Scanner = (props) => {
       axios
         .get("/dashboard/redeem", { params: { cardID: result } })
         .then((response) => {
-          console.log(response.data);
           return response.data.error
             ? setError(response.data.error)
             : setCardAmt(response.data.balance);
@@ -76,6 +75,7 @@ const Scanner = (props) => {
   };
 
   return (
+    <>
     <div className="scanner">
       <p>Enter the total from the sale, then scan the customer's card.</p>
       <div className="amounts" >
@@ -99,6 +99,7 @@ const Scanner = (props) => {
         className={"" + (isScanning ? "" : "hide")}
         ref={previewEl}
       ></video>
+            </div>
       {transaction && (
         <section className="transaction-container">
           <h2>Transaction Details</h2>
@@ -108,7 +109,7 @@ const Scanner = (props) => {
          
         </section>
       )}
-    </div>
+    </>
   );
 };
 

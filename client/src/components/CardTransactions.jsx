@@ -3,7 +3,6 @@ import axios from "axios";
 import Table from "./Table";
 import "./Table.css";
 
-import "./CardTransactions.css";
 
 const CardTransactions = (props) => {
   const [transactions, setTransactions] = useState([]);
@@ -32,7 +31,7 @@ const CardTransactions = (props) => {
   return (
     <section className="transaction-container">
       <h2>Transaction History</h2>
-      <Table tableData={transactions}/>
+      <Table tableData={transactionTable}/>
     </section>
   );
 };
