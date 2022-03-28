@@ -1,7 +1,7 @@
 import React from "react";
 
 function TransactionListItem(props) {
-  const { amount, date, storeId, id } = props;
+  const { amount, date, id } = props;
   const day = new Date(date);
   const tdate = day.toLocaleString();
 

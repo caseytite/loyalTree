@@ -41,32 +41,34 @@ const Dashboard = (props) => {
       {view.redeem && <Scanner />}
       <Button onClick={toggleView} children="View Transaction History" />
 
-      {view.transactions ? transactions.length ? (
-        <section className="transactions-table">
-          <h2>Transaction History</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Amount</th>
-                <th>Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              {transactions.map((transaction) => (
-                <TransactionListItem
-                  key={transaction.id}
-                  id={transaction.id}
-                  amount={Math.abs(transaction.amount)}
-                  storeId={transaction.store_id}
-                  date={transaction.created_at}
-                />
-              ))}
-            </tbody>
-          </table>
-        </section>
-      ) : (
-        <h2>No transaction history</h2>
+      {view.transactions ? (
+        transactions.length ? (
+          <section className="transactions-table">
+            <h2>Transaction History</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Amount</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {transactions.map((transaction) => (
+                  <TransactionListItem
+                    key={transaction.id}
+                    id={transaction.id}
+                    amount={Math.abs(transaction.amount)}
+                    storeId={transaction.store_id}
+                    date={transaction.created_at}
+                  />
+                ))}
+              </tbody>
+            </table>
+          </section>
+        ) : (
+          <h2>No transaction history</h2>
+        )
       ) : undefined}
     </div>
   );

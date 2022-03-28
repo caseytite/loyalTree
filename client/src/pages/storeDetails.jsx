@@ -7,7 +7,6 @@ const StoreDetails = (props) => {
   const [store, setStore] = useState({});
   const params = useParams();
 
-  // not working, backend not ready
   useEffect(() => {
     axios.get(`/stores/${params.id}`).then((res) => {
       setStore(res.data.data[0]);
