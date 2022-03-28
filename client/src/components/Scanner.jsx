@@ -4,6 +4,8 @@ import axios from "axios";
 import QrScanner from "qr-scanner";
 import Button from "./Button";
 import "./Scanner.css";
+import Table from "./Table";
+import "./Table.css"
 
 const Scanner = (props) => {
   const previewEl = useRef(null);
@@ -26,7 +28,6 @@ const Scanner = (props) => {
       axios
         .get("/dashboard/redeem", { params: { cardID: result } })
         .then((response) => {
-          console.log(response.data);
           return response.data.error
             ? setError(response.data.error)
             : setCardAmt(response.data.balance);
@@ -67,13 +68,14 @@ const Scanner = (props) => {
         setCardID(null);
         const time = new Date(response.data.created_at);
         setDay(time.toDateString());
-        setTransaction(response.data);
+        setTransaction([response.data]);
       });
     setIsScanning(false);
     setScanBtnText("Click to Scan");
   };
 
   return (
+    <>
     <div className="scanner">
       <p>Enter the total from the sale, then scan the customer's card.</p>
       <div className="amounts" >
@@ -97,30 +99,14 @@ const Scanner = (props) => {
         className={"" + (isScanning ? "" : "hide")}
         ref={previewEl}
       ></video>
+            </div>
       {transaction && (
-        <div className="transaction-container">
-          <h3>Transaction Details</h3>
-          <div className="transaction-details">
-            <table>
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Amount</th>
-                  <th>Date</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>{transaction.id}</td>
-                  <td>${(transaction.amount / 100) * -1}</td>
-                  <td>{day}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <section className="transaction-container">
+          <h2>Transaction Details</h2>
+            <Table tableData={transaction}/>
+        </section>
       )}
-    </div>
+    </>
   );
 };
 

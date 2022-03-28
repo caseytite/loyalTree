@@ -1,0 +1,25 @@
+.transaction-container {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  background-color: var(--cultured);
+  text-align: center;
+  align-items: center;
+  box-shadow: 0 0 5px var(--jet);
+  border: 2px solid var(--jet);
+  opacity: 0.7;
+  border-radius: 0.5rem;
+}
+
+.transaction-container h2 {
+  font-size: 20px;
+}
+
+.transaction-container th {
+  width: 33vw;
+}
+
+th,
+tr:nth-child(even) {
+  background-color: #ccc;
+}

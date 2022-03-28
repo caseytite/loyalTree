@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Scanner from "../components/Scanner";
-import TransactionListItem from "../components/TransactionListItem";
+// import TransactionListItem from "../components/TransactionListItem";
 import "./dashboard.css";
 import Button from "../components/Button";
+import Table from "../components/Table";
+import "../components/Table.css";
 
 const Dashboard = (props) => {
   const [storeInfo, setStoreInfo] = useState({});
@@ -32,6 +34,7 @@ const Dashboard = (props) => {
       });
     }
   };
+ 
 
   return (
     <div className="dashboard">
@@ -42,9 +45,10 @@ const Dashboard = (props) => {
       <Button onClick={toggleView} children="View Transaction History" />
 
       {view.transactions ? transactions.length ? (
-        <section className="transactions-table">
+        <section className="transaction-container">
           <h2>Transaction History</h2>
-          <table>
+          <Table tableData={transactions} />
+          {/* <table>
             <thead>
               <tr>
                 <th>ID</th>
@@ -63,7 +67,7 @@ const Dashboard = (props) => {
                 />
               ))}
             </tbody>
-          </table>
+          </table> */}
         </section>
       ) : (
         <h2>No transaction history</h2>
