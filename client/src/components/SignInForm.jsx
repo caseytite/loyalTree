@@ -20,7 +20,7 @@ const SignInForm = (props) => {
       axios
         .post("/login", { email, password })
         .then((res) => {
-          console.log(res)
+          console.log(res);
           cookies.set("id", res.data.user.id, { path: "/" });
           context.user = res.data.user;
           context.userID = res.data.user.id;
@@ -32,6 +32,44 @@ const SignInForm = (props) => {
         })
         .catch((err) => console.log("Login Error:", err.message));
     }
+    navigate("/signin");
+  };
+
+  const loginBill = (e) => {
+    e.preventDefault();
+      axios
+        .post("/login", { email: 'bill@example.com', password: 'password' })
+        .then((res) => {
+          console.log(res);
+          cookies.set("id", res.data.user.id, { path: "/" });
+          context.user = res.data.user;
+          context.userID = res.data.user.id;
+          localStorage.setItem("userName", res.data.user.first_name);
+          localStorage.setItem("userEmail", res.data.user.email);
+        })
+        .then((response) => {
+          navigate("/stores");
+        })
+        .catch((err) => console.log("Login Error:", err.message));
+    navigate("/signin");
+  };
+
+  const loginChris = (e) => {
+    e.preventDefault();
+      axios
+        .post("/login", { email: 'chris@example.com', password: 'password' })
+        .then((res) => {
+          console.log(res);
+          cookies.set("id", res.data.user.id, { path: "/" });
+          context.user = res.data.user;
+          context.userID = res.data.user.id;
+          localStorage.setItem("userName", res.data.user.first_name);
+          localStorage.setItem("userEmail", res.data.user.email);
+        })
+        .then((response) => {
+          navigate("/stores");
+        })
+        .catch((err) => console.log("Login Error:", err.message));
     navigate("/signin");
   };
 
@@ -53,6 +91,14 @@ const SignInForm = (props) => {
           autoComplete="on"
         />
         <Button onClick={(e) => onFormSubmission(e)}>Sign in</Button>
+        <Button
+          onClick={(e) => loginBill(e)}
+          children="Demo Owner"
+        />
+        <Button
+          onClick={(e) => loginChris(e)}
+          children="Demo User"
+        />
       </form>
     </div>
   );
