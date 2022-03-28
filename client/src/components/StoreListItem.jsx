@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 import axios from "axios";
 import "./StoreListItem.css";
 import CreditCard from "./CreditCard";
-
+import LoggedInUser from "../context/AuthContext";
 import { useParams, Link } from "react-router-dom";
 import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,9 +12,10 @@ import ReactStars from "react-rating-stars-component";
 
 function StoreListItem(props) {
   let navigate = useNavigate();
-
+  const context = useContext(LoggedInUser);
   const params = useParams();
-  const { storeID, storeName, description, category, photo, detail } = props;
+  const { storeID, storeName, description, address, category, photo, detail } =
+    props;
 
   const [card, setCard] = useState(false);
   const [text, setText] = useState("Place Order");
@@ -26,10 +27,13 @@ function StoreListItem(props) {
   });
 
   const onPay = (email, amount) => {
+    // const id = context.userID;
     axios
       .post(`/cards/${params.id}`, {
         email,
-        amount,
+        amount: amount,
+        // user_id: ${id,
+        // store_id: params.id,
       })
       .then((res) => {
         setText("Processing");
@@ -44,13 +48,16 @@ function StoreListItem(props) {
   };
 
   const onRedeem = (email, amount) => {
+    const id = context.userID;
     axios
       .post(`/stores/${params.id}/redeem/`, {
         email,
-        amount,
+        amount: amount,
+        user_id: id,
         store_id: params.id,
       })
       .then((res) => {
+        console.log(res.data.data);
         setText("Processing");
         setTimeout(() => {
           setText("Thanks KV!!!");

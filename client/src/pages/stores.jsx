@@ -6,7 +6,7 @@ import "../components/StoreListItem.css";
 const Stores = (props) => {
   const [nameFilter, setNameFilter] = useState("");
   const [stores, setStores] = useState([]);
-
+  const [detail, showDetail] = useState("");
   useEffect(() => {
     axios.get("/stores").then((res) => {
       setStores(res.data.data);
@@ -28,7 +28,7 @@ const Stores = (props) => {
           photo={store.photo_url}
           description={store.description}
           category={store.category}
-          detail={false}
+          detail={detail}
         />
       );
     });

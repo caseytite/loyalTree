@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@200;300;400;500;600;700&display=swap");
+
+.logo {
+  --size: 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: var(--size);
+  margin: calc(var(--size) * 0.25);
+}
+
+.logo img {
+  height: var(--size);
+}
+
+.logo p {
+  margin: 0 0 0 calc(var(--size) * 0.25);
+  color: var(--bud-green);
+  font-family: "Prompt", serif;
+  font-weight: 200;
+  font-size: calc(var(--size) * 0.45);
+  text-transform: uppercase;
+  letter-spacing: calc(var(--size) * 0.04);
+}
+
+.logo span {
+  font-weight: 500;
+}
