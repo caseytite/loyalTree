@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Table from "./Table";
 
 import "./CardTransactions.css";
 
@@ -20,7 +21,8 @@ const CardTransactions = (props) => {
   const transactionTable = transactions.map((data) => {
     const formattedDate = new Date(data.created_at);
     return (
-      <tr key={data.id}>
+      <tr key={data.id}> 
+        <td>{data.id}</td>
         <td>{formatter.format(data.amount / 100)}</td>
         <td>{formattedDate.toDateString()}</td>
       </tr>
@@ -29,15 +31,7 @@ const CardTransactions = (props) => {
   return (
     <div className="transaction-list">
       <h2>Transaction History</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Amount</th>
-            <th>Date</th>
-          </tr>
-        </thead>
-        <tbody>{transactionTable}</tbody>
-      </table>
+      <Table tableData={transactions}/>
     </div>
   );
 };

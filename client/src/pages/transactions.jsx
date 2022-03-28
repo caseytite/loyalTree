@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import TransactionListItem from '../components/TransactionListItem';
 import LoggedInUser from '../context/AuthContext';
+import Table from '../components/Table';
 
 const Transactions = (props) => {
   const [transactions, setTransactions] = useState([]);
@@ -29,8 +30,7 @@ const Transactions = (props) => {
 
   return (
     <>
-      <h1>Transactions</h1>
-      {transactionsArr}
+      <Table tableData={transactionsArr}/>
     </>
   );
 };

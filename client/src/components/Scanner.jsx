@@ -4,6 +4,7 @@ import axios from "axios";
 import QrScanner from "qr-scanner";
 import Button from "./Button";
 import "./Scanner.css";
+import Table from "./Table";
 
 const Scanner = (props) => {
   const previewEl = useRef(null);
@@ -67,7 +68,7 @@ const Scanner = (props) => {
         setCardID(null);
         const time = new Date(response.data.created_at);
         setDay(time.toDateString());
-        setTransaction(response.data);
+        setTransaction([response.data]);
       });
     setIsScanning(false);
     setScanBtnText("Click to Scan");
@@ -100,24 +101,10 @@ const Scanner = (props) => {
       {transaction && (
         <div className="transaction-container">
           <h3>Transaction Details</h3>
-          <div className="transaction-details">
-            <table>
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Amount</th>
-                  <th>Date</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>{transaction.id}</td>
-                  <td>${(transaction.amount / 100) * -1}</td>
-                  <td>{day}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          
+            <Table tableData={transaction}/>
+          
+         
         </div>
       )}
     </div>
