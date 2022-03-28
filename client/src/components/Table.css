@@ -1,7 +1,6 @@
 .transaction-container {
   display: flex;
   flex-direction: column;
-
   width: 80vw;
   background-color: var(--cultured);
   text-align: center;
@@ -19,23 +18,8 @@
 .transaction-container th {
   width: 33vw;
 }
-/* .transaction-table {
-} */
 
-/* .transaction-container table {
-  justify-content: space-between;
-  display: flex;
-  flex-direction: column;
-} */
-th {
-  background-color: #ccc;
-}
-
+th,
 tr:nth-child(even) {
   background-color: #ccc;
 }
-/* @media screen and (min-width: 768px) {
-  .transaction-container thead {
-    width: 33vw;
-  }
-} */

@@ -11,37 +11,3 @@
   padding: 1.2rem;
   font-size: 1.2rem;
 }
-/* 
-.transactions-table {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  margin: auto;
-  border: 2px solid var(--jet);
-  padding: 1rem;
-  margin: 1rem auto 5rem;
-  border-radius: 0.5rem;
-  background-color: var(--cultured);
-  opacity: 0.7;
-  box-shadow: 0 0 5px var(--jet);
-}
-
-.transactions-table h2 {
-  text-align: center;
-}
-.transactions-table th {
-  text-align: left;
-  background-color: var(--cultured);
-  color: var(--jet);
-  font-weight: bold;
-}
-
-.transactions-table tr:nth-child(odd) {
-  background-color: #ccc;
-}
-
-@media screen and (min-width: 500px) {
-  .dashboard h2 {
-    font-size: 24px;
-  }
-} */

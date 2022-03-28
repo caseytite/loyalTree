@@ -56,38 +56,3 @@
   opacity: 0.95;
   box-shadow: 0 0 10rem var(--cultured);
 }
-
-/* .transaction-container {
-  width: 80vw;
-  background-color: var(--cultured);
-  text-align: center;
-  align-items: center;
-  box-shadow: 0 0 5px var(--jet);
-  border: 2px solid var(--jet);
-  opacity: 0.7;
-  border-radius: 0.5rem;
-}
-
-.transaction-details {
-  display: flex;
-  justify-content: space-around;
-}
-
-.transaction-details table {
-  width: 100%;
-  padding: 0.5rem;
-}
-.transaction-details th {
-  width: 33%;
-}
-
-.transaction-details td {
-  text-align: center;
-  background-color: #ccc;
-}
-
-@media screen and (min-width: 768px) {
-  .transaction-container {
-    width: 80vw;
-  }
-} */
