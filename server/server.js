@@ -14,6 +14,7 @@ const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
 const db = new Pool(dbParams);
 db.connect();
+const socketio = require("socket.io");
 
 const app = express();
 
@@ -30,17 +31,12 @@ app.use(
 );
 //web socket--------------------------------
 
-const http = require("http");
-const { Server } = require("socket.io");
-const server = http.createServer(app);
-const io = new Server(server, {
-  cors: {
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST", "PUT"],
-  },
+const http = app.listen(PORT, () => {
+  console.log(`HTTP Server Running on PORT: ${PORT}`);
 });
+const ioServer = socketio(http);
 
-io.on("connection", (socket) => {
+ioServer.on("connection", (socket) => {
   console.log("socket id:", socket.id);
 
   socket.on("disconnect", () => {
@@ -90,7 +86,3 @@ app.post("/logout", (req, res) => {
 // app.listen(PORT, () => {
 //   console.log(`Server listening on port ${PORT}!`);
 // });
-
-server.listen(PORT, () => {
-  console.log(`HTTP Server Running on PORT: ${PORT}`);
-});

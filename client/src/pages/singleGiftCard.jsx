@@ -11,9 +11,6 @@ import GiftCardListItem from "../components/GiftCardListItem";
 
 import CardTransactions from "../components/CardTransactions";
 
-import io from "socket.io-client";
-const socket = io.connect("http://localhost:3009");
-
 const SingleGiftCard = (props) => {
   let params = useParams();
 

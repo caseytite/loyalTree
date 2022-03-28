@@ -3,9 +3,12 @@ import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
 import QrScanner from "qr-scanner";
 import Button from "./Button";
+import io from "socket.io-client";
 import "./Scanner.css";
 
 const Scanner = (props) => {
+  const [socket, setSocket] = useState("");
+
   const previewEl = useRef(null);
   const outputEl = useRef(null);
   const qrScanner = useRef(null);
@@ -26,7 +29,7 @@ const Scanner = (props) => {
       axios
         .get("/dashboard/redeem", { params: { cardID: result } })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           return response.data.error
             ? setError(response.data.error)
             : setCardAmt(response.data.balance);
@@ -73,10 +76,27 @@ const Scanner = (props) => {
     setScanBtnText("Click to Scan");
   };
 
+  //----------------
+  useEffect(() => {
+    // Connect to server
+    const socket = io("/");
+    setSocket(socket);
+
+    socket.on("connect", (event) => {
+      console.log("this event superman event", transaction);
+      // socket.emit("id", email);
+    });
+
+    // ensures we disconnect to avoid memory leaks
+    return () => socket.disconnect();
+  }, []);
+
+  //-----------
+
   return (
     <div className="scanner">
       <p>Enter the total from the sale, then scan the customer's card.</p>
-      <div className="amounts" >
+      <div className="amounts">
         <p>Sale Amount</p>
         <label htmlFor="redeem-amount">{transAmt || "--"}</label>
         <input

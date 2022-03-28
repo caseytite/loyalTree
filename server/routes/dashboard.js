@@ -86,7 +86,7 @@ module.exports = (db) => {
 
   //get transactions for store by owner
   router.get("/transactions", (req, res) => {
-    console.log(req);
+    // console.log(req);
     db.query(
       `
     SELECT *, transactions.id FROM transactions
