@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "./Button";
 import axios from "axios";
 import "./StoreListItem.css";
 import CreditCard from "./CreditCard";
-import LoggedInUser from "../context/AuthContext";
+
 import { useParams, Link } from "react-router-dom";
 import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,7 +12,7 @@ import ReactStars from "react-rating-stars-component";
 
 function StoreListItem(props) {
   let navigate = useNavigate();
-  const context = useContext(LoggedInUser);
+
   const params = useParams();
   const { storeID, storeName, description, category, photo, detail } = props;
 
