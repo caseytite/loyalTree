@@ -26,6 +26,7 @@ body {
   /* max-width: 960px; */
   font-family: "Open Sans";
   background-image: url("../public/bedge-grunge.png");
+  background-attachment: fixed;
 }
 
 body::-webkit-scrollbar {
