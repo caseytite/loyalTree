@@ -74,7 +74,7 @@ const SingleGiftCard = (props) => {
       }, 2000);
     });
   };
-
+  console.log(gift_card_id);
   return (
     <div className="single-card-content">
       {!qrCode && (
