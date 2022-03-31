@@ -37,7 +37,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   height: 100%;
 }
 .bm-menu-wrap a {
-  padding: 0.7rem ;
+  padding: 0.7rem;
 }
 
 /* General sidebar styles */
@@ -70,7 +70,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 /* Individual item */
-.bm-item, .bm-item a {
+.bm-item,
+.bm-item a {
   display: inline-block;
   color: var(--gainsboro);
   text-align: left;
@@ -84,7 +85,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
   width: 2.5rem;
 }
 
-.bm-item:hover,.bm-item a:hover {
+.bm-item:hover,
+.bm-item a:hover {
   color: #ffffff;
   transform: translateX(0.7rem);
 }

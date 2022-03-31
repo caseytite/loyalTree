@@ -32,7 +32,7 @@ Whether you are looking for a walk-in closet for your master bedroom, a wall uni
 
 The Leaky Cauldron is a local pub and gastropub serving beer and spirits from all over the world. We have an extensive menu of food to pair with your drink of choice, and our bartenders are always happy to help you make a selection. Whether you''re looking for a quiet place to spend an evening with friends or a lively spot for your next birthday party, the Leaky Cauldron is the place for you!','https://imgur.com/CLoKIRs.gif', '2923 Alder ave',default, default),
 
-(6, 'The Roasted Bean' ,'Restaurant food drink local coffe', 'The Roasted Bean is a quaint coffee shop in the heart of downtown New York City. They offer baked goods and exceptional coffee with a relaxing atmosphere. They are open from 7:00am to 11:00pm every day. Stop by today!
+(6, 'The Roasted Bean' ,'Restaurant food drink local coffee', 'The Roasted Bean is a quaint coffee shop in the heart of downtown New York City. They offer baked goods and exceptional coffee with a relaxing atmosphere. They are open from 7:00am to 11:00pm every day. Stop by today!
 
 They provide delicious coffee and baked goods to their customers.
 

@@ -55,8 +55,8 @@ const SingleGiftCard = (props) => {
           setTimeout(() => {
             window.location = "/cards";
             // navigate("/cards");
-          }, 2000);
-        }, 2000);
+          }, 1000);
+        }, 1000);
       })
 
       .catch((err) => console.log(err.message));
@@ -70,8 +70,8 @@ const SingleGiftCard = (props) => {
         setText("Thanks KV!!!");
         setTimeout(() => {
           navigate("/cards");
-        }, 2000);
-      }, 2000);
+        }, 1000);
+      }, 1000);
     });
   };
   console.log(gift_card_id);

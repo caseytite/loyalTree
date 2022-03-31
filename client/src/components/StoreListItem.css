@@ -48,6 +48,8 @@
   border: 1px solid hsl(0, 4%, 71%);
   border-radius: 20px;
   text-align: center;
+  position: sticky;
+  top: 20px;
 }
 #name-filter:focus {
   outline: none;

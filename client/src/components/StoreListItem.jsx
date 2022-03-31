@@ -41,8 +41,8 @@ function StoreListItem(props) {
           setText("Thanks KV!!!");
           setTimeout(() => {
             window.location = "/cards";
-          }, 2000);
-        }, 2000);
+          }, 1000);
+        }, 1000);
       })
       .catch((err) => console.log(err.message));
   };
@@ -63,8 +63,8 @@ function StoreListItem(props) {
           setText("Thanks KV!!!");
           setTimeout(() => {
             window.location = "/cards";
-          }, 2000);
-        }, 2000);
+          }, 1000);
+        }, 1000);
       })
       .catch((err) => console.log(err.message));
   };
@@ -123,11 +123,7 @@ function StoreListItem(props) {
               <h2>About {storeName}</h2>
               <ReactStars
                 className="stars"
-                value={
-                  storeName === "Lighthouse Labs" || storeName === "Loyaltree"
-                    ? 5
-                    : rating
-                }
+                value={storeName === "Lighthouse Labs" ? 5 : rating}
                 onChange={(e) => rateStore(e)}
                 size={20}
                 isHalf={true}
